@@ -26,6 +26,12 @@ struct ContentView: View {
                     VStack {
                         Text("First VStack")
                             .font(.largeTitle)
+                            .padding(.top, geometry.safeAreaInsets.top) // add safe area inset to top
+                        HStack {
+                            Text("H Stack 1")
+                            Text("H Stack 2")
+
+                        }
                         Spacer()
                     }
                     .frame(height: geometry.size.height * 0.33)
@@ -56,13 +62,14 @@ struct ContentView: View {
                     }.frame(height: geometry.size.height * 0.66)
                     
                 }.tabItem {
-                    Text("Test")
+                    Text("Day Overview")
                 }
+               
                 
                 //Below implementation is for adding a second screen and tab item
-//                Text("Test Tab 2").tabItem {
-//                    Text("Test 2")
-//                }
+                Text("Test Tab 2").tabItem {
+                    Text("Track Item")
+                }
             }
         }
     }
