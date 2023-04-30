@@ -17,28 +17,43 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+        GeometryReader { geometry in
+            
+            VStack {
+                
+                VStack {
+                    Text("First VStack")
+                        .font(.largeTitle)
+                    Spacer()
+                }
+                .frame(height: geometry.size.height * 0.33)
+                
+                
+                NavigationView {
+                    List {
+                        ForEach(items) { item in
+                            NavigationLink {
+                                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                            } label: {
+                                Text(item.timestamp!, formatter: itemFormatter)
+                            }
+                        }
+                        .onDelete(perform: deleteItems)
                     }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            EditButton()
+                        }
+                        ToolbarItem {
+                            Button(action: addItem) {
+                                Label("Add Item", systemImage: "plus")
+                            }
+                        }
                     }
-                }
+                    Text("Select an item")
+                }.frame(height: geometry.size.height * 0.66)
+                
             }
-            Text("Select an item")
         }
     }
 
