@@ -19,40 +19,50 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geometry in
             
-            VStack {
+            TabView {
                 
                 VStack {
-                    Text("First VStack")
-                        .font(.largeTitle)
-                    Spacer()
+                    
+                    VStack {
+                        Text("First VStack")
+                            .font(.largeTitle)
+                        Spacer()
+                    }
+                    .frame(height: geometry.size.height * 0.33)
+                    
+                    
+                    NavigationView {
+                        List {
+                            ForEach(items) { item in
+                                NavigationLink {
+                                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                                } label: {
+                                    Text(item.timestamp!, formatter: itemFormatter)
+                                }
+                            }
+                            .onDelete(perform: deleteItems)
+                        }
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                EditButton()
+                            }
+                            ToolbarItem {
+                                Button(action: addItem) {
+                                    Label("Add Item", systemImage: "plus")
+                                }
+                            }
+                        }
+                        Text("Select an item")
+                    }.frame(height: geometry.size.height * 0.66)
+                    
+                }.tabItem {
+                    Text("Test")
                 }
-                .frame(height: geometry.size.height * 0.33)
                 
-                
-                NavigationView {
-                    List {
-                        ForEach(items) { item in
-                            NavigationLink {
-                                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                            } label: {
-                                Text(item.timestamp!, formatter: itemFormatter)
-                            }
-                        }
-                        .onDelete(perform: deleteItems)
-                    }
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            EditButton()
-                        }
-                        ToolbarItem {
-                            Button(action: addItem) {
-                                Label("Add Item", systemImage: "plus")
-                            }
-                        }
-                    }
-                    Text("Select an item")
-                }.frame(height: geometry.size.height * 0.66)
-                
+                //Below implementation is for adding a second screen and tab item
+//                Text("Test Tab 2").tabItem {
+//                    Text("Test 2")
+//                }
             }
         }
     }
