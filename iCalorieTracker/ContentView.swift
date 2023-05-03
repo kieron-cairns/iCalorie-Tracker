@@ -66,7 +66,7 @@ struct ContentView: View {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 EditButton()
                             }
-                            ToolbarItem {
+                            ToolbarItem(placement: .navigationBarLeading) {
                                 Button(action: addItem) {
                                     Label("Add Item", systemImage: "plus")
                                 }
