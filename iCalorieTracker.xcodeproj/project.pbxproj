@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE2336B22A02BD89005E493B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2336B12A02BD89005E493B /* Constant.swift */; };
 		FEAB5FB329FEC58500CB09A4 /* iCalorieTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FB229FEC58500CB09A4 /* iCalorieTrackerApp.swift */; };
 		FEAB5FB529FEC58500CB09A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FB429FEC58500CB09A4 /* ContentView.swift */; };
 		FEAB5FB729FEC58800CB09A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEAB5FB629FEC58800CB09A4 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE2336B12A02BD89005E493B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		FEAB5FAF29FEC58500CB09A4 /* iCalorieTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCalorieTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEAB5FB229FEC58500CB09A4 /* iCalorieTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCalorieTrackerApp.swift; sourceTree = "<group>"; };
 		FEAB5FB429FEC58500CB09A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE2336B02A02BD7D005E493B /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				FE2336B12A02BD89005E493B /* Constant.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		FEAB5FA629FEC58500CB09A4 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +108,7 @@
 		FEAB5FB129FEC58500CB09A4 /* iCalorieTracker */ = {
 			isa = PBXGroup;
 			children = (
+				FE2336B02A02BD7D005E493B /* Constants */,
 				FEAB5FB229FEC58500CB09A4 /* iCalorieTrackerApp.swift */,
 				FEAB5FB429FEC58500CB09A4 /* ContentView.swift */,
 				FEAB5FB629FEC58800CB09A4 /* Assets.xcassets */,
@@ -265,6 +276,7 @@
 			files = (
 				FEAB5FBF29FEC58800CB09A4 /* iCalorieTracker.xcdatamodeld in Sources */,
 				FEAB5FBC29FEC58800CB09A4 /* Persistence.swift in Sources */,
+				FE2336B22A02BD89005E493B /* Constant.swift in Sources */,
 				FEAB5FB529FEC58500CB09A4 /* ContentView.swift in Sources */,
 				FEAB5FB329FEC58500CB09A4 /* iCalorieTrackerApp.swift in Sources */,
 			);

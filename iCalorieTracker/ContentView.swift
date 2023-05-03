@@ -15,6 +15,9 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
+    
+    
+    
 
     var body: some View {
         GeometryReader { geometry in
@@ -22,19 +25,30 @@ struct ContentView: View {
             TabView {
                 
                 VStack {
-                    
+                    Text("First VStack")
+                        .font(.title)
+                        .padding(.bottom, -10)
+                        .padding(.top, geometry.safeAreaInsets.top) // add safe area inset to top
                     VStack {
-                        Text("First VStack")
-                            .font(.largeTitle)
-                            .padding(.top, geometry.safeAreaInsets.top) // add safe area inset to top
+                       Spacer()
                         HStack {
-                            Text("H Stack 1")
-                            Text("H Stack 2")
+                            Spacer()
+                            VStack {
+                                Text("0")
+                                Text("Calories Consumed")
+                            }
+                            VStack {
+                                Text("0")
+                                Text("Calories Burned")
+                            }
+                            Spacer()
 
-                        }
+                        }.frame(width: geometry.size.width - 25)
                         Spacer()
-                    }
-                    .frame(height: geometry.size.height * 0.33)
+                    }.background(Color.white)
+                    .cornerRadius(20)
+                    .padding(10)
+                    .frame( height: geometry.size.height * 0.33)
                     
                     
                     NavigationView {
@@ -63,7 +77,7 @@ struct ContentView: View {
                     
                 }.tabItem {
                     Text("Day Overview")
-                }
+                }.background(backgroundLightModeColor)
                
                 
                 //Below implementation is for adding a second screen and tab item
@@ -73,6 +87,7 @@ struct ContentView: View {
             }
         }
     }
+
 
     private func addItem() {
         withAnimation {
