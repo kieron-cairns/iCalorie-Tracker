@@ -14,7 +14,7 @@ class CoreDataManager {
     static let shared: CoreDataManager = CoreDataManager()
     
     private init() {
-        persistentContainer = NSPersistentContainer(name: "iCalorieTrackerModel")
+        persistentContainer = NSPersistentContainer(name: "iCalorieTrackerAppModel")
         persistentContainer.loadPersistentStores { description, error in
             if let error = error {
                 fatalError("Unable to initialize Core Data \(error)")
