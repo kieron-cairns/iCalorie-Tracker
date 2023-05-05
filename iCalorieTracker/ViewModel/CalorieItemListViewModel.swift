@@ -7,22 +7,20 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
-struct DayItemListViewModel {
+struct CalorieItemListViewModel {
     
-    @State private var title: String = ""
     @State private var message: String = ""
-    @Environment(\.managedObjectContext) private var viewContext
-    var fetchRequest: FetchRequest<CalorieItem>
     
-    
-    private func saveCalorieItem() {
+    func saveCalorieItem(title: String, viewContext: NSManagedObjectContext) {
         
         if title.isEmpty {
             return
         }
         
         do {
+            
             // see if calorie item is already added and confirm if user still wants to add the item
             
             if let _ = CalorieItem.by(title: title)

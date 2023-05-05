@@ -7,14 +7,16 @@
 
 import SwiftUI
 
-struct DayItemListView: View {
+struct CalorieItemListView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
-    @State private var title: String = ""
+    @State private var title: String = "Passed from view to view model 2"
     @State private var message: String = ""
     
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
+    
+    var calorieItemListViewModel = CalorieItemListViewModel()
     
     var body: some View {
         NavigationView {
@@ -28,7 +30,13 @@ struct DayItemListView: View {
                     EditButton()
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: saveCalorieItem) {
+                    Button(action: {
+                        
+                        calorieItemListViewModel.saveCalorieItem(title: title ,viewContext: viewContext)
+                        
+                    })
+                    {
+                        
                         Label("Add Item", systemImage: "plus")
                     }
                 }
@@ -38,7 +46,7 @@ struct DayItemListView: View {
     
     private func saveCalorieItem() {
         
-        title = "Test Item"
+        title = "Test Item 4"
         
         if title.isEmpty {
             return
@@ -74,6 +82,6 @@ struct DayItemListView_Previews: PreviewProvider {
     static var previews: some View {
         let persistedController = CoreDataManager.shared.persistentContainer
 
-        DayItemListView().environment(\.managedObjectContext, persistedController.viewContext)
+        CalorieItemListView().environment(\.managedObjectContext, persistedController.viewContext)
     }
 }

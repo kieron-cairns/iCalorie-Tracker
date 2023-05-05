@@ -88,7 +88,7 @@ struct ContentView: View {
 //                    }.frame(height: geometry.size.height * 0.66)
                     
                     
-                    DayItemListView().frame(height: geometry.size.height * 0.66)
+                    CalorieItemListView().frame(height: geometry.size.height * 0.66)
                     
                 }.tabItem {
                     Text("Day Overview")
