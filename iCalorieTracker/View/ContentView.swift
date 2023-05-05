@@ -55,39 +55,6 @@ struct ContentView: View {
                     .padding(10)
                     .frame( height: geometry.size.height * 0.33)
                     
-                    
-//                    NavigationView {
-//                        List {
-//                            ForEach(items) { item in
-//                                NavigationLink {
-//                                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-//                                } label: {
-//                                    Text(item.timestamp!, formatter: itemFormatter)
-//                                }
-//                            }
-//                            .onDelete(perform: deleteItems)
-                            
-//                            ForEach(allCalorieItems) { item in
-//
-//                                Text(item.title ?? "No Items Yet")
-//
-//                            }
-//
-//                        }
-//                        .toolbar {
-//                            ToolbarItem(placement: .navigationBarTrailing) {
-//                                EditButton()
-//                            }
-//                            ToolbarItem(placement: .navigationBarLeading) {
-//                                Button(action: saveCalorieItem) {
-//                                    Label("Add Item", systemImage: "plus")
-//                                }
-//                            }
-//                        }
-//                        Text("Select an item")
-//                    }.frame(height: geometry.size.height * 0.66)
-                    
-                    
                     CalorieItemListView().frame(height: geometry.size.height * 0.66)
                     
                 }.tabItem {
