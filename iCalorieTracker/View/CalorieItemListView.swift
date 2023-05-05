@@ -12,6 +12,7 @@ struct CalorieItemListView: View {
 
     @State private var title: String = "Passed from view to view model 2"
     @State private var message: String = ""
+    @State private var showAddCalorieItemView = false
     
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
@@ -19,7 +20,7 @@ struct CalorieItemListView: View {
     var calorieItemListViewModel = CalorieItemListViewModel()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach(allCalorieItems) { item in
                     Text(item.title ?? "Error loading")
@@ -33,13 +34,16 @@ struct CalorieItemListView: View {
                     Button(action: {
                         
                         calorieItemListViewModel.saveCalorieItem(title: title ,viewContext: viewContext)
+                        showAddCalorieItemView = true
                         
                     })
                     {
-                        
                         Label("Add Item", systemImage: "plus")
                     }
                 }
+            }.sheet(isPresented: $showAddCalorieItemView) {
+                AddCalorieItemView()
+                    .presentationDetents([.medium, .medium])
             }
         }
     }
