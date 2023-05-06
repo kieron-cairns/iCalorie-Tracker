@@ -13,6 +13,9 @@ struct CalorieItemListViewModel {
     
     @State private var message: String = ""
     
+    @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
+    private var allCalorieItems: FetchedResults<CalorieItem>
+    
     func saveCalorieItem(title: String, viewContext: NSManagedObjectContext) {
         
         if title.isEmpty {
@@ -41,4 +44,18 @@ struct CalorieItemListViewModel {
         
     }
     
+    func deleteCalorieItems() {
+        withAnimation {
+            offsets.map {
+                allCalorieItems[$0]
+            }.forEach(viewContext.delete)
+            
+            do {
+                try viewContext.save()
+            }
+            catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")            }
+        }
+    }
 }
