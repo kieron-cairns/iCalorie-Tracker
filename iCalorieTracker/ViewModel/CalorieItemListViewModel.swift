@@ -48,21 +48,16 @@ struct CalorieItemListViewModel {
         
     }
     
-    func deleteCalorieItems(offsets: IndexSet) {
-        
-//        var offsets: IndexSet = [0]
-        
-        withAnimation {
-            offsets.map {
-                allCalorieItems[$0]
-            }.forEach(viewContext.delete)
-            
-            do {
-                try viewContext.save()
-            }
-            catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")            }
-        }
-    }
+//    func deleteCalorieItems(offsets: IndexSet) {
+//        print("*** Offsets: \(offsets) *****")
+//        
+//        
+//        let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.allCalorieItemsFetchRequest()
+//        
+//        print(fetchRequest)
+//        
+//        do {
+//            viewContext.save()
+//        }
+//    }
 }

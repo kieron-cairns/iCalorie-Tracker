@@ -25,7 +25,19 @@ struct CalorieItemListView: View {
                 ForEach(allCalorieItems) { item in
                     Text(item.title ?? "Error loading")
                 }
-                .onDelete(perform: calorieItemListViewModel.deleteCalorieItems)
+//                .onDelete(perform: calorieItemListViewModel.deleteCalorieItems)
+                .onDelete { indexSet in
+                    indexSet.forEach { index in
+                        let task = allCalorieItems[index]
+                        viewContext.delete(task)
+                        
+                        do {
+                            try viewContext.save()
+                        } catch {
+                            print(error)
+                        }
+                    }
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
