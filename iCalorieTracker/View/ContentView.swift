@@ -23,9 +23,14 @@ struct ContentView: View {
 
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
+    
+    
 
     var body: some View {
         GeometryReader { geometry in
+            
+            let totCalCount = allCalorieItems.reduce(0.0) { $0 + ($1.calorieCount ?? 0.0) }
+
             
             TabView {
                 
@@ -39,7 +44,7 @@ struct ContentView: View {
                         HStack {
                             Spacer()
                             VStack {
-                                Text("0")
+                                Text(String(totCalCount))
                                 Text("Calories Consumed")
                             }
                             VStack {
