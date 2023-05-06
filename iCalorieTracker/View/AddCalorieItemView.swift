@@ -22,6 +22,10 @@ struct AddCalorieItemView: View {
                 .textFieldStyle(.plain)
                 .accessibilityIdentifier("calorieTitleTextField")
             
+            TextField("Enter Calorie Count:", text: $calorieCount)
+                .textFieldStyle(.plain)
+                .accessibilityIdentifier("calorieCountTextField")
+            
             Button(action: {
                 calorieItemListViewModel.saveCalorieItem(title: calorieTitle, viewContext: viewContext)
             })
