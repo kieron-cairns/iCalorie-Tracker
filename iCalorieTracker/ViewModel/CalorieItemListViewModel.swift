@@ -28,8 +28,6 @@ struct CalorieItemListViewModel {
         
         do {
             
-            // see if calorie item is already added and confirm if user still wants to add the item
-            
             if let _ = CalorieItem.by(title: title)
             {
                 message = "This item has already been added. Do you want to add it again?"
