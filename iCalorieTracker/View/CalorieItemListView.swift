@@ -25,7 +25,7 @@ struct CalorieItemListView: View {
                 ForEach(allCalorieItems) { item in
                     Text(item.title ?? "Error loading")
                 }
-                .onDelete(perform: calorieItemListViewModel.deleteCalorieItems(offsets: 1, viewContext: viewContext))
+                .onDelete(perform: calorieItemListViewModel.deleteCalorieItems)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

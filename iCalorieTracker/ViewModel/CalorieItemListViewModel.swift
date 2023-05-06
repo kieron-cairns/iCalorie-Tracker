@@ -16,6 +16,10 @@ struct CalorieItemListViewModel {
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
     
+    @Environment(\.managedObjectContext) private var viewContext
+
+//    private var items: FetchedResults<CalorieItem>
+    
     func saveCalorieItem(title: String, viewContext: NSManagedObjectContext) {
         
         if title.isEmpty {
@@ -44,7 +48,10 @@ struct CalorieItemListViewModel {
         
     }
     
-    func deleteCalorieItems() {
+    func deleteCalorieItems(offsets: IndexSet) {
+        
+//        var offsets: IndexSet = [0]
+        
         withAnimation {
             offsets.map {
                 allCalorieItems[$0]
