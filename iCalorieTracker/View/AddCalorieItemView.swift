@@ -27,7 +27,10 @@ struct AddCalorieItemView: View {
                 .accessibilityIdentifier("calorieCountTextField")
             
             Button(action: {
-                calorieItemListViewModel.saveCalorieItem(title: calorieTitle, calorieCount: Float(calorieCount) ?? 0.0, viewContext: viewContext)
+                
+                let id = UUID()
+                
+                calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: id, calorieCount: Float(calorieCount) ?? 0.0, viewContext: viewContext)
             })
             {
                 Label("Add Item", systemImage: "plus")

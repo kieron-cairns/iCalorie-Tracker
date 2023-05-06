@@ -17,10 +17,10 @@ extension CalorieItem {
         return request
     }
     
-    static func by(title: String) -> CalorieItem? {
+    static func by(id: UUID) -> CalorieItem? {
 
         let request: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
-        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", title.lowercased())
+        request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
 
         let viewContext = CoreDataManager.shared.persistentContainer.viewContext
 

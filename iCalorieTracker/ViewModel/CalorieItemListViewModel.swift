@@ -20,7 +20,7 @@ struct CalorieItemListViewModel {
 
 //    private var items: FetchedResults<CalorieItem>
     
-    func saveCalorieItem(title: String, calorieCount: Float, viewContext: NSManagedObjectContext) {
+    func saveCalorieItem(title: String, id: UUID, calorieCount: Float, viewContext: NSManagedObjectContext) {
         
         if title.isEmpty {
             return
@@ -28,15 +28,16 @@ struct CalorieItemListViewModel {
         
         do {
             
-            if let _ = CalorieItem.by(title: title)
+            if let _ = CalorieItem.by(id: id)
             {
                 message = "This item has already been added. Do you want to add it again?"
             }
             else
             {
-                let caloreItem = CalorieItem(context: viewContext)
-                caloreItem.title = title
-                caloreItem.calorieCount = calorieCount
+                let calorieItem = CalorieItem(context: viewContext)
+                calorieItem.id = UUID()
+                calorieItem.title = title
+                calorieItem.calorieCount = calorieCount
                 
                 try viewContext.save()
                 
