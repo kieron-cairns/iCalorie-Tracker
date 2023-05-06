@@ -23,7 +23,14 @@ struct CalorieItemListView: View {
         NavigationStack {
             List {
                 ForEach(allCalorieItems) { item in
-                    Text(item.title ?? "Error loading")
+                    
+                    HStack {
+                        
+                        Text(item.title ?? "Error loading")
+                        Spacer()
+                        Text(String(item.calorieCount))
+
+                    }
                 }
 //                .onDelete(perform: calorieItemListViewModel.deleteCalorieItems)
                 .onDelete { indexSet in
