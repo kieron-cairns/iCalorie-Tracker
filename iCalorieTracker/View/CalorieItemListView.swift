@@ -33,7 +33,6 @@ struct CalorieItemListView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         
-                        calorieItemListViewModel.saveCalorieItem(title: title ,viewContext: viewContext)
                         showAddCalorieItemView = true
                         
                     })
