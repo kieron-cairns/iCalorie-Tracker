@@ -13,6 +13,7 @@ struct CalorieItemListView: View {
     @State private var title: String = "Passed from view to view model 2"
     @State private var message: String = ""
     @State private var showAddCalorieItemView = false
+    @State private var showDateCalendar = false
     
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
@@ -50,6 +51,16 @@ struct CalorieItemListView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
+                
+                ToolbarItem {
+                    Button(action: {
+                        showDateCalendar = true
+                    })
+                    {
+                        Text("Today")
+                    }
+                }
+                
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         
@@ -63,6 +74,10 @@ struct CalorieItemListView: View {
             }.sheet(isPresented: $showAddCalorieItemView) {
                 AddCalorieItemView()
                     .presentationDetents([.medium, .medium])
+            }
+            .sheet(isPresented: $showDateCalendar) {
+                                DateSelectionView()
+                                    .presentationDetents([.medium, .medium])
             }
         }
     }
