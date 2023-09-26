@@ -20,8 +20,5 @@ class CoreDataManager {
                 fatalError("Unable to initialize Core Data \(error)")
             }
         }
-        
-        
-    }
-    
+    }    
 }

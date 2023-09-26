@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84C0847B2A30A4FF002AFC1F /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C084722A30A4FE002AFC1F /* Inter-Thin.ttf */; };
+		84C0847C2A30A4FF002AFC1F /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C084732A30A4FE002AFC1F /* Inter-Regular.ttf */; };
+		84C0847D2A30A4FF002AFC1F /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C084742A30A4FE002AFC1F /* Inter-Light.ttf */; };
+		84C0847E2A30A4FF002AFC1F /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C084752A30A4FE002AFC1F /* Inter-Medium.ttf */; };
+		84C0847F2A30A4FF002AFC1F /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C084762A30A4FE002AFC1F /* Inter-Bold.ttf */; };
+		84C084802A30A4FF002AFC1F /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C084772A30A4FF002AFC1F /* Inter-ExtraLight.ttf */; };
+		84C084812A30A4FF002AFC1F /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C084782A30A4FF002AFC1F /* Inter-Black.ttf */; };
+		84C084822A30A4FF002AFC1F /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C084792A30A4FF002AFC1F /* Inter-ExtraBold.ttf */; };
+		84C084832A30A4FF002AFC1F /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C0847A2A30A4FF002AFC1F /* Inter-SemiBold.ttf */; };
+		84C084872A30ACB4002AFC1F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C084862A30ACB4002AFC1F /* Extension.swift */; };
 		FE2336B22A02BD89005E493B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2336B12A02BD89005E493B /* Constant.swift */; };
 		FE2336B72A02C7A2005E493B /* CalorieItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2336B62A02C7A2005E493B /* CalorieItemListView.swift */; };
 		FE2336B92A02C7B3005E493B /* CalorieItemListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2336B82A02C7B3005E493B /* CalorieItemListViewModel.swift */; };
@@ -44,6 +54,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84C084722A30A4FE002AFC1F /* Inter-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Thin.ttf"; sourceTree = "<group>"; };
+		84C084732A30A4FE002AFC1F /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
+		84C084742A30A4FE002AFC1F /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.ttf"; sourceTree = "<group>"; };
+		84C084752A30A4FE002AFC1F /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
+		84C084762A30A4FE002AFC1F /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
+		84C084772A30A4FF002AFC1F /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
+		84C084782A30A4FF002AFC1F /* Inter-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black.ttf"; sourceTree = "<group>"; };
+		84C084792A30A4FF002AFC1F /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
+		84C0847A2A30A4FF002AFC1F /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		84C084842A30A583002AFC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		84C084862A30ACB4002AFC1F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		FE2336B12A02BD89005E493B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		FE2336B62A02C7A2005E493B /* CalorieItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieItemListView.swift; sourceTree = "<group>"; };
 		FE2336B82A02C7B3005E493B /* CalorieItemListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieItemListViewModel.swift; sourceTree = "<group>"; };
@@ -91,6 +112,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84C084712A30A4EF002AFC1F /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				84C084782A30A4FF002AFC1F /* Inter-Black.ttf */,
+				84C084762A30A4FE002AFC1F /* Inter-Bold.ttf */,
+				84C084792A30A4FF002AFC1F /* Inter-ExtraBold.ttf */,
+				84C084772A30A4FF002AFC1F /* Inter-ExtraLight.ttf */,
+				84C084742A30A4FE002AFC1F /* Inter-Light.ttf */,
+				84C084752A30A4FE002AFC1F /* Inter-Medium.ttf */,
+				84C084732A30A4FE002AFC1F /* Inter-Regular.ttf */,
+				84C0847A2A30A4FF002AFC1F /* Inter-SemiBold.ttf */,
+				84C084722A30A4FE002AFC1F /* Inter-Thin.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		84C084852A30ACA1002AFC1F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				84C084862A30ACB4002AFC1F /* Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		FE2336B02A02BD7D005E493B /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,12 +209,15 @@
 		FEAB5FB129FEC58500CB09A4 /* iCalorieTracker */ = {
 			isa = PBXGroup;
 			children = (
+				84C084842A30A583002AFC1F /* Info.plist */,
+				84C084852A30ACA1002AFC1F /* Extension */,
+				84C084712A30A4EF002AFC1F /* Font */,
 				FE2336C02A02D3E2005E493B /* Utilities */,
 				FE2336BA2A02C969005E493B /* Managers */,
+				FE2336B02A02BD7D005E493B /* Constants */,
 				FE2336B52A02C6E3005E493B /* ViewModel */,
 				FE2336B42A02C6DA005E493B /* Model */,
 				FE2336B32A02C6C7005E493B /* View */,
-				FE2336B02A02BD7D005E493B /* Constants */,
 				FEAB5FB229FEC58500CB09A4 /* iCalorieTrackerApp.swift */,
 				FEAB5FB629FEC58800CB09A4 /* Assets.xcassets */,
 				FEAB5FBB29FEC58800CB09A4 /* Persistence.swift */,
@@ -309,8 +357,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C0847D2A30A4FF002AFC1F /* Inter-Light.ttf in Resources */,
+				84C084812A30A4FF002AFC1F /* Inter-Black.ttf in Resources */,
 				FEAB5FBA29FEC58800CB09A4 /* Preview Assets.xcassets in Resources */,
+				84C084832A30A4FF002AFC1F /* Inter-SemiBold.ttf in Resources */,
+				84C0847E2A30A4FF002AFC1F /* Inter-Medium.ttf in Resources */,
+				84C084802A30A4FF002AFC1F /* Inter-ExtraLight.ttf in Resources */,
+				84C084822A30A4FF002AFC1F /* Inter-ExtraBold.ttf in Resources */,
+				84C0847F2A30A4FF002AFC1F /* Inter-Bold.ttf in Resources */,
 				FEAB5FB729FEC58800CB09A4 /* Assets.xcassets in Resources */,
+				84C0847C2A30A4FF002AFC1F /* Inter-Regular.ttf in Resources */,
+				84C0847B2A30A4FF002AFC1F /* Inter-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +401,7 @@
 				FE2336B22A02BD89005E493B /* Constant.swift in Sources */,
 				FE2336BF2A02CF55005E493B /* iCalorieTrackerAppModel.xcdatamodeld in Sources */,
 				FEAB5FB529FEC58500CB09A4 /* ContentView.swift in Sources */,
+				84C084872A30ACB4002AFC1F /* Extension.swift in Sources */,
 				FE2336BC2A02C982005E493B /* CoreDataManager.swift in Sources */,
 				FE7C4C762A055DC700C6BD0E /* AddCalorieItemView.swift in Sources */,
 				FEAB5FB329FEC58500CB09A4 /* iCalorieTrackerApp.swift in Sources */,
@@ -508,6 +566,7 @@
 				DEVELOPMENT_TEAM = 89H685KMM4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iCalorieTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -537,6 +596,7 @@
 				DEVELOPMENT_TEAM = 89H685KMM4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iCalorieTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
