@@ -81,6 +81,7 @@ struct AddCalorieItemView: View {
                     Spacer(minLength: 10)
                     Button(action: {
                         calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Float(calorieCount) ?? 0.0, viewContext: viewContext)
+                        self.isPresented = false
                     }) {
                         VStack{
                             Image(systemName: "plus.circle")
