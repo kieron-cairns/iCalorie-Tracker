@@ -52,10 +52,11 @@ struct ContentView: View {
                             //upper
                             HStack {
                                 VStack(alignment: .leading) {
-                                    Text("\(totCalCount, specifier: "%.2f")")
+                                    Text("\(totCalCount, specifier: "%.0f")")
                                         .font(.custom("HelveticaNeue-Bold", size: 64))
                                         .foregroundColor(.init(orangeHexColor))
                                         .frame(alignment: .leading)
+
 
                                     Text("Calories Consumed")
                                         .foregroundColor(colorScheme == .dark ? .white : .black)
