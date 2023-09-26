@@ -47,15 +47,6 @@ struct AddCalorieItemView: View {
                     .cornerRadius(20)
                     .multilineTextAlignment(.center)
 
-                TextField("Is Drink?", text: $calorieCount)
-                    .textFieldStyle(.plain)
-                    .accessibilityIdentifier("calorieCountTextField")
-                    .frame(height: 50)
-                    .padding(10)
-                    .background(lightGrayHexColor)
-                    .cornerRadius(20)
-                    .multilineTextAlignment(.center)
-
                 HStack {
                     Button(action: {
                         calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Float(calorieCount) ?? 0.0, viewContext: viewContext)
