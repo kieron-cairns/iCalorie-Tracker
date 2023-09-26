@@ -14,6 +14,8 @@ struct AddCalorieItemView: View {
     @State private var calorieTitle: String = ""
     @State private var calorieCount: String = ""
     
+    @Binding var isPresented: Bool
+    
     var calorieItemListViewModel = CalorieItemListViewModel()
     
     var body: some View {
@@ -57,7 +59,9 @@ struct AddCalorieItemView: View {
                 HStack {
                     Button(action: {
                         calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Float(calorieCount) ?? 0.0, viewContext: viewContext)
-                    }) {
+                        self.isPresented = false
+                    })
+                    {
                         VStack{
                             Image(systemName: "minus.circle")
                                 .resizable()
@@ -106,7 +110,10 @@ struct AddCalorieItemView: View {
 }
 
 struct AddCalorieItemView_Previews: PreviewProvider {
+    @State static var dummyIsPresented = true
+
     static var previews: some View {
-        AddCalorieItemView()
+        AddCalorieItemView(isPresented: $dummyIsPresented)
     }
 }
+

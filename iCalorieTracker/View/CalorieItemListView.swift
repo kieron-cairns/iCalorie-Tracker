@@ -99,9 +99,9 @@ struct CalorieItemListView: View {
                     }
                 }
             }.sheet(isPresented: $showAddCalorieItemView) {
-                AddCalorieItemView()
-                    .presentationDetents([.medium, .medium])
+                AddCalorieItemView(isPresented: $showAddCalorieItemView)
             }
+
             .sheet(isPresented: $showDateCalendar) {
                                 DateSelectionView()
                                     .presentationDetents([.medium, .medium])

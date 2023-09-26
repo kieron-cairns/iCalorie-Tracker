@@ -19,6 +19,8 @@ struct ContentView: View {
 
     @State private var title: String = ""
     @State private var message: String = ""
+    @State private var showAddCalorieItemView = false
+
 
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
@@ -50,8 +52,7 @@ struct ContentView: View {
                             //upper
                             HStack {
                                 VStack(alignment: .leading) {
-//                                    Text(String(totCalCount))
-                                    Text("1995")
+                                    Text("\(totCalCount, specifier: "%.2f")")
                                         .font(.custom("HelveticaNeue-Bold", size: 64))
                                         .foregroundColor(.init(orangeHexColor))
                                         .frame(alignment: .leading)
