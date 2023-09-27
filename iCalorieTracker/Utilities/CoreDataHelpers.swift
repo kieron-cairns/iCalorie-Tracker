@@ -12,7 +12,7 @@ extension CalorieItem {
     
     static func allCalorieItemsFetchRequest() -> NSFetchRequest<CalorieItem> {
         let request: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "dateCreated", ascending: false)]
+        request.sortDescriptors = [NSSortDescriptor(key: "dateCreated", ascending: true)]
         return request
     }
     
