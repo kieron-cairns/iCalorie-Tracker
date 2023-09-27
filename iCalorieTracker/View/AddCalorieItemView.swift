@@ -50,28 +50,31 @@ struct AddCalorieItemView: View {
 
 
                 HStack {
-                    Button(action: {
-                        calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
-                        self.isPresented = false
-                    })
+                    if item != nil
                     {
-                        VStack{
-                            Image(systemName: "minus.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .background(Color.red)
-                                .foregroundColor(.black)
-                                .font(.system(size: 50))
-                                .frame( height: 50)
-                        }
+                        Button(action: {
+                            calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
+                            self.isPresented = false
+                        })
+                        {
+                            VStack{
+                                Image(systemName: "minus.circle")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .background(Color.red)
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 50))
+                                    .frame( height: 50)
+                            }
                             .frame(width: UIScreen.main.bounds.width / 2  - 40, height: 50)
                             .padding(10)
                             .background(Color.red)
                             .cornerRadius(20)
-
+                            
+                        }
+                        
+                        Spacer(minLength: 10)
                     }
-
-                    Spacer(minLength: 10)
                     Button(action: {
                         calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
                         self.isPresented = false
@@ -94,6 +97,7 @@ struct AddCalorieItemView: View {
                     .accessibilityIdentifier("saveCalorieItemButton")
                 }
             }
+                
             .padding(20)
             .cornerRadius(20)
             .background(colorScheme == .dark ? .black : .white)

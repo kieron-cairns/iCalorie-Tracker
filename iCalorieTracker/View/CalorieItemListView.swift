@@ -117,6 +117,7 @@ struct CalorieItemListView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         showAddCalorieItemView = true
+                        selectedItem = nil
                     }) {
                         Label("Add Item", systemImage: "plus")
                     }
