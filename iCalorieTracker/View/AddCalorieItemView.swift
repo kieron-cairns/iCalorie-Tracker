@@ -31,21 +31,22 @@ struct AddCalorieItemView: View {
 
                 TextField("Enter Item Name:", text: $calorieTitle)
                     .textFieldStyle(.plain)
-                    .accessibilityIdentifier("calorieTitleTextField")
                     .frame(height: 50)
                     .padding(10)
                     .background(lightGrayHexColor)
                     .cornerRadius(20)
                     .multilineTextAlignment(.center)
-                
+                    .accessibilityIdentifier("calorieTitleTextField")
+
                 TextField("Enter Calorie Count:", text: $calorieCount)
                     .textFieldStyle(.plain)
-                    .accessibilityIdentifier("calorieCountTextField")
                     .frame(height: 50)
                     .padding(10)
                     .background(lightGrayHexColor)
                     .cornerRadius(20)
                     .multilineTextAlignment(.center)
+                    .accessibilityIdentifier("calorieCountTextField")
+
 
                 HStack {
                     Button(action: {
@@ -89,6 +90,7 @@ struct AddCalorieItemView: View {
                             .cornerRadius(20)
 
                     }
+                    .accessibilityIdentifier("saveCalorieItemButton")
                 }
             }
             .padding(20)
