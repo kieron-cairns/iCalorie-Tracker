@@ -32,17 +32,19 @@ class when_app_is_launched: XCTestCase {
     }
 }
 
-class when_user_saves_a_new_calorie_item: XCTestCase {
+class BaseUITestCases : XCTestCase {
     
-    
-    func test_should_save_new_calorie_item_successfully() {
+    let app = XCUIApplication()
         
-        let app = XCUIApplication()
+    override func setUpWithError() throws {
         continueAfterFailure = false
         app.launch()
+    }
+    
+    func addNewCalorieItem() -> XCUIElement {
         
         let addCalorieItemButton = app.buttons["addCalorieItem"]
-//        XCTAssertTrue(addCalorieItemButton.exists, "Add Item button should exist.")
+        //        XCTAssertTrue(addCalorieItemButton.exists, "Add Item button should exist.")
         addCalorieItemButton.tap()
         
         let titleTextField = app.textFields["calorieTitleTextField"]
@@ -52,11 +54,22 @@ class when_user_saves_a_new_calorie_item: XCTestCase {
         let calorieCountTextField = app.textFields["calorieCountTextField"]
         calorieCountTextField.tap()
         calorieCountTextField.typeText("100")
-                
+        
         let calorieTable = app.collectionViews["calorieList"]
-
+        
         let saveCalorieItemButton = app.buttons["saveCalorieItemButton"]
         saveCalorieItemButton.tap()
+        
+        return calorieTable
+    }
+}
+
+class when_user_saves_a_new_calorie_item: BaseUITestCases {
+    
+    
+    func test_should_save_new_calorie_item_successfully() {
+        
+        let calorieTable = addNewCalorieItem()
 
         XCTAssert(calorieTable.exists)
         XCTAssertEqual(1, calorieTable.cells.count)
@@ -67,35 +80,16 @@ class when_user_saves_a_new_calorie_item: XCTestCase {
     }
 }
 
-class when_user_deletes_a_calorie_item: XCTestCase {
+class when_user_deletes_a_calorie_item: BaseUITestCases {
   
     func test_should_delete_calorie_item() {
-        let app = XCUIApplication()
-        continueAfterFailure = false
-        app.launch()
-        
-        let addCalorieItemButton = app.buttons["addCalorieItem"]
-//        XCTAssertTrue(addCalorieItemButton.exists, "Add Item button should exist.")
-        addCalorieItemButton.tap()
-        
-        let titleTextField = app.textFields["calorieTitleTextField"]
-        titleTextField.tap()
-        titleTextField.typeText("Test Item")
-        
-        let calorieCountTextField = app.textFields["calorieCountTextField"]
-        calorieCountTextField.tap()
-        calorieCountTextField.typeText("100")
-                
-        let calorieTable = app.collectionViews["calorieList"]
-
-        let saveCalorieItemButton = app.buttons["saveCalorieItemButton"]
-        saveCalorieItemButton.tap()
+       
+        let calorieTable = addNewCalorieItem()
         
         let cell = calorieTable.cells.children(matching: .other).element(boundBy: 1)
         cell.swipeLeft()
         app.collectionViews["calorieList"].buttons["Delete"].tap()
         XCTAssertFalse(cell.exists)
-
     }
     
     override func tearDown() {
