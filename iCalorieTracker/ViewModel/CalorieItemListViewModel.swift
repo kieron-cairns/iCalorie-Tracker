@@ -34,6 +34,17 @@ struct CalorieItemListViewModel {
                 calorieItem.title = title
                 calorieItem.calorieCount = calorieCount
                 try viewContext.save()
+                
+                let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
+                do {
+                    let items = try viewContext.fetch(fetchRequest)
+                    for item in items {
+                        print("******** New Item Added ******")
+                        print("ID: \(item.id ?? UUID()), Title: \(item.title ?? ""), CalorieCount: \(item.calorieCount)")
+                    }
+                } catch {
+                    print("Error fetching data: \(error)")
+                }
             }
         } catch {
             print(error)

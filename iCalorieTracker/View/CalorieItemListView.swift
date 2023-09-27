@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import CoreData
+
 
 struct CalorieItemListView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -22,7 +24,8 @@ struct CalorieItemListView: View {
     private var allCalorieItems: FetchedResults<CalorieItem>
     
     var calorieItemListViewModel = CalorieItemListViewModel()
-    
+    let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
+
     var body: some View {
         NavigationStack {
             List {
@@ -75,12 +78,23 @@ struct CalorieItemListView: View {
                         viewContext.delete(task)
                         do {
                             try viewContext.save()
+                            print("*** Item Deleted ***")
+
+                            do {
+                                let items = try viewContext.fetch(fetchRequest)
+                                for item in items {
+                                    print("******** New Item Added ******")
+                                    print("ID: \(item.id ?? UUID()), Title: \(item.title ?? ""), CalorieCount: \(item.calorieCount)")
+                                }
+                            } catch {
+                                print("Error fetching data: \(error)")
+                            }
                         } catch {
                             print(error)
                         }
                     }
                 }
-            }
+            }.accessibilityIdentifier("calorieList")
             .listStyle(PlainListStyle())
             .scrollContentBackground(.hidden)
             .background(colorScheme == .dark ? .black : backgroundLightModeColor)
@@ -103,15 +117,18 @@ struct CalorieItemListView: View {
                     }) {
                         Label("Add Item", systemImage: "plus")
                     }
+                    .accessibilityIdentifier("addCalorieItem")
+
                 }
             }.sheet(isPresented: $showAddCalorieItemView) {
                 AddCalorieItemView(isPresented: $showAddCalorieItemView, item: selectedItem)
             }
 
             .sheet(isPresented: $showDateCalendar) {
-                                DateSelectionView()
-                                    .presentationDetents([.medium, .medium])
+                DateSelectionView(isPresented: $showDateCalendar)
+                    .presentationDetents([.medium, .medium])
             }
+
         }
     }
 }
