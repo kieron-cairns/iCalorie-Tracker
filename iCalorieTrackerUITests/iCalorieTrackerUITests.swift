@@ -7,35 +7,88 @@
 
 import XCTest
 
-final class iCalorieTrackerUITests: XCTestCase {
+class iCalorieTrackerUITests: XCTestCase {
+    
+    var app: XCUIApplication!
+       
+       override func setUpWithError() throws {
+           // This method is called before the invocation of each test method in the class.
+           continueAfterFailure = false
+           app = XCUIApplication()
+           app.launch()
+       }
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+       func testCalorieItemTableHasNoCellsAtLaunch() {
+           // Assuming you have set the accessibility identifier for the table as "CalorieItem"
+           let calorieTable = app.tables["CalorieItem"]
+           
+           // Assert that the table has no cells
+           XCTAssertEqual(calorieTable.cells.count, 0, "CalorieItem table should have no cells at app launch")
+       }
+    
+    override func tearDown() {
+        Springboard.deleteApp()
     }
 }
+
+class BaseUITestCases : XCTestCase {
+    
+    let app = XCUIApplication()
+        
+    override func setUpWithError() throws {
+        continueAfterFailure = false
+        app.launch()
+    }
+    
+    func addNewCalorieItem() -> XCUIElement {
+        
+        let addCalorieItemButton = app.buttons["addCalorieItem"]
+        //        XCTAssertTrue(addCalorieItemButton.exists, "Add Item button should exist.")
+        addCalorieItemButton.tap()
+        
+        let titleTextField = app.textFields["calorieTitleTextField"]
+        titleTextField.tap()
+        titleTextField.typeText("Test Item")
+        
+        let calorieCountTextField = app.textFields["calorieCountTextField"]
+        calorieCountTextField.tap()
+        calorieCountTextField.typeText("100")
+        
+        let calorieTable = app.collectionViews["calorieList"]
+        
+        let saveCalorieItemButton = app.buttons["saveCalorieItemButton"]
+        saveCalorieItemButton.tap()
+        
+        return calorieTable
+    }
+}
+
+
+class when_user_taps_on_cell_item: BaseUITestCases {
+    
+    func test_add_calorie_item_view_is_populated() {
+        
+        let calorieTable = addNewCalorieItem()
+        let cell = calorieTable.cells.children(matching: .other).element(boundBy: 1)
+        cell.tap()
+
+        let calorieItemTitle = cell.staticTexts["calorieItemTitle"]
+        let calorieItemCount = cell.staticTexts["calorieItemCount"]
+
+        //Make sure the calorie cells exits along with correct titles:
+        XCTAssert(calorieItemTitle.exists, "Calorie Item Title does not exist")
+        XCTAssertEqual(calorieItemTitle.label, "Test Item", "The title doesn't match expected")
+
+        XCTAssert(calorieItemCount.exists, "Calorie Item Count does not exist")
+        XCTAssertEqual(calorieItemCount.label, "100", "The count doesn't match expected")
+        
+        
+        
+    }
+    
+    override func tearDown() {
+        Springboard.deleteApp()
+    }
+}
+
+

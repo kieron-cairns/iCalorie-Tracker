@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import CoreData
 
 class when_app_is_launched: XCTestCase {
  
@@ -32,7 +31,7 @@ class when_app_is_launched: XCTestCase {
     }
 }
 
-class BaseUITestCases : XCTestCase {
+class BasePersistenceTestCases : XCTestCase {
     
     let app = XCUIApplication()
         
@@ -64,7 +63,7 @@ class BaseUITestCases : XCTestCase {
     }
 }
 
-class when_user_saves_a_new_calorie_item: BaseUITestCases {
+class when_user_saves_a_new_calorie_item: BasePersistenceTestCases {
     
     func test_should_save_new_calorie_item_successfully() {
         
@@ -79,7 +78,7 @@ class when_user_saves_a_new_calorie_item: BaseUITestCases {
     }
 }
 
-class when_user_deletes_a_calorie_item: BaseUITestCases {
+class when_user_deletes_a_calorie_item: BasePersistenceTestCases {
   
     func test_should_delete_calorie_item() {
        

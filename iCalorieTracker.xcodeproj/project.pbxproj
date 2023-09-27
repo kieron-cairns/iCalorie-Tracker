@@ -25,6 +25,7 @@
 		FE2336C22A02D42F005E493B /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2336C12A02D42F005E493B /* CoreDataHelpers.swift */; };
 		FE3C5AB22AC44D0F0000D5E3 /* SQLiteEndToEndTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C5AB12AC44D0F0000D5E3 /* SQLiteEndToEndTest.swift */; };
 		FE3C5AB52AC45F310000D5E3 /* Springboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C5AB42AC45F310000D5E3 /* Springboard.swift */; };
+		FE3C5AB72AC48EA30000D5E3 /* iCalorieTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C5AB62AC48EA30000D5E3 /* iCalorieTrackerUITests.swift */; };
 		FE7C4C762A055DC700C6BD0E /* AddCalorieItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7C4C752A055DC700C6BD0E /* AddCalorieItemView.swift */; };
 		FE8A4BA72A0915E200B1C2F5 /* DateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8A4BA62A0915E200B1C2F5 /* DateSelectionView.swift */; };
 		FEAB5FB329FEC58500CB09A4 /* iCalorieTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FB229FEC58500CB09A4 /* iCalorieTrackerApp.swift */; };
@@ -34,8 +35,6 @@
 		FEAB5FBC29FEC58800CB09A4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FBB29FEC58800CB09A4 /* Persistence.swift */; };
 		FEAB5FBF29FEC58800CB09A4 /* iCalorieTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FBD29FEC58800CB09A4 /* iCalorieTracker.xcdatamodeld */; };
 		FEAB5FC929FEC58800CB09A4 /* iCalorieTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FC829FEC58800CB09A4 /* iCalorieTrackerTests.swift */; };
-		FEAB5FD329FEC58800CB09A4 /* iCalorieTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FD229FEC58800CB09A4 /* iCalorieTrackerUITests.swift */; };
-		FEAB5FD529FEC58800CB09A4 /* iCalorieTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FD429FEC58800CB09A4 /* iCalorieTrackerUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +74,7 @@
 		FE2336C12A02D42F005E493B /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
 		FE3C5AB12AC44D0F0000D5E3 /* SQLiteEndToEndTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteEndToEndTest.swift; sourceTree = "<group>"; };
 		FE3C5AB42AC45F310000D5E3 /* Springboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Springboard.swift; sourceTree = "<group>"; };
+		FE3C5AB62AC48EA30000D5E3 /* iCalorieTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCalorieTrackerUITests.swift; sourceTree = "<group>"; };
 		FE7C4C752A055DC700C6BD0E /* AddCalorieItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCalorieItemView.swift; sourceTree = "<group>"; };
 		FE8A4BA62A0915E200B1C2F5 /* DateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionView.swift; sourceTree = "<group>"; };
 		FEAB5FAF29FEC58500CB09A4 /* iCalorieTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCalorieTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,8 +87,6 @@
 		FEAB5FC429FEC58800CB09A4 /* iCalorieTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iCalorieTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEAB5FC829FEC58800CB09A4 /* iCalorieTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCalorieTrackerTests.swift; sourceTree = "<group>"; };
 		FEAB5FCE29FEC58800CB09A4 /* iCalorieTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iCalorieTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FEAB5FD229FEC58800CB09A4 /* iCalorieTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCalorieTrackerUITests.swift; sourceTree = "<group>"; };
-		FEAB5FD429FEC58800CB09A4 /* iCalorieTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCalorieTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,8 +259,7 @@
 		FEAB5FD129FEC58800CB09A4 /* iCalorieTrackerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				FEAB5FD229FEC58800CB09A4 /* iCalorieTrackerUITests.swift */,
-				FEAB5FD429FEC58800CB09A4 /* iCalorieTrackerUITestsLaunchTests.swift */,
+				FE3C5AB62AC48EA30000D5E3 /* iCalorieTrackerUITests.swift */,
 			);
 			path = iCalorieTrackerUITests;
 			sourceTree = "<group>";
@@ -434,10 +431,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FEAB5FD329FEC58800CB09A4 /* iCalorieTrackerUITests.swift in Sources */,
 				FE3C5AB22AC44D0F0000D5E3 /* SQLiteEndToEndTest.swift in Sources */,
-				FEAB5FD529FEC58800CB09A4 /* iCalorieTrackerUITestsLaunchTests.swift in Sources */,
 				FE3C5AB52AC45F310000D5E3 /* Springboard.swift in Sources */,
+				FE3C5AB72AC48EA30000D5E3 /* iCalorieTrackerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

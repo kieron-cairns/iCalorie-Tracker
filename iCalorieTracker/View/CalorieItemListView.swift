@@ -41,6 +41,7 @@ struct CalorieItemListView: View {
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                                 .font(.custom("Inter-Semibold", size: 17))
                                 .frame(alignment: .leading)
+                                .accessibilityIdentifier("calorieItemTitle")
 
                             
 //                            Text(item.title ?? "Error loading")
@@ -54,6 +55,8 @@ struct CalorieItemListView: View {
                         Text(String(item.calorieCount) ?? "Error loading")
                             .foregroundColor(.init(redHexColor))
                             .font(.custom("Inter-Regular", size: 23))
+                            .accessibilityIdentifier("calorieItemCount")
+
 
                     }
                     .listRowBackground(colorScheme == .dark ? .black : backgroundLightModeColor)

@@ -28,7 +28,7 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geometry in
 
-            let totCalCount = allCalorieItems.reduce(0.0) { $0 + ($1.calorieCount) }
+            let totCalCount = allCalorieItems.reduce(0) { $0 + Int($1.calorieCount) }
             TabView {
                 // Day Overview Tap
                 VStack {
@@ -52,7 +52,7 @@ struct ContentView: View {
                             //upper
                             HStack {
                                 VStack(alignment: .leading) {
-                                    Text("\(totCalCount, specifier: "%.0f")")
+                                    Text(String(totCalCount))
                                         .font(.custom("HelveticaNeue-Bold", size: 64))
                                         .foregroundColor(.init(orangeHexColor))
                                         .frame(alignment: .leading)

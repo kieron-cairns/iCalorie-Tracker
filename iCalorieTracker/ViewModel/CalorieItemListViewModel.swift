@@ -20,7 +20,7 @@ struct CalorieItemListViewModel {
     
     //    private var items: FetchedResults<CalorieItem>
     
-    func saveCalorieItem(title: String, id: UUID, calorieCount: Float, viewContext: NSManagedObjectContext) {
+    func saveCalorieItem(title: String, id: UUID, calorieCount: Int32, viewContext: NSManagedObjectContext) {
         
         if title.isEmpty { return }
         
