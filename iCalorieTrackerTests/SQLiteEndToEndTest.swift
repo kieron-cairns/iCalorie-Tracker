@@ -66,7 +66,6 @@ class BaseUITestCases : XCTestCase {
 
 class when_user_saves_a_new_calorie_item: BaseUITestCases {
     
-    
     func test_should_save_new_calorie_item_successfully() {
         
         let calorieTable = addNewCalorieItem()
