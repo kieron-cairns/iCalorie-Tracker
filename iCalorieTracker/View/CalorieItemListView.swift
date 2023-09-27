@@ -15,6 +15,8 @@ struct CalorieItemListView: View {
     @State private var message: String = ""
     @State private var showAddCalorieItemView = false
     @State private var showDateCalendar = false
+    @State private var selectedItem: CalorieItem?
+
     
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
@@ -61,6 +63,10 @@ struct CalorieItemListView: View {
                             .stroke(lightGrayHexColor, lineWidth: 1)
                     )
                     .shadow(radius: 5)
+                    .onTapGesture {
+                        selectedItem = item
+                        showAddCalorieItemView = true
+                    }
                 }
 //                .onDelete(perform: calorieItemListViewModel.deleteCalorieItems)
                 .onDelete { indexSet in
@@ -99,7 +105,7 @@ struct CalorieItemListView: View {
                     }
                 }
             }.sheet(isPresented: $showAddCalorieItemView) {
-                AddCalorieItemView(isPresented: $showAddCalorieItemView)
+                AddCalorieItemView(isPresented: $showAddCalorieItemView, item: selectedItem)
             }
 
             .sheet(isPresented: $showDateCalendar) {

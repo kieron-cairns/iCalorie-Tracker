@@ -15,7 +15,8 @@ struct AddCalorieItemView: View {
     @State private var calorieCount: String = ""
     
     @Binding var isPresented: Bool
-    
+        
+    var item: CalorieItem?
     var calorieItemListViewModel = CalorieItemListViewModel()
     
     var body: some View {
@@ -96,7 +97,12 @@ struct AddCalorieItemView: View {
             .background(colorScheme == .dark ? .black : .white)
         }
         .background(colorScheme == .dark ? .black : .white)
-
+        .onAppear {
+               if let item = item {
+                   calorieTitle = item.title ?? ""
+                   calorieCount = String(item.calorieCount)
+               }
+           }
         
     }
 }
