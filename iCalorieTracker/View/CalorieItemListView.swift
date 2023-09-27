@@ -32,10 +32,11 @@ struct CalorieItemListView: View {
                         
                         VStack(alignment: .leading){
 //                            Text(item.title ?? "Error loading")
-                            Text("Label")
+                            Text(item.title ?? "Unknown Title")
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                                 .font(.custom("Inter-Semibold", size: 17))
                                 .frame(alignment: .leading)
+
                             
 //                            Text(item.title ?? "Error loading")
                             Text("Description...")
