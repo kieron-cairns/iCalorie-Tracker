@@ -16,8 +16,8 @@ struct AddCalorieItemView: View {
     
     @Binding var isPresented: Bool
     @Binding var isTappedCell: Bool
-    var item: CalorieItem?
     
+    var item: CalorieItem?
     var calorieItemListViewModel = CalorieItemListViewModel()
     
     var body: some View {
@@ -54,7 +54,9 @@ struct AddCalorieItemView: View {
                     if isTappedCell
                     {
                         Button(action: {
-                            calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
+                            if let itemId = item?.id { // Check if there's an ID from the tapped item
+                                   calorieItemListViewModel.deleteCalorieItem(withId: itemId, from: viewContext)
+                               }
                             self.isPresented = false
                         })
                         {

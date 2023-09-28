@@ -60,6 +60,13 @@ struct CalorieItemListViewModel {
                 if let itemToDelete = items.first {
                     viewContext.delete(itemToDelete)
                     try viewContext.save()
+                    
+                    let items = try viewContext.fetch(fetchRequest)
+                    for item in items {
+                        print("******** Item Deleted ******")
+                        print("ID: \(item.id ?? UUID()), Title: \(item.title ?? ""), CalorieCount: \(item.calorieCount)")
+                    }
+                    
                 } else {
                     print("Error: Item with the provided id not found")
                 }
