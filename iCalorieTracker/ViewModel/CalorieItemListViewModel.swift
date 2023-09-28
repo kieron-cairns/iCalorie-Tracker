@@ -51,12 +51,20 @@ struct CalorieItemListViewModel {
         }
     }
     
-    //    func deleteCalorieItems(offsets: IndexSet) {
-    //        print("*** Offsets: \(offsets) *****")
-    //        let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.allCalorieItemsFetchRequest()//
-    //        print(fetchRequest)//
-    //        do {
-    //            viewContext.save()
-    //        }
-    //    }
+    func deleteCalorieItem(withId id: UUID, from viewContext: NSManagedObjectContext) {
+            let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+            
+            do {
+                let items = try viewContext.fetch(fetchRequest)
+                if let itemToDelete = items.first {
+                    viewContext.delete(itemToDelete)
+                    try viewContext.save()
+                } else {
+                    print("Error: Item with the provided id not found")
+                }
+            } catch {
+                print("Error deleting the item: \(error)")
+            }
+        }
 }

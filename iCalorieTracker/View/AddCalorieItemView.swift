@@ -124,6 +124,8 @@ struct AddCalorieItemView: View {
 struct AddCalorieItemView_Previews: PreviewProvider {
     @State static var dummyIsPresented = true
     @State static var dummyIsTappedCell = false
+    let persistedController = CoreDataManager.shared.persistentContainer
+
 
     static var previews: some View {
         AddCalorieItemView(isPresented: $dummyIsPresented, isTappedCell: $dummyIsTappedCell)
