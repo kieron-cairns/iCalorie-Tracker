@@ -34,17 +34,9 @@ struct CalorieItemListViewModel {
                 calorieItem.title = title
                 calorieItem.calorieCount = calorieCount
                 try viewContext.save()
-                
-                let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
-                do {
-                    let items = try viewContext.fetch(fetchRequest)
-                    for item in items {
-                        print("******** New Item Added ******")
-                        print("ID: \(item.id ?? UUID()), Title: \(item.title ?? ""), CalorieCount: \(item.calorieCount)")
-                    }
-                } catch {
-                    print("Error fetching data: \(error)")
-                }
+               
+                logTableEntries(type: "Added", viewContext: viewContext)
+               
             }
         } catch {
             print(error)
@@ -61,11 +53,8 @@ struct CalorieItemListViewModel {
                     viewContext.delete(itemToDelete)
                     try viewContext.save()
                     
-                    let items = try viewContext.fetch(fetchRequest)
-                    for item in items {
-                        print("******** Item Deleted ******")
-                        print("ID: \(item.id ?? UUID()), Title: \(item.title ?? ""), CalorieCount: \(item.calorieCount)")
-                    }
+                    logTableEntries(type: "Deleted", viewContext: viewContext)
+
                     
                 } else {
                     print("Error: Item with the provided id not found")
@@ -85,6 +74,10 @@ struct CalorieItemListViewModel {
                     itemToUpdate.title = title
                     itemToUpdate.calorieCount = calorieCount
                     try viewContext.save()
+                    
+                    logTableEntries(type: "Updated", viewContext: viewContext)
+
+                    
                 } else {
                     print("Error: Item with the provided id not found")
                 }
@@ -92,4 +85,19 @@ struct CalorieItemListViewModel {
                 print("Error updating the item: \(error)")
             }
         }
+    
+    func logTableEntries(type: String, viewContext: NSManagedObjectContext) {
+        
+        let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
+        do {
+            let items = try viewContext.fetch(fetchRequest)
+            for item in items {
+                print("******** Item \(type) ******")
+                print("ID: \(item.id ?? UUID()), Title: \(item.title ?? ""), CalorieCount: \(item.calorieCount)")
+            }
+        } catch {
+            print("Error fetching data: \(error)")
+        }
+        
+    }
 }
