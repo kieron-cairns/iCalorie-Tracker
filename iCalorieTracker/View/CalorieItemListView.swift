@@ -18,6 +18,7 @@ struct CalorieItemListView: View {
     @State private var showAddCalorieItemView = false
     @State private var showDateCalendar = false
     @State private var selectedItem: CalorieItem?
+    @State private var isTappedCell = false
 
     
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
@@ -71,6 +72,7 @@ struct CalorieItemListView: View {
                     .shadow(radius: 5)
                     .onTapGesture {
                         selectedItem = item
+                        isTappedCell = true
                         showAddCalorieItemView = true
                     }
                 }
@@ -117,7 +119,7 @@ struct CalorieItemListView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         showAddCalorieItemView = true
-                        selectedItem = nil
+                        isTappedCell = false
                     }) {
                         Label("Add Item", systemImage: "plus")
                     }
@@ -125,9 +127,8 @@ struct CalorieItemListView: View {
 
                 }
             }.sheet(isPresented: $showAddCalorieItemView) {
-                AddCalorieItemView(isPresented: $showAddCalorieItemView, item: selectedItem)
+                AddCalorieItemView(isPresented: $showAddCalorieItemView, isTappedCell: $isTappedCell, item: selectedItem)
             }
-
             .sheet(isPresented: $showDateCalendar) {
                 DateSelectionView(isPresented: $showDateCalendar)
                     .presentationDetents([.medium, .medium])

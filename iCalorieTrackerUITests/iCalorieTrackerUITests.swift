@@ -81,13 +81,39 @@ class when_user_taps_on_cell_item: BaseUITestCases {
 
         XCTAssert(calorieItemCount.exists, "Calorie Item Count does not exist")
         XCTAssertEqual(calorieItemCount.label, "100", "The count doesn't match expected")
-        
-        
-        
     }
     
+    func test_delete_caloire_item_button_should_be_present() {
+        
+        let calorieTable = addNewCalorieItem()
+        let cell = calorieTable.cells.children(matching: .other).element(boundBy: 1)
+        cell.tap()
+        
+        let deleteCaloireItemButton = app.buttons["deleteCalorieItemButton"]
+        XCTAssert(deleteCaloireItemButton.exists)
+    }
+
     override func tearDown() {
         Springboard.deleteApp()
+    }
+}
+
+class when_user_taps_on_add_new_calorie_item_button: XCTestCase {
+    
+    let app = XCUIApplication()
+        
+    override func setUpWithError() throws {
+        continueAfterFailure = false
+        app.launch()
+    }
+    
+    func test_delete_caloire_item_button_should_not_be_present() {
+        
+        let addCalorieItemButton = app.buttons["addCalorieItem"]
+        addCalorieItemButton.tap()
+        
+        let deleteCaloireItemButton = app.buttons["deleteCalorieItemButton"]
+        XCTAssert(!deleteCaloireItemButton.exists)
     }
 }
 

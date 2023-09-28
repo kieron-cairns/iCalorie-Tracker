@@ -15,8 +15,9 @@ struct AddCalorieItemView: View {
     @State private var calorieCount: String = ""
     
     @Binding var isPresented: Bool
-        
+    @Binding var isTappedCell: Bool
     var item: CalorieItem?
+    
     var calorieItemListViewModel = CalorieItemListViewModel()
     
     var body: some View {
@@ -50,7 +51,7 @@ struct AddCalorieItemView: View {
 
 
                 HStack {
-                    if item != nil
+                    if isTappedCell
                     {
                         Button(action: {
                             calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
@@ -58,13 +59,9 @@ struct AddCalorieItemView: View {
                         })
                         {
                             VStack{
-                                Image(systemName: "minus.circle")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .background(Color.red)
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 50))
-                                    .frame( height: 50)
+                                Text("Delete Item")
+                                    .foregroundColor(.white)
+                                    .bold()
                             }
                             .frame(width: UIScreen.main.bounds.width / 2  - 40, height: 50)
                             .padding(10)
@@ -72,6 +69,7 @@ struct AddCalorieItemView: View {
                             .cornerRadius(20)
                             
                         }
+                        .accessibilityIdentifier("deleteCalorieItemButton")
                         
                         Spacer(minLength: 10)
                     }
@@ -80,13 +78,21 @@ struct AddCalorieItemView: View {
                         self.isPresented = false
                     }) {
                         VStack{
-                            Image(systemName: "plus.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .background(Color.green)
-                                .foregroundColor(.black)
-                                .font(.system(size: 50))
-                                .frame( height: 50)
+                            if isTappedCell {
+                                Text("Update Item")
+                                    .foregroundColor(.white)
+                                    .bold()
+                            }
+                            else
+                            {
+                                Image(systemName: "plus.circle")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .background(Color.green)
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 50))
+                                    .frame( height: 50)
+                            }
                         }
                             .frame(width: UIScreen.main.bounds.width / 2 - 40, height: 50)
                             .padding(10)
@@ -115,9 +121,10 @@ struct AddCalorieItemView: View {
 
 struct AddCalorieItemView_Previews: PreviewProvider {
     @State static var dummyIsPresented = true
+    @State static var dummyIsTappedCell = false
 
     static var previews: some View {
-        AddCalorieItemView(isPresented: $dummyIsPresented)
+        AddCalorieItemView(isPresented: $dummyIsPresented, isTappedCell: $dummyIsTappedCell)
     }
 }
 
