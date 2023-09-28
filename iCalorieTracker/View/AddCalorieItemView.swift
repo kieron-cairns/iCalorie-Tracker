@@ -76,8 +76,12 @@ struct AddCalorieItemView: View {
                         Spacer(minLength: 10)
                     }
                     Button(action: {
-                        calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
-                        self.isPresented = false
+                        if isTappedCell, let itemId = item?.id { // Check if there's an ID from the tapped item
+                                calorieItemListViewModel.updateCalorieItem(withId: itemId, title: calorieTitle, calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
+                            } else {
+                                calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
+                            }
+                            self.isPresented = false
                     }) {
                         VStack{
                             if isTappedCell {

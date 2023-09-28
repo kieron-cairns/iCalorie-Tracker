@@ -74,4 +74,22 @@ struct CalorieItemListViewModel {
                 print("Error deleting the item: \(error)")
             }
         }
+    
+    func updateCalorieItem(withId id: UUID, title: String, calorieCount: Int32, viewContext: NSManagedObjectContext) {
+            let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+            
+            do {
+                let items = try viewContext.fetch(fetchRequest)
+                if let itemToUpdate = items.first {
+                    itemToUpdate.title = title
+                    itemToUpdate.calorieCount = calorieCount
+                    try viewContext.save()
+                } else {
+                    print("Error: Item with the provided id not found")
+                }
+            } catch {
+                print("Error updating the item: \(error)")
+            }
+        }
 }
