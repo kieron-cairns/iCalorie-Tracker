@@ -108,6 +108,7 @@ struct AddCalorieItemView: View {
             .cornerRadius(20)
             .background(colorScheme == .dark ? .black : .white)
         }
+
         .background(colorScheme == .dark ? .black : .white)
         .onAppear {
                if let item = item {
@@ -115,6 +116,7 @@ struct AddCalorieItemView: View {
                    calorieCount = String(item.calorieCount)
                }
            }
+//        .accessibilityIdentifier("addCalorieItemView")
         
     }
 }

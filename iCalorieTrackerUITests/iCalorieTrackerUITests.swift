@@ -46,6 +46,7 @@ class BaseUITestCases : XCTestCase {
         //        XCTAssertTrue(addCalorieItemButton.exists, "Add Item button should exist.")
         addCalorieItemButton.tap()
         
+        
         let titleTextField = app.textFields["calorieTitleTextField"]
         titleTextField.tap()
         titleTextField.typeText("Test Item")
@@ -123,20 +124,24 @@ class when_user_taps_on_cell_item: BaseUITestCases {
     
     func test_tapped_cell_items_match_add_caloire_item_view_fields() {
         
-        
         let result = addNewCalorieItem()
         let calorieTable = result.calorieTable
+        let app = result.app
 
         let cell = calorieTable.cells.children(matching: .other).element(boundBy: 1)
         cell.tap()
 
+
         let calorieItemTitle = cell.staticTexts["calorieItemTitle"]
         let calorieItemCount = cell.staticTexts["calorieItemCount"]
+
+
+        let addCalItemViewCalTitleField = app.textFields["calorieTitleTextField"]
+        let addCalItemViewCalCountField = app.textFields["calorieCountTextField"]
         
-//        let addCalItemViewCalTitleField =
-        
-        
-        
+        XCTAssertEqual(calorieItemTitle.label, addCalItemViewCalTitleField.value as? String, "cell & add cal item titles don't match")
+        XCTAssertEqual(calorieItemCount.label, addCalItemViewCalCountField.value as? String, "cell & add cal item values don't match")
+
     }
     
     func test_delete_caloire_item_button_should_be_present() {
