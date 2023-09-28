@@ -57,8 +57,6 @@ struct CalorieItemListView: View {
                             .foregroundColor(.init(redHexColor))
                             .font(.custom("Inter-Regular", size: 23))
                             .accessibilityIdentifier("calorieItemCount")
-
-
                     }
                     .listRowBackground(colorScheme == .dark ? .black : backgroundLightModeColor)
                     .listRowSeparator(.hidden)
@@ -113,7 +111,7 @@ struct CalorieItemListView: View {
                         showDateCalendar = true
                     }) {
                         Text("Today")
-                    }
+                    }.accessibilityIdentifier("dateButton")
                 }
                 
                 ToolbarItem(placement: .navigationBarLeading) {
