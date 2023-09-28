@@ -30,8 +30,5 @@ class Springboard {
             deleteButton.tap()
             springboard.alerts.buttons["Delete"].tap()
         }
-        
-        
     }
-    
 }

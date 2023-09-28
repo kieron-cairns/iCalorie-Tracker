@@ -40,7 +40,7 @@ class BasePersistenceTestCases : XCTestCase {
         app.launch()
     }
     
-    func addNewCalorieItem() -> XCUIElement {
+    func addNewCalorieItem() -> (app: XCUIApplication, calorieTable: XCUIElement) {
         
         let addCalorieItemButton = app.buttons["addCalorieItem"]
         //        XCTAssertTrue(addCalorieItemButton.exists, "Add Item button should exist.")
@@ -59,7 +59,7 @@ class BasePersistenceTestCases : XCTestCase {
         let saveCalorieItemButton = app.buttons["saveCalorieItemButton"]
         saveCalorieItemButton.tap()
         
-        return calorieTable
+        return (app, calorieTable)
     }
 }
 
@@ -67,8 +67,9 @@ class when_user_saves_a_new_calorie_item: BasePersistenceTestCases {
     
     func test_should_save_new_calorie_item_successfully() {
         
-        let calorieTable = addNewCalorieItem()
-
+        let result = addNewCalorieItem()
+        let calorieTable = result.calorieTable
+        
         XCTAssert(calorieTable.exists)
         XCTAssertEqual(1, calorieTable.cells.count)
     }
@@ -82,7 +83,8 @@ class when_user_deletes_a_calorie_item: BasePersistenceTestCases {
   
     func test_should_delete_calorie_item() {
        
-        let calorieTable = addNewCalorieItem()
+        let result = addNewCalorieItem()
+        let calorieTable = result.calorieTable
         
         let cell = calorieTable.cells.children(matching: .other).element(boundBy: 1)
         cell.swipeLeft()

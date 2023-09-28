@@ -40,7 +40,7 @@ class BaseUITestCases : XCTestCase {
         app.launch()
     }
     
-    func addNewCalorieItem() -> XCUIElement {
+    func addNewCalorieItem() -> (app: XCUIApplication, calorieTable: XCUIElement) {
         
         let addCalorieItemButton = app.buttons["addCalorieItem"]
         //        XCTAssertTrue(addCalorieItemButton.exists, "Add Item button should exist.")
@@ -59,8 +59,44 @@ class BaseUITestCases : XCTestCase {
         let saveCalorieItemButton = app.buttons["saveCalorieItemButton"]
         saveCalorieItemButton.tap()
         
-        return calorieTable
+        return (app, calorieTable)
     }
+}
+
+class when_user_adds_new_calorie_item: BaseUITestCases {
+    
+    func testCalorieItemCountTotals() {
+        
+            let result = addNewCalorieItem()
+            let app = result.app
+            
+            //Get all the elements with the given accessibility identifier
+            let calorieCounts = app.staticTexts.matching(identifier: "calorieItemCount")
+            
+            //Count all these elements
+            let numberOfCalorieItems = calorieCounts.count
+            XCTAssert(numberOfCalorieItems > 0, "No calorie items found.")
+            
+            //Total up the values of these items
+            var totalCalories = 0
+            for i in 0..<numberOfCalorieItems {
+                if let calorieValue = Int(calorieCounts.element(boundBy: i).label) {
+                    totalCalories += calorieValue
+                }
+            }
+            
+            //assert on the total value
+            
+            print("Total calories for all items: \(totalCalories)")
+            sleep(4)
+        
+        XCTAssertEqual(String(totalCalories), app.staticTexts["totalCaloireCount"].label, "Total calories doesn't match the expected value.")
+        }
+        
+        override func tearDown() {
+            Springboard.deleteApp()
+        }
+    
 }
 
 
@@ -68,7 +104,9 @@ class when_user_taps_on_cell_item: BaseUITestCases {
     
     func test_add_calorie_item_view_is_populated() {
         
-        let calorieTable = addNewCalorieItem()
+        let result = addNewCalorieItem()
+        let calorieTable = result.calorieTable
+        
         let cell = calorieTable.cells.children(matching: .other).element(boundBy: 1)
         cell.tap()
 
@@ -83,9 +121,29 @@ class when_user_taps_on_cell_item: BaseUITestCases {
         XCTAssertEqual(calorieItemCount.label, "100", "The count doesn't match expected")
     }
     
+    func test_tapped_cell_items_match_add_caloire_item_view_fields() {
+        
+        
+        let result = addNewCalorieItem()
+        let calorieTable = result.calorieTable
+
+        let cell = calorieTable.cells.children(matching: .other).element(boundBy: 1)
+        cell.tap()
+
+        let calorieItemTitle = cell.staticTexts["calorieItemTitle"]
+        let calorieItemCount = cell.staticTexts["calorieItemCount"]
+        
+//        let addCalItemViewCalTitleField =
+        
+        
+        
+    }
+    
     func test_delete_caloire_item_button_should_be_present() {
         
-        let calorieTable = addNewCalorieItem()
+        let result = addNewCalorieItem()
+        let calorieTable = result.calorieTable
+        
         let cell = calorieTable.cells.children(matching: .other).element(boundBy: 1)
         cell.tap()
         

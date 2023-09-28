@@ -56,6 +56,7 @@ struct ContentView: View {
                                         .font(.custom("HelveticaNeue-Bold", size: 64))
                                         .foregroundColor(.init(orangeHexColor))
                                         .frame(alignment: .leading)
+                                        .accessibilityIdentifier("totalCaloireCount")
 
 
                                     Text("Calories Consumed")
