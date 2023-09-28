@@ -30,7 +30,7 @@ struct CalorieItemListViewModel {
             }
             else {
                 let calorieItem = CalorieItem(context: viewContext)
-                calorieItem.id = UUID()
+                calorieItem.id = id
                 calorieItem.title = title
                 calorieItem.calorieCount = calorieCount
                 try viewContext.save()

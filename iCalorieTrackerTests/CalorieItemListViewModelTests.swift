@@ -49,7 +49,65 @@ class CalorieItemListViewModelTests: XCTestCase {
         XCTAssertEqual(items.count, 0)
     }
 
-    // ... Similarly, other tests can be added.
+    func testDeleteCalorieItem() {
+        // Setup: Insert a sample item into the mock context
+        let idToDelete = UUID()
+        let calorieItem = CalorieItem(context: mockContext)
+        calorieItem.id = idToDelete
+        calorieItem.title = "SampleTitle"
+        calorieItem.calorieCount = 100
+        try! mockContext.save()
+
+        // Initial check: Ensure item is in the context
+        var fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", idToDelete as CVarArg)
+        var items = try! mockContext.fetch(fetchRequest)
+        XCTAssertEqual(items.count, 1)
+
+        // Action: Delete the item
+        sut.deleteCalorieItem(withId: idToDelete, from: mockContext)
+
+        // Verify: Ensure item is no longer in the context
+        fetchRequest = CalorieItem.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", idToDelete as CVarArg)
+        items = try! mockContext.fetch(fetchRequest)
+        XCTAssertEqual(items.count, 0)
+    }
+    
+    func testUpdateCalorieItem() {
+        // Setup: Insert a sample item into the mock context
+        let idToUpdate = UUID()
+        let originalTitle = "OriginalTitle"
+        let updatedTitle = "UpdatedTitle"
+        let originalCount: Int32 = 100
+        let updatedCount: Int32 = 200
+        
+        let calorieItem = CalorieItem(context: mockContext)
+        calorieItem.id = idToUpdate
+        calorieItem.title = originalTitle
+        calorieItem.calorieCount = originalCount
+        try! mockContext.save()
+
+        // Initial check: Ensure item is in the context with original values
+        var fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", idToUpdate as CVarArg)
+        var items = try! mockContext.fetch(fetchRequest)
+        XCTAssertEqual(items.count, 1)
+        XCTAssertEqual(items.first?.title, originalTitle)
+        XCTAssertEqual(items.first?.calorieCount, originalCount)
+
+        // Action: Update the item
+        sut.updateCalorieItem(withId: idToUpdate, title: updatedTitle, calorieCount: updatedCount, viewContext: mockContext)
+
+        // Verify: Ensure item in the context has updated values
+        fetchRequest = CalorieItem.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", idToUpdate as CVarArg)
+        items = try! mockContext.fetch(fetchRequest)
+        XCTAssertEqual(items.count, 1)
+        XCTAssertEqual(items.first?.title, updatedTitle)
+        XCTAssertEqual(items.first?.calorieCount, updatedCount)
+    }
+
 
     func setUpInMemoryManagedObjectContext() -> NSManagedObjectContext {
         let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self))])!
