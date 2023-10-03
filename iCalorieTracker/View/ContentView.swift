@@ -131,7 +131,7 @@ struct ContentView: View {
                     }
                     .padding(.horizontal, 20)
 
-                    CalorieItemListView(filter: selectedDate).frame(height: geometry.size.height * 0.66)
+                    CalorieItemListView(filter: selectedDate, selectedDate: $selectedDate).frame(height: geometry.size.height * 0.66)
                 }.tabItem {
                     Text("Day Overview")
                 }

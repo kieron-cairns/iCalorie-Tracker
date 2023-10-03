@@ -19,6 +19,7 @@ struct CalorieItemListView: View {
     @State private var showDateCalendar = false
     @State private var selectedItem: CalorieItem?
     @State private var isTappedCell = false
+    @Binding var selectedDate: Date
 
     
 //    @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
@@ -26,7 +27,10 @@ struct CalorieItemListView: View {
     
     @FetchRequest var allCalorieItems: FetchedResults<CalorieItem>
 
-    init(filter: Date) {
+    init(filter: Date, selectedDate: Binding<Date>) {
+        
+        self._selectedDate = selectedDate
+        
         let calendar = Calendar.current
         let startOfDay = calendar.startOfDay(for: filter)
         let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
@@ -34,8 +38,6 @@ struct CalorieItemListView: View {
         let predicate = NSPredicate(format: "(dateCreated >= %@) AND (dateCreated < %@)", startOfDay as CVarArg, endOfDay as CVarArg)
         
         _allCalorieItems = FetchRequest<CalorieItem>(sortDescriptors: [], predicate: predicate)
-        
-        
     }
     
     var calorieItemListViewModel = CalorieItemListViewModel()
@@ -141,10 +143,20 @@ struct CalorieItemListView: View {
             }.sheet(isPresented: $showAddCalorieItemView) {
                 AddCalorieItemView(isPresented: $showAddCalorieItemView, isTappedCell: $isTappedCell, item: selectedItem)
             }
+//            .sheet(isPresented: $showDateCalendar, selectedDate: $selectedDate) {
+//                DateSelectionView(isPresented: $showDateCalendar)
+//                    .presentationDetents([.medium, .medium])
+//            }
             .sheet(isPresented: $showDateCalendar) {
-                DateSelectionView(isPresented: $showDateCalendar)
-                    .presentationDetents([.medium, .medium])
-            }
+                            VStack {
+                                DatePicker("Select a Date", selection: $selectedDate, displayedComponents: .date)
+                                    .datePickerStyle(GraphicalDatePickerStyle())
+                                    .padding()
+                                    .onChange(of: selectedDate) { _ in
+                                        showDateCalendar = false
+                                    }
+                            }
+                        }
 
         }
     }
