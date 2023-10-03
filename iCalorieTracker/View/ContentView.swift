@@ -137,7 +137,7 @@ struct ContentView: View {
                 }
                 .background(colorScheme == .dark ? .black : backgroundLightModeColor)
 
-
+               
 
                 //Below implementation is for adding a second screen and tab item
                 Text("Test Tab 2")

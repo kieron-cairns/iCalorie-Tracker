@@ -24,23 +24,29 @@ struct CalorieItemListViewModel {
         
         if title.isEmpty { return }
         
-        do {
-            if let _ = CalorieItem.by(id: id) {
-                message = "This item has already been added. Do you want to add it again?"
-            }
-            else {
-                let calorieItem = CalorieItem(context: viewContext)
-                calorieItem.id = id
-                calorieItem.title = title
-                calorieItem.calorieCount = calorieCount
-                try viewContext.save()
-               
-                logTableEntries(type: "Added", viewContext: viewContext)
-               
-            }
-        } catch {
-            print(error)
-        }
+        let calorieItem1 = CalorieItem(context: viewContext)
+        
+        calorieItem1.title = title
+        calorieItem1.calorieCount = calorieCount
+        calorieItem1.dateCreated = Date()
+        
+//        do {
+//            if let _ = CalorieItem.by(id: id) {
+//                message = "This item has already been added. Do you want to add it again?"
+//            }
+//            else {
+//                let calorieItem = CalorieItem(context: viewContext)
+//                calorieItem.id = id
+//                calorieItem.title = title
+//                calorieItem.calorieCount = calorieCount
+//                try viewContext.save()
+//
+//                logTableEntries(type: "Added", viewContext: viewContext)
+//
+//            }
+//        } catch {
+//            print(error)
+//        }
     }
     
     func deleteCalorieItem(withId id: UUID, from viewContext: NSManagedObjectContext) {

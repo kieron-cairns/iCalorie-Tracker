@@ -34,6 +34,8 @@ struct CalorieItemListView: View {
         let predicate = NSPredicate(format: "(dateCreated >= %@) AND (dateCreated < %@)", startOfDay as CVarArg, endOfDay as CVarArg)
         
         _allCalorieItems = FetchRequest<CalorieItem>(sortDescriptors: [], predicate: predicate)
+        
+        
     }
     
     var calorieItemListViewModel = CalorieItemListViewModel()
@@ -42,7 +44,7 @@ struct CalorieItemListView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(allCalorieItems) { item in
+                ForEach(allCalorieItems, id: \.self) { item in
                     HStack {
                         Image(systemName: "mappin.circle.fill")
                             .foregroundColor(.init(orangePinHexColor))
