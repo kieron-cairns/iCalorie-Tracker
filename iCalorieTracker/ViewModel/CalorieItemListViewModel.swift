@@ -30,6 +30,8 @@ struct CalorieItemListViewModel {
         calorieItem1.calorieCount = calorieCount
         calorieItem1.dateCreated = Date()
         
+        try? viewContext.save()
+        
 //        do {
 //            if let _ = CalorieItem.by(id: id) {
 //                message = "This item has already been added. Do you want to add it again?"
