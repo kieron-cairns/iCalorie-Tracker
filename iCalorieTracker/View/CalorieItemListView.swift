@@ -21,8 +21,20 @@ struct CalorieItemListView: View {
     @State private var isTappedCell = false
 
     
-    @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
-    private var allCalorieItems: FetchedResults<CalorieItem>
+//    @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
+//    private var allCalorieItems: FetchedResults<CalorieItem>
+    
+    @FetchRequest var allCalorieItems: FetchedResults<CalorieItem>
+
+    init(filter: Date) {
+        let calendar = Calendar.current
+        let startOfDay = calendar.startOfDay(for: filter)
+        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+        
+        let predicate = NSPredicate(format: "(dateCreated >= %@) AND (dateCreated < %@)", startOfDay as CVarArg, endOfDay as CVarArg)
+        
+        _allCalorieItems = FetchRequest<CalorieItem>(sortDescriptors: [], predicate: predicate)
+    }
     
     var calorieItemListViewModel = CalorieItemListViewModel()
     let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
@@ -136,10 +148,10 @@ struct CalorieItemListView: View {
     }
 }
 
-struct DayItemListView_Previews: PreviewProvider {
-    static var previews: some View {
-        let persistedController = CoreDataManager.shared.persistentContainer
-
-        CalorieItemListView().environment(\.managedObjectContext, persistedController.viewContext)
-    }
-}
+//struct DayItemListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let persistedController = CoreDataManager.shared.persistentContainer
+//
+//        CalorieItemListView().environment(\.managedObjectContext, persistedController.viewContext)
+//    }
+//}
