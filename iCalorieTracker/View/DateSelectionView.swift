@@ -17,6 +17,9 @@ struct DateSelectionView: View {
                DatePicker("Birth Date", selection: $selectedDate, displayedComponents: .date)
                    .datePickerStyle(GraphicalDatePickerStyle())
                    .labelsHidden()
+                   .onChange(of: selectedDate) { newValue in
+                                      print("Selected date:", newValue)
+                                  }
                
                // The button at the top left
                Button(action: {

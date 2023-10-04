@@ -184,6 +184,13 @@ struct CalorieItemListView: View {
                                     .padding()
                                     .onChange(of: selectedDate) { _ in
                                         showDateCalendar = false
+                                        print("*** Date Changed to \(selectedDate) ***")
+                                        
+                                        totCalCount = allCalorieItems.reduce(0, {
+                                            $0 + Int($1.calorieCount)
+                                        })
+                                        
+                                        
                                     }
                             }
                         }
