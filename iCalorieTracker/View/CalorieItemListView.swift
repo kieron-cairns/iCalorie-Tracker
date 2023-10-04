@@ -22,15 +22,6 @@ struct CalorieItemListView: View {
     @Binding var selectedDate: Date
     @Binding var totCalCount: Int
     
-    
-    func handleDismiss() {
-        self.showAddCalorieItemView = false
-    }
-
-    
-//    @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
-//    private var allCalorieItems: FetchedResults<CalorieItem>
-    
     @FetchRequest var allCalorieItems: FetchedResults<CalorieItem>
 
     init(filter: Date, selectedDate: Binding<Date>, totCalCount: Binding<Int>) {
@@ -49,7 +40,6 @@ struct CalorieItemListView: View {
     
     var calorieItemListViewModel = CalorieItemListViewModel()
     let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
-
 
     var body: some View {
         
@@ -77,20 +67,16 @@ struct CalorieItemListView: View {
                             .font(.system(size: 50))
                         
                         VStack(alignment: .leading){
-//                            Text(item.title ?? "Error loading")
                             Text(item.title ?? "Error loading")
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                                 .font(.custom("Inter-Semibold", size: 17))
                                 .frame(alignment: .leading)
                                 .accessibilityIdentifier("calorieItemTitle")
 
-                            
-//                            Text(item.title ?? "Error loading")
                             Text("Description...")
                                 .foregroundColor(colorScheme == .dark ? cellLightGrayHexColor : cellLightGrayHexColor)
                                 .font(.custom("Inter-Regular", size: 15))
                                 .frame(alignment: .leading)
-                            
                         }
                         Spacer()
                         Text(String(item.calorieCount) ?? "Error loading")
@@ -114,7 +100,6 @@ struct CalorieItemListView: View {
                         showAddCalorieItemView = true
                     }
                 }
-//                .onDelete(perform: calorieItemListViewModel.deleteCalorieItems)
                 .onDelete { indexSet in
                     indexSet.forEach { index in
                         let task = allCalorieItems[index]
@@ -178,22 +163,20 @@ struct CalorieItemListView: View {
                 AddCalorieItemView(isPresented: $showAddCalorieItemView, isTappedCell: $isTappedCell, item: selectedItem)
             }
             .sheet(isPresented: $showDateCalendar) {
-                            VStack {
-                                DatePicker("Select a Date", selection: $selectedDate, displayedComponents: .date)
-                                    .datePickerStyle(GraphicalDatePickerStyle())
-                                    .padding()
-                                    .onChange(of: selectedDate) { _ in
-                                        showDateCalendar = false
-                                        print("*** Date Changed to \(selectedDate) ***")
-                                        
-                                        totCalCount = allCalorieItems.reduce(0, {
-                                            $0 + Int($1.calorieCount)
-                                        })
-                                        
-                                        
-                                    }
-                            }
+                VStack {
+                    DatePicker("Select a Date", selection: $selectedDate, displayedComponents: .date)
+                        .datePickerStyle(GraphicalDatePickerStyle())
+                        .padding()
+                        .onChange(of: selectedDate) { _ in
+                            showDateCalendar = false
+                            print("*** Date Changed to \(selectedDate) ***")
+                            
+                            totCalCount = allCalorieItems.reduce(0, {
+                                $0 + Int($1.calorieCount)
+                            })
                         }
+                }
+            }
         }
     }
 }

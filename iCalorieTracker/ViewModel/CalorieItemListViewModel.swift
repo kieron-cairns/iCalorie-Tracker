@@ -85,7 +85,6 @@ struct CalorieItemListViewModel {
                     try viewContext.save()
                     
                     logTableEntries(type: "Updated", viewContext: viewContext)
-
                     
                 } else {
                     print("Error: Item with the provided id not found")
