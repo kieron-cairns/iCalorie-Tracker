@@ -28,7 +28,7 @@ struct ContentView: View {
                 // Day Overview Tap
                 VStack {
                     VStack(alignment: .leading) {
-                        Text("Todays Stats")
+                        Text("Today's Stats")
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                             .font(.custom("HelveticaNeue-Bold", size: 24))
                             .padding(.top, 100)

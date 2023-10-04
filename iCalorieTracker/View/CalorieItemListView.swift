@@ -23,7 +23,26 @@ struct CalorieItemListView: View {
     @Binding var totCalCount: Int
     
     let calendarDateRange: ClosedRange<Date> = Date(timeIntervalSinceReferenceDate: -123456789.0)...Date()
+    
+    var dateButtonText: String {
+        let today = Date()
+        let calendar = Calendar.current
 
+        // Calculate the difference in days
+        let daysDiff = calendar.dateComponents([.day], from: selectedDate, to: today).day ?? 0
+
+        switch daysDiff {
+        case 0:
+            return "Today"
+        case 1:
+            return "Yesterday"
+        default:
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            formatter.timeStyle = .none
+            return formatter.string(from: selectedDate)
+        }
+    }
     
     @FetchRequest var allCalorieItems: FetchedResults<CalorieItem>
 
@@ -149,7 +168,7 @@ struct CalorieItemListView: View {
                     Button(action: {
                         showDateCalendar = true
                     }) {
-                        Text("Today")
+                        Text(dateButtonText)
                     }.accessibilityIdentifier("dateButton")
                 }
                 
