@@ -26,6 +26,7 @@ struct CalorieItemListViewModel {
         
         let calorieItem = CalorieItem(context: viewContext)
         
+        calorieItem.id = id
         calorieItem.title = title
         calorieItem.calorieCount = calorieCount
         calorieItem.dateCreated = Date()

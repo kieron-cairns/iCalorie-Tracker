@@ -66,7 +66,7 @@ class CalorieItemListViewModelTests: XCTestCase {
 
         // Action: Delete the item
         sut.deleteCalorieItem(withId: idToDelete, from: mockContext)
-0
+
         // Verify: Ensure item is no longer in the context
         fetchRequest = CalorieItem.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", idToDelete as CVarArg)
