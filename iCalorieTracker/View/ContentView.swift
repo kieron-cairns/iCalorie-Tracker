@@ -21,6 +21,26 @@ struct ContentView: View {
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
     
+    var statsTitleText: String {
+        let today = Date()
+        let calendar = Calendar.current
+
+        // Calculate the difference in days
+        let daysDiff = calendar.dateComponents([.day], from: selectedDate, to: today).day ?? 0
+
+        switch daysDiff {
+        case 0:
+            return "Today's"
+        case 1:
+            return "Yesterday's"
+        default:
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            formatter.timeStyle = .none
+            return formatter.string(from: selectedDate)
+        }
+    }
+    
     var body: some View {
         GeometryReader { geometry in
 
@@ -28,7 +48,7 @@ struct ContentView: View {
                 // Day Overview Tap
                 VStack {
                     VStack(alignment: .leading) {
-                        Text("Today's Stats")
+                        Text("\(statsTitleText) Stats")
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                             .font(.custom("HelveticaNeue-Bold", size: 24))
                             .padding(.top, 100)
