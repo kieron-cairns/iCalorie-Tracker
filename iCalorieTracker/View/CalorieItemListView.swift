@@ -44,6 +44,11 @@ struct CalorieItemListView: View {
         }
     }
     
+    var isToday: Bool {
+        let calendar = Calendar.current
+        return calendar.isDateInToday(selectedDate)
+    }
+    
     @FetchRequest var allCalorieItems: FetchedResults<CalorieItem>
 
     init(filter: Date, selectedDate: Binding<Date>, totCalCount: Binding<Int>) {
@@ -164,13 +169,54 @@ struct CalorieItemListView: View {
                     EditButton()
                 }
                 
+                // Backward arrow button
+                ToolbarItem {
+                        Button(action: {
+                            selectedDate = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate) ?? selectedDate
+                            
+                            totCalCount = allCalorieItems.reduce(0, {
+                                $0 + Int($1.calorieCount)
+                            })
+                        }) {
+                            Image(systemName: "arrow.left")
+                        }.onChange(of: selectedDate) { _ in
+                            showDateCalendar = false
+                            print("*** Date Changed to \(selectedDate) ***")
+                            
+                            totCalCount = allCalorieItems.reduce(0, {
+                                $0 + Int($1.calorieCount)
+                            })
+                        }
+                    }
+                
                 ToolbarItem {
                     Button(action: {
                         showDateCalendar = true
                     }) {
                         Text(dateButtonText)
-                    }.accessibilityIdentifier("dateButton")
+                    }
+                    .accessibilityIdentifier("dateButton")
                 }
+                
+                // Forward arrow button
+                ToolbarItem {
+                    Button(action: {
+                        selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate) ?? selectedDate
+                    }) {
+                        Image(systemName: "arrow.right")
+                            .foregroundColor(isToday ? .gray : .blue)
+                    }
+                    .disabled(isToday)
+                    .onChange(of: selectedDate) { _ in
+                        showDateCalendar = false
+                        print("*** Date Changed to \(selectedDate) ***")
+                        
+                        totCalCount = allCalorieItems.reduce(0, {
+                            $0 + Int($1.calorieCount)
+                        })
+                    }
+                }
+
                 
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
