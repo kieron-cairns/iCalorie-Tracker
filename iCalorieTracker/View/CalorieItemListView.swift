@@ -157,7 +157,6 @@ struct CalorieItemListView: View {
                                     }
                             }
                         }
-
         }
     }
 }
