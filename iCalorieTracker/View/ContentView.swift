@@ -27,13 +27,6 @@ struct ContentView: View {
             TabView {
                 // Day Overview Tap
                 VStack {
-
-//                    Text("iCalorieTracker")
-//                        .foregroundColor(colorScheme == .dark ? .white : .black)
-//                        .font(.custom("Inter-Bold", size: 16))
-//                        .padding(.top, geometry.safeAreaInsets.top)
-//                        .padding(.top, 50)
-
                     VStack(alignment: .leading) {
                         Text("Todays Stats")
                             .foregroundColor(colorScheme == .dark ? .white : .black)
