@@ -180,4 +180,55 @@ class when_user_taps_on_add_new_calorie_item_button: XCTestCase {
     }
 }
 
+class when_user_selects_a_new_date: XCTestCase {
+    
+    let app = XCUIApplication()
+        
+    override func setUpWithError() throws {
+        continueAfterFailure = false
+        app.launch()
+    }
+    
+    func test_selected_date_is_yesterday() {
+     
+        let backDateToolbarButton = app.buttons["backDateButton"]
+        backDateToolbarButton.tap()
+        
+        let dateToolbarButton = app.buttons["dateButton"]
+        let statsTitle = app.staticTexts["statsTitle"]
+
+        
+        XCTAssertEqual(dateToolbarButton.label, "Yesterday")
+        XCTAssertEqual(statsTitle.label, "Yesterday's Stats")
+    }
+    
+    func test_selected_date_is_two_days_ago() {
+     
+        let backDateToolbarButton = app.buttons["backDateButton"]
+        backDateToolbarButton.tap()
+        backDateToolbarButton.tap()
+
+        //Calculate the date 2 days prior to today's date
+
+        let calendar = Calendar.current
+        guard let twoDaysAgo = calendar.date(byAdding: .day, value: -2, to: Date()) else {
+            XCTFail("Failed to compute the date for two days ago.")
+            return
+        }
+        
+        // Format the date as "mm/dd/yyyy" for comparison in the UI test
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/d/yy"
+        let formattedDate = dateFormatter.string(from: twoDaysAgo)
+        
+        let dateToolbarButton = app.buttons["dateButton"]
+        let statsTitle = app.staticTexts["statsTitle"]
+
+        XCTAssertEqual(dateToolbarButton.label, "\(formattedDate)")
+        XCTAssertEqual(statsTitle.label, "\(formattedDate) Stats")
+    }
+    
+    
+}
+
 

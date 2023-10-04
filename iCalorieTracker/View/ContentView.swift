@@ -53,6 +53,7 @@ struct ContentView: View {
                             .font(.custom("HelveticaNeue-Bold", size: 24))
                             .padding(.top, 100)
                             .padding(.leading, 20)
+                            .accessibilityIdentifier("statsTitle")
                         
                         Spacer(minLength: 10)
 

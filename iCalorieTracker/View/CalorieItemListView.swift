@@ -166,7 +166,7 @@ struct CalorieItemListView: View {
                             totCalCount = allCalorieItems.reduce(0, {
                                 $0 + Int($1.calorieCount)
                             })
-                        }
+                        }.accessibilityIdentifier("backDateButton")
                     }
                 
                 ToolbarItem {
@@ -225,6 +225,7 @@ struct CalorieItemListView: View {
                                 $0 + Int($1.calorieCount)
                             })
                         }
+                        .accessibilityIdentifier("datePicker")
                 }
             }
         }
