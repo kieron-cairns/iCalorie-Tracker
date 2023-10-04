@@ -122,7 +122,11 @@ struct CalorieItemListView: View {
                         do {
                             try viewContext.save()
                             print("*** Item Deleted ***")
-
+                            
+                            totCalCount = allCalorieItems.reduce(0, {
+                                $0 + Int($1.calorieCount)
+                            })
+                            
                             do {
                                 let items = try viewContext.fetch(fetchRequest)
                                 for item in items {
