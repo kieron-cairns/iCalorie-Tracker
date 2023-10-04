@@ -20,6 +20,7 @@ struct CalorieItemListView: View {
     @State private var selectedItem: CalorieItem?
     @State private var isTappedCell = false
     @Binding var selectedDate: Date
+    @Binding var totCalCount: Int
 
     
 //    @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
@@ -27,9 +28,10 @@ struct CalorieItemListView: View {
     
     @FetchRequest var allCalorieItems: FetchedResults<CalorieItem>
 
-    init(filter: Date, selectedDate: Binding<Date>) {
+    init(filter: Date, selectedDate: Binding<Date>, totCalCount: Binding<Int>) {
         
         self._selectedDate = selectedDate
+        self._totCalCount = totCalCount
         
         let calendar = Calendar.current
         let startOfDay = calendar.startOfDay(for: filter)
@@ -42,6 +44,7 @@ struct CalorieItemListView: View {
     
     var calorieItemListViewModel = CalorieItemListViewModel()
     let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
+
 
     var body: some View {
         NavigationStack {
@@ -114,6 +117,11 @@ struct CalorieItemListView: View {
                     }
                 }
             }.accessibilityIdentifier("calorieList")
+                .onAppear {
+                            totCalCount = allCalorieItems.reduce(0, {
+                                $0 + Int($1.calorieCount)
+                            })
+                        }
             .listStyle(PlainListStyle())
             .scrollContentBackground(.hidden)
             .background(colorScheme == .dark ? .black : backgroundLightModeColor)

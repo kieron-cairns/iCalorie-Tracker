@@ -21,14 +21,15 @@ struct ContentView: View {
     @State private var message: String = ""
     @State private var showAddCalorieItemView = false
     @State private var selectedDate = Date()
-
+    @State private var totCalCount: Int = 0
+    
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
-
+    
     var body: some View {
         GeometryReader { geometry in
 
-            let totCalCount = allCalorieItems.reduce(0) { $0 + Int($1.calorieCount) }
+           
             TabView {
                 // Day Overview Tap
                 VStack {
@@ -131,7 +132,7 @@ struct ContentView: View {
                     }
                     .padding(.horizontal, 20)
 
-                    CalorieItemListView(filter: selectedDate, selectedDate: $selectedDate).frame(height: geometry.size.height * 0.66)
+                    CalorieItemListView(filter: selectedDate, selectedDate: $selectedDate, totCalCount: $totCalCount).frame(height: geometry.size.height * 0.66)
                 }.tabItem {
                     Text("Day Overview")
                 }
