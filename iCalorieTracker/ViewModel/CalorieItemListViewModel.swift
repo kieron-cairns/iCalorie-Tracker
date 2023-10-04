@@ -9,16 +9,33 @@ import Foundation
 import SwiftUI
 import CoreData
 
-struct CalorieItemListViewModel {
+class CalorieItemListViewModel: ObservableObject {
     
     @State private var message: String = ""
     
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
-    
     @Environment(\.managedObjectContext) private var viewContext
     
-    //    private var items: FetchedResults<CalorieItem>
+    func dateButtonText(selectedDate: Date) -> String {
+        let today = Date()
+        let calendar = Calendar.current
+
+        // Calculate the difference in days
+        let daysDiff = calendar.dateComponents([.day], from: selectedDate, to: today).day ?? 0
+
+        switch daysDiff {
+        case 0:
+            return "Today"
+        case 1:
+            return "Yesterday"
+        default:
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            formatter.timeStyle = .none
+            return formatter.string(from: selectedDate)
+        }
+    }
     
     func saveCalorieItem(title: String, id: UUID, calorieCount: Int32, viewContext: NSManagedObjectContext) {
         
