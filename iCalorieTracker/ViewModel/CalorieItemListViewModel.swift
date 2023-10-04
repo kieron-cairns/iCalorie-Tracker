@@ -50,23 +50,6 @@ class CalorieItemListViewModel: ObservableObject {
         
         try? viewContext.save()
         
-//        do {
-//            if let _ = CalorieItem.by(id: id) {
-//                message = "This item has already been added. Do you want to add it again?"
-//            }
-//            else {
-//                let calorieItem = CalorieItem(context: viewContext)
-//                calorieItem.id = id
-//                calorieItem.title = title
-//                calorieItem.calorieCount = calorieCount
-//                try viewContext.save()
-//
-//                logTableEntries(type: "Added", viewContext: viewContext)
-//
-//            }
-//        } catch {
-//            print(error)
-//        }
     }
     
     func deleteCalorieItem(withId id: UUID, from viewContext: NSManagedObjectContext) {
