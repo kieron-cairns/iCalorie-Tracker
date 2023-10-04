@@ -24,11 +24,11 @@ struct CalorieItemListViewModel {
         
         if title.isEmpty { return }
         
-        let calorieItem1 = CalorieItem(context: viewContext)
+        let calorieItem = CalorieItem(context: viewContext)
         
-        calorieItem1.title = title
-        calorieItem1.calorieCount = calorieCount
-        calorieItem1.dateCreated = Date()
+        calorieItem.title = title
+        calorieItem.calorieCount = calorieCount
+        calorieItem.dateCreated = Date()
         
         try? viewContext.save()
         

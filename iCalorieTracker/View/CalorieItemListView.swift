@@ -21,6 +21,11 @@ struct CalorieItemListView: View {
     @State private var isTappedCell = false
     @Binding var selectedDate: Date
     @Binding var totCalCount: Int
+    
+    
+    func handleDismiss() {
+        self.showAddCalorieItemView = false
+    }
 
     
 //    @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
@@ -47,6 +52,22 @@ struct CalorieItemListView: View {
 
 
     var body: some View {
+        
+        //Binding of bool in order for sheetIsPresented logic to work on iOS 12.0+
+        let bindingShowAddCalorieItemView = Binding<Bool>(
+            get: {
+                self.showAddCalorieItemView
+            },
+            set: {
+                self.showAddCalorieItemView = $0
+                if !$0 {  // i.e., when the sheet is dismissed
+                    totCalCount = allCalorieItems.reduce(0, {
+                        $0 + Int($1.calorieCount)
+                    })
+                }
+            }
+        )
+        
         NavigationStack {
             List {
                 ForEach(allCalorieItems, id: \.self) { item in
@@ -118,10 +139,10 @@ struct CalorieItemListView: View {
                 }
             }.accessibilityIdentifier("calorieList")
                 .onAppear {
-                            totCalCount = allCalorieItems.reduce(0, {
-                                $0 + Int($1.calorieCount)
-                            })
-                        }
+                    totCalCount = allCalorieItems.reduce(0, {
+                        $0 + Int($1.calorieCount)
+                    })
+                }
             .listStyle(PlainListStyle())
             .scrollContentBackground(.hidden)
             .background(colorScheme == .dark ? .black : backgroundLightModeColor)
@@ -142,19 +163,16 @@ struct CalorieItemListView: View {
                     Button(action: {
                         showAddCalorieItemView = true
                         isTappedCell = false
+
                     }) {
                         Label("Add Item", systemImage: "plus")
                     }
                     .accessibilityIdentifier("addCalorieItem")
 
                 }
-            }.sheet(isPresented: $showAddCalorieItemView) {
+            }.sheet(isPresented: bindingShowAddCalorieItemView) {
                 AddCalorieItemView(isPresented: $showAddCalorieItemView, isTappedCell: $isTappedCell, item: selectedItem)
             }
-//            .sheet(isPresented: $showDateCalendar, selectedDate: $selectedDate) {
-//                DateSelectionView(isPresented: $showDateCalendar)
-//                    .presentationDetents([.medium, .medium])
-//            }
             .sheet(isPresented: $showDateCalendar) {
                             VStack {
                                 DatePicker("Select a Date", selection: $selectedDate, displayedComponents: .date)
