@@ -100,6 +100,7 @@ struct CalorieItemListView: View {
                         showAddCalorieItemView = true
                     }
                 }
+
                 .onDelete { indexSet in
                     indexSet.forEach { index in
                         let task = allCalorieItems[index]
@@ -181,10 +182,14 @@ struct CalorieItemListView: View {
     }
 }
 
-//struct DayItemListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let persistedController = CoreDataManager.shared.persistentContainer
-//
-//        CalorieItemListView().environment(\.managedObjectContext, persistedController.viewContext)
-//    }
-//}
+struct CalorieItemListView_Previews: PreviewProvider {
+    @State static var mockDate = Date()
+    @State static var mockTotalCalories = 0
+
+    static var previews: some View {
+        let persistedController = CoreDataManager.shared.persistentContainer
+
+        CalorieItemListView(filter: mockDate, selectedDate: $mockDate, totCalCount: $mockTotalCalories)
+            .environment(\.managedObjectContext, persistedController.viewContext)
+    }
+}

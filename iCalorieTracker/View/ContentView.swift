@@ -12,11 +12,6 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.colorScheme) var colorScheme
 
-    //    @FetchRequest(
-    //        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-    //        animation: .default)
-    //    private var items: FetchedResults<Item>
-
     @State private var title: String = ""
     @State private var message: String = ""
     @State private var showAddCalorieItemView = false
@@ -33,19 +28,20 @@ struct ContentView: View {
                 // Day Overview Tap
                 VStack {
 
-                    Text("iCalorieTracker")
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                        .font(.custom("Inter-Bold", size: 16))
-                        .padding(.top, geometry.safeAreaInsets.top)
-                        .padding(.top, 30)
+//                    Text("iCalorieTracker")
+//                        .foregroundColor(colorScheme == .dark ? .white : .black)
+//                        .font(.custom("Inter-Bold", size: 16))
+//                        .padding(.top, geometry.safeAreaInsets.top)
+//                        .padding(.top, 50)
 
                     VStack(alignment: .leading) {
                         Text("Todays Stats")
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                             .font(.custom("HelveticaNeue-Bold", size: 24))
+                            .padding(.top, 100)
                             .padding(.leading, 20)
-
-                        Spacer(minLength: 5)
+                        
+                        Spacer(minLength: 10)
 
                         VStack {
 
@@ -130,14 +126,13 @@ struct ContentView: View {
 
                     }
                     .padding(.horizontal, 20)
-
-                    CalorieItemListView(filter: selectedDate, selectedDate: $selectedDate, totCalCount: $totCalCount).frame(height: geometry.size.height * 0.66)
+                    
+                    CalorieItemListView(filter: selectedDate, selectedDate: $selectedDate, totCalCount: $totCalCount)
+                        .frame(height: geometry.size.height * 0.66).padding(.top, 5)
                 }.tabItem {
                     Text("Day Overview")
                 }
                 .background(colorScheme == .dark ? .black : backgroundLightModeColor)
-
-               
 
                 //Below implementation is for adding a second screen and tab item
                 Text("Test Tab 2")
@@ -147,37 +142,6 @@ struct ContentView: View {
             }
         }
     }
-
-    //    private func addItem() {
-    //        withAnimation {
-    //            let newItem = Item(context: viewContext)
-    //            newItem.timestamp = Date()
-    //
-    //            do {
-    //                try viewContext.save()
-    //            } catch {
-    //                // Replace this implementation with code to handle the error appropriately.
-    //                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-    //                let nsError = error as NSError
-    //                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-    //            }
-    //        }
-    //    }
-
-    //    private func deleteItems(offsets: IndexSet) {
-    //        withAnimation {
-    //            offsets.map { items[$0] }.forEach(viewContext.delete)
-    //
-    //            do {
-    //                try viewContext.save()
-    //            } catch {
-    //                // Replace this implementation with code to handle the error appropriately.
-    //                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-    //                let nsError = error as NSError
-    //                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-    //            }
-    //        }
-    //    }
 }
 
 private let itemFormatter: DateFormatter = {
