@@ -21,25 +21,7 @@ struct DailyStatsView: View {
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
     
-    var statsTitleText: String {
-        let today = Date()
-        let calendar = Calendar.current
-
-        // Calculate the difference in days
-        let daysDiff = calendar.dateComponents([.day], from: selectedDate, to: today).day ?? 0
-
-        switch daysDiff {
-        case 0:
-            return "Today's"
-        case 1:
-            return "Yesterday's"
-        default:
-            let formatter = DateFormatter()
-            formatter.dateStyle = .short
-            formatter.timeStyle = .none
-            return formatter.string(from: selectedDate)
-        }
-    }
+    var dailyStatsViewModel = DailyStatsViewModel()
     
     var body: some View {
         GeometryReader { geometry in
@@ -48,7 +30,7 @@ struct DailyStatsView: View {
                 // Day Overview Tap
                 VStack {
                     VStack(alignment: .leading) {
-                        Text("\(statsTitleText) Stats")
+                        Text("\(dailyStatsViewModel.statsTitleText(selectedDate: selectedDate)) Stats")
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                             .font(.custom("HelveticaNeue-Bold", size: 24))
                             .padding(.top, 100)
@@ -165,7 +147,7 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-struct ContentView_Previews: PreviewProvider {
+struct DailyStatsView_Previews: PreviewProvider {
     static var previews: some View {
         //        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
         let persistedController = CoreDataManager.shared.persistentContainer

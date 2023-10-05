@@ -38,6 +38,7 @@
 		FEAB5FBF29FEC58800CB09A4 /* iCalorieTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FBD29FEC58800CB09A4 /* iCalorieTracker.xcdatamodeld */; };
 		FEAB5FC929FEC58800CB09A4 /* iCalorieTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FC829FEC58800CB09A4 /* iCalorieTrackerTests.swift */; };
 		FEB178FA2ACEC0C90077C577 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB178F92ACEC0C90077C577 /* ErrorMessage.swift */; };
+		FEB178FC2ACECED00077C577 /* DailyStatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB178FB2ACECED00077C577 /* DailyStatsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		FEAB5FC829FEC58800CB09A4 /* iCalorieTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCalorieTrackerTests.swift; sourceTree = "<group>"; };
 		FEAB5FCE29FEC58800CB09A4 /* iCalorieTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iCalorieTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEB178F92ACEC0C90077C577 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		FEB178FB2ACECED00077C577 /* DailyStatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStatsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				FE2336B82A02C7B3005E493B /* CalorieItemListViewModel.swift */,
+				FEB178FB2ACECED00077C577 /* DailyStatsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				84C084872A30ACB4002AFC1F /* Extension.swift in Sources */,
 				FE2336BC2A02C982005E493B /* CoreDataManager.swift in Sources */,
 				FE7C4C762A055DC700C6BD0E /* AddCalorieItemView.swift in Sources */,
+				FEB178FC2ACECED00077C577 /* DailyStatsViewModel.swift in Sources */,
 				FEAB5FB329FEC58500CB09A4 /* iCalorieTrackerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
