@@ -166,7 +166,7 @@ class when_user_taps_on_add_new_calorie_item_button: XCTestCase {
     let app = XCUIApplication()
         
     override func setUpWithError() throws {
-        continueAfterFailure = false
+        continueAfterFailure = false 
         app.launch()
     }
     

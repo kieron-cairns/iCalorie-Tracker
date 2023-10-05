@@ -34,8 +34,7 @@ struct AddCalorieItemView: View {
                     .foregroundColor(colorScheme == .dark ? .white : .black)
                     .font(.custom("HelveticaNeue-Bold", size: 24))
 
-                TextField("Enter Item Name:", text: $calorieTitle)
-                    .textFieldStyle(.plain)
+                CustomTextField(text: $calorieTitle, placeholder: "Enter Item Name:")
                     .frame(height: 50)
                     .padding(10)
                     .background(lightGrayHexColor)
@@ -43,7 +42,7 @@ struct AddCalorieItemView: View {
                     .multilineTextAlignment(.center)
                     .accessibilityIdentifier("calorieTitleTextField")
 
-                TextField("Enter Calorie Count:", text: $calorieCount)
+                CustomTextField(text: $calorieCount, placeholder: "Enter Calorie Count:")
                     .textFieldStyle(.plain)
                     .frame(height: 50)
                     .padding(10)
@@ -51,7 +50,6 @@ struct AddCalorieItemView: View {
                     .cornerRadius(20)
                     .multilineTextAlignment(.center)
                     .accessibilityIdentifier("calorieCountTextField")
-
 
                 HStack {
                     if isTappedCell
@@ -123,10 +121,10 @@ struct AddCalorieItemView: View {
                 
             .padding(20)
             .cornerRadius(20)
-            .background(colorScheme == .dark ? .black : .white)
+            .background(colorScheme == .dark ? .white : .white)
         }
 
-        .background(colorScheme == .dark ? .black : .white)
+        .background(colorScheme == .dark ? .white : .white)
         .onAppear {
                if let item = item {
                    calorieTitle = item.title ?? ""

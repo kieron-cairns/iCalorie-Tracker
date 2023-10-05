@@ -31,6 +31,7 @@
 		FE7C4C762A055DC700C6BD0E /* AddCalorieItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7C4C752A055DC700C6BD0E /* AddCalorieItemView.swift */; };
 		FE8A4BA72A0915E200B1C2F5 /* DateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8A4BA62A0915E200B1C2F5 /* DateSelectionView.swift */; };
 		FE9FFEB22ACF1DE100CB9E54 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9FFEB12ACF1DE100CB9E54 /* CustomColor.swift */; };
+		FE9FFEB72ACF388000CB9E54 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9FFEB62ACF388000CB9E54 /* CustomTextField.swift */; };
 		FEAB5FB329FEC58500CB09A4 /* iCalorieTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FB229FEC58500CB09A4 /* iCalorieTrackerApp.swift */; };
 		FEAB5FB529FEC58500CB09A4 /* DailyStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FB429FEC58500CB09A4 /* DailyStatsView.swift */; };
 		FEAB5FB729FEC58800CB09A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEAB5FB629FEC58800CB09A4 /* Assets.xcassets */; };
@@ -86,6 +87,7 @@
 		FE7C4C752A055DC700C6BD0E /* AddCalorieItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCalorieItemView.swift; sourceTree = "<group>"; };
 		FE8A4BA62A0915E200B1C2F5 /* DateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionView.swift; sourceTree = "<group>"; };
 		FE9FFEB12ACF1DE100CB9E54 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		FE9FFEB62ACF388000CB9E54 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		FEAB5FAF29FEC58500CB09A4 /* iCalorieTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCalorieTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEAB5FB229FEC58500CB09A4 /* iCalorieTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCalorieTrackerApp.swift; sourceTree = "<group>"; };
 		FEAB5FB429FEC58500CB09A4 /* DailyStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStatsView.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				FE2336C12A02D42F005E493B /* CoreDataHelpers.swift */,
 				FEB179052ACEE2A10077C577 /* UserSettings.swift */,
 				FE9FFEB12ACF1DE100CB9E54 /* CustomColor.swift */,
+				FE9FFEB62ACF388000CB9E54 /* CustomTextField.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				FE9FFEB22ACF1DE100CB9E54 /* CustomColor.swift in Sources */,
 				FE2336B72A02C7A2005E493B /* CalorieItemListView.swift in Sources */,
 				FEAB5FBF29FEC58800CB09A4 /* iCalorieTracker.xcdatamodeld in Sources */,
+				FE9FFEB72ACF388000CB9E54 /* CustomTextField.swift in Sources */,
 				FE2336B92A02C7B3005E493B /* CalorieItemListViewModel.swift in Sources */,
 				FEAB5FBC29FEC58800CB09A4 /* Persistence.swift in Sources */,
 				FE2336B22A02BD89005E493B /* Constant.swift in Sources */,
