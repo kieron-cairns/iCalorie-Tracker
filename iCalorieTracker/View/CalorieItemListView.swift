@@ -58,7 +58,7 @@ struct CalorieItemListView: View {
             }
         )
         
-        NavigationStack {
+        NavigationView {
             List {
                 ForEach(allCalorieItems, id: \.self) { item in
                     HStack {
@@ -134,7 +134,7 @@ struct CalorieItemListView: View {
                     })
                 }
             .listStyle(PlainListStyle())
-            .scrollContentBackground(.hidden)
+//            .scrollContentBackground(.hidden)
             .background(colorScheme == .dark ? .black : backgroundLightModeColor)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
