@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var isSwitchOn: Bool = UserDefaults.standard.bool(forKey: "isDarkMode")
+    @EnvironmentObject var userSettings: UserSettings
 
     var body: some View {
         List {
-            Toggle(isOn: $isSwitchOn) {
-                Text("Dark Mode")
-            }
-            .onChange(of: isSwitchOn) { newValue in
-                UserDefaults.standard.set(newValue, forKey: "isDarkMode")
-            }
+            Toggle(isOn: $userSettings.isDarkMode) {
+                            Text("Dark Mode")
+                        }
+//            .onChange(of: isSwitchOn) { newValue in
+//                UserDefaults.standard.set(newValue, forKey: "isDarkMode")
+//            }
         }
         .listStyle(InsetGroupedListStyle())
         .navigationTitle("Settings")
