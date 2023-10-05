@@ -194,7 +194,7 @@ struct CalorieItemListView: View {
                         totCalCount = allCalorieItems.reduce(0, {
                             $0 + Int($1.calorieCount)
                         })
-                    }
+                    }.accessibilityIdentifier("forwardDateButton")
                 }
 
                 

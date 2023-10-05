@@ -228,7 +228,36 @@ class when_user_selects_a_new_date: XCTestCase {
         XCTAssertEqual(statsTitle.label, "\(formattedDate) Stats")
     }
     
+    func test_selected_date_is_set_to_yesterday_after_selecting_prior_date() {
+        
+        let backDateToolbarButton = app.buttons["backDateButton"]
+        backDateToolbarButton.tap()
+        backDateToolbarButton.tap()
+        
+        let forwardDateToolbarButton = app.buttons["forwardDateButton"]
+        forwardDateToolbarButton.tap()
+        
+        let dateToolbarButton = app.buttons["dateButton"]
+        let statsTitle = app.staticTexts["statsTitle"]
+        
+        XCTAssertEqual(dateToolbarButton.label, "Yesterday")
+        XCTAssertEqual(statsTitle.label, "Yesterday's Stats")
+    }
     
+    func test_selected_date_is_set_to_today_after_selecting_prior_date() {
+        
+        let backDateToolbarButton = app.buttons["backDateButton"]
+        backDateToolbarButton.tap()
+        
+        let forwardDateToolbarButton = app.buttons["forwardDateButton"]
+        forwardDateToolbarButton.tap()
+        
+        let dateToolbarButton = app.buttons["dateButton"]
+        let statsTitle = app.staticTexts["statsTitle"]
+        
+        XCTAssertEqual(dateToolbarButton.label, "Today")
+        XCTAssertEqual(statsTitle.label, "Today's Stats")
+    }
 }
 
 
