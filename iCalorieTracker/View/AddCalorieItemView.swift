@@ -13,6 +13,8 @@ struct AddCalorieItemView: View {
 
     @State private var calorieTitle: String = ""
     @State private var calorieCount: String = ""
+    @State private var showErrorAlert = false
+
     
     @Binding var isPresented: Bool
     @Binding var isTappedCell: Bool
@@ -76,13 +78,20 @@ struct AddCalorieItemView: View {
                         Spacer(minLength: 10)
                     }
                     Button(action: {
+                        var savedSuccessfully: Bool = true
                         if isTappedCell, let itemId = item?.id { // Check if there's an ID from the tapped item
-                                calorieItemListViewModel.updateCalorieItem(withId: itemId, title: calorieTitle, calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
-                            } else {
-                                calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
-                            }
+                            // assuming updateCalorieItem also returns a Bool for consistency
+                            savedSuccessfully = calorieItemListViewModel.updateCalorieItem(withId: itemId, title: calorieTitle, calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
+                        } else {
+                            savedSuccessfully = calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
+                        }
+                        if savedSuccessfully {
                             self.isPresented = false
-                    }) {
+                        } else {
+                            showErrorAlert = true
+                        }
+                    })
+ {
                         VStack{
                             if isTappedCell {
                                 Text("Update Item")
@@ -122,7 +131,9 @@ struct AddCalorieItemView: View {
                    calorieCount = String(item.calorieCount)
                }
            }
-//        .accessibilityIdentifier("addCalorieItemView")
+        .alert(isPresented: $showErrorAlert) {
+            Alert(title: Text("Error"), message: Text("Failed to save or update item due to invalid data."), dismissButton: .default(Text("OK")))
+        }
         
     }
 }

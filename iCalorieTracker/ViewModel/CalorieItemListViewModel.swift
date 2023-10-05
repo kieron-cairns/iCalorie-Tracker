@@ -37,19 +37,22 @@ class CalorieItemListViewModel: ObservableObject {
         }
     }
     
-    func saveCalorieItem(title: String, id: UUID, calorieCount: Int32, viewContext: NSManagedObjectContext) {
-        
-        if title.isEmpty { return }
-        
+    func saveCalorieItem(title: String?, id: UUID, calorieCount: Int32, viewContext: NSManagedObjectContext) -> Bool {
+            
+        guard let title = title, !title.isEmpty, calorieCount > 0 else { return false }
+            
         let calorieItem = CalorieItem(context: viewContext)
-        
+            
         calorieItem.id = id
         calorieItem.title = title
         calorieItem.calorieCount = calorieCount
         calorieItem.dateCreated = Date()
-        
+            
+        logTableEntries(type: calorieItem.title!, viewContext: viewContext)
+            
         try? viewContext.save()
         
+        return true
     }
     
     func deleteCalorieItem(withId id: UUID, from viewContext: NSManagedObjectContext) {
@@ -73,26 +76,32 @@ class CalorieItemListViewModel: ObservableObject {
             }
         }
     
-    func updateCalorieItem(withId id: UUID, title: String, calorieCount: Int32, viewContext: NSManagedObjectContext) {
-            let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
-            
-            do {
-                let items = try viewContext.fetch(fetchRequest)
-                if let itemToUpdate = items.first {
-                    itemToUpdate.title = title
-                    itemToUpdate.calorieCount = calorieCount
-                    try viewContext.save()
-                    
-                    logTableEntries(type: "Updated", viewContext: viewContext)
-                    
-                } else {
-                    print("Error: Item with the provided id not found")
-                }
-            } catch {
-                print("Error updating the item: \(error)")
+    func updateCalorieItem(withId id: UUID, title: String?, calorieCount: Int32?, viewContext: NSManagedObjectContext) -> Bool {
+        
+        guard let title = title, !title.isEmpty, let calorieCount = calorieCount, calorieCount > 0 else { return false }
+
+        let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        
+        do {
+            let items = try viewContext.fetch(fetchRequest)
+            if let itemToUpdate = items.first {
+                itemToUpdate.title = title
+                itemToUpdate.calorieCount = calorieCount
+                try viewContext.save()
+                
+                logTableEntries(type: "Updated", viewContext: viewContext)
+                return true
+            } else {
+                print("Error: Item with the provided id not found")
+                return false
             }
+        } catch {
+            print("Error updating the item: \(error)")
+            return false
         }
+    }
+
     
     func logTableEntries(type: String, viewContext: NSManagedObjectContext) {
         
