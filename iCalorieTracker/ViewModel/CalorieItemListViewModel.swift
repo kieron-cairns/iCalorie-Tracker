@@ -37,23 +37,37 @@ class CalorieItemListViewModel: ObservableObject {
         }
     }
     
-    func saveCalorieItem(title: String?, id: UUID, calorieCount: Int32, viewContext: NSManagedObjectContext) -> Bool {
-            
-        guard let title = title, !title.isEmpty, calorieCount > 0 else { return false }
-            
+    func saveCalorieItem(title: String?, id: UUID, calorieCount: Int32?, viewContext: NSManagedObjectContext) -> (success: Bool, message: String) {
+        
+        if let title = title, title.isEmpty {
+            return (false, "The title cannot be empty.")
+        } else if title == nil {
+            return (false, "The title cannot be nil.")
+        }
+        
+        if let calorieCount = calorieCount, calorieCount <= 0 {
+            return (false, "Calorie count must be greater than zero.")
+        } else if calorieCount == nil {
+            return (false, "Calorie count cannot be nil.")
+        }
+
         let calorieItem = CalorieItem(context: viewContext)
-            
+        
         calorieItem.id = id
         calorieItem.title = title
-        calorieItem.calorieCount = calorieCount
+        calorieItem.calorieCount = calorieCount!
         calorieItem.dateCreated = Date()
-            
-        logTableEntries(type: calorieItem.title!, viewContext: viewContext)
-            
-        try? viewContext.save()
         
-        return true
+        do {
+            try viewContext.save()
+            logTableEntries(type: calorieItem.title!, viewContext: viewContext)
+            return (true, "Item saved successfully!")
+        } catch {
+            print("Error saving item: \(error)")
+            return (false, "Error saving item.")
+        }
     }
+
     
     func deleteCalorieItem(withId id: UUID, from viewContext: NSManagedObjectContext) {
             let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
@@ -76,9 +90,11 @@ class CalorieItemListViewModel: ObservableObject {
             }
         }
     
-    func updateCalorieItem(withId id: UUID, title: String?, calorieCount: Int32?, viewContext: NSManagedObjectContext) -> Bool {
+    func updateCalorieItem(withId id: UUID, title: String?, calorieCount: Int32?, viewContext: NSManagedObjectContext) -> (success: Bool, message: String) {
         
-        guard let title = title, !title.isEmpty, let calorieCount = calorieCount, calorieCount > 0 else { return false }
+        guard let title = title, !title.isEmpty, let calorieCount = calorieCount, calorieCount > 0 else {
+            return (false, "Invalid input. Make sure the title and calorie count are correct.")
+        }
 
         let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
@@ -91,17 +107,16 @@ class CalorieItemListViewModel: ObservableObject {
                 try viewContext.save()
                 
                 logTableEntries(type: "Updated", viewContext: viewContext)
-                return true
+                return (true, "Item updated successfully.")
             } else {
                 print("Error: Item with the provided id not found")
-                return false
+                return (false, "Item with the provided id not found.")
             }
         } catch {
             print("Error updating the item: \(error)")
-            return false
+            return (false, "Error updating the item.")
         }
     }
-
     
     func logTableEntries(type: String, viewContext: NSManagedObjectContext) {
         

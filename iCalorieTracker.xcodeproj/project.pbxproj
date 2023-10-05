@@ -37,6 +37,7 @@
 		FEAB5FBC29FEC58800CB09A4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FBB29FEC58800CB09A4 /* Persistence.swift */; };
 		FEAB5FBF29FEC58800CB09A4 /* iCalorieTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FBD29FEC58800CB09A4 /* iCalorieTracker.xcdatamodeld */; };
 		FEAB5FC929FEC58800CB09A4 /* iCalorieTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FC829FEC58800CB09A4 /* iCalorieTrackerTests.swift */; };
+		FEB178FA2ACEC0C90077C577 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB178F92ACEC0C90077C577 /* ErrorMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		FEAB5FC429FEC58800CB09A4 /* iCalorieTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iCalorieTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEAB5FC829FEC58800CB09A4 /* iCalorieTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCalorieTrackerTests.swift; sourceTree = "<group>"; };
 		FEAB5FCE29FEC58800CB09A4 /* iCalorieTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iCalorieTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEB178F92ACEC0C90077C577 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,13 +162,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		FE2336B42A02C6DA005E493B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		FE2336B52A02C6E3005E493B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +217,7 @@
 		FEAB5FB129FEC58500CB09A4 /* iCalorieTracker */ = {
 			isa = PBXGroup;
 			children = (
+				FEB178F82ACEC0BE0077C577 /*  Model */,
 				84C084842A30A583002AFC1F /* Info.plist */,
 				84C084852A30ACA1002AFC1F /* Extension */,
 				84C084712A30A4EF002AFC1F /* Font */,
@@ -229,7 +225,6 @@
 				FE2336BA2A02C969005E493B /* Managers */,
 				FE2336B02A02BD7D005E493B /* Constants */,
 				FE2336B52A02C6E3005E493B /* ViewModel */,
-				FE2336B42A02C6DA005E493B /* Model */,
 				FE2336B32A02C6C7005E493B /* View */,
 				FEAB5FB229FEC58500CB09A4 /* iCalorieTrackerApp.swift */,
 				FEAB5FB629FEC58800CB09A4 /* Assets.xcassets */,
@@ -266,6 +261,14 @@
 				FE3C5AB62AC48EA30000D5E3 /* iCalorieTrackerUITests.swift */,
 			);
 			path = iCalorieTrackerUITests;
+			sourceTree = "<group>";
+		};
+		FEB178F82ACEC0BE0077C577 /*  Model */ = {
+			isa = PBXGroup;
+			children = (
+				FEB178F92ACEC0C90077C577 /* ErrorMessage.swift */,
+			);
+			path = " Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,6 +419,7 @@
 				FEAB5FBC29FEC58800CB09A4 /* Persistence.swift in Sources */,
 				FE2336B22A02BD89005E493B /* Constant.swift in Sources */,
 				FE2336BF2A02CF55005E493B /* iCalorieTrackerAppModel.xcdatamodeld in Sources */,
+				FEB178FA2ACEC0C90077C577 /* ErrorMessage.swift in Sources */,
 				FEAB5FB529FEC58500CB09A4 /* ContentView.swift in Sources */,
 				84C084872A30ACB4002AFC1F /* Extension.swift in Sources */,
 				FE2336BC2A02C982005E493B /* CoreDataManager.swift in Sources */,

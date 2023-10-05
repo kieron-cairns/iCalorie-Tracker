@@ -14,8 +14,8 @@ struct AddCalorieItemView: View {
     @State private var calorieTitle: String = ""
     @State private var calorieCount: String = ""
     @State private var showErrorAlert = false
+    @State private var errorMessage: ErrorMessage? = nil
 
-    
     @Binding var isPresented: Bool
     @Binding var isTappedCell: Bool
     
@@ -78,20 +78,21 @@ struct AddCalorieItemView: View {
                         Spacer(minLength: 10)
                     }
                     Button(action: {
-                        var savedSuccessfully: Bool = true
-                        if isTappedCell, let itemId = item?.id { // Check if there's an ID from the tapped item
-                            // assuming updateCalorieItem also returns a Bool for consistency
-                            savedSuccessfully = calorieItemListViewModel.updateCalorieItem(withId: itemId, title: calorieTitle, calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
+                        let result: (success: Bool, message: String)
+                        if isTappedCell, let itemId = item?.id {
+                            // Assuming updateCalorieItem now returns (Bool, String) for consistency
+                            result = calorieItemListViewModel.updateCalorieItem(withId: itemId, title: calorieTitle, calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
                         } else {
-                            savedSuccessfully = calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
+                            result = calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
                         }
-                        if savedSuccessfully {
+                        
+                        if result.success {
                             self.isPresented = false
                         } else {
-                            showErrorAlert = true
+                            errorMessage = ErrorMessage(message: result.message)
                         }
                     })
- {
+                    {
                         VStack{
                             if isTappedCell {
                                 Text("Update Item")
@@ -131,10 +132,9 @@ struct AddCalorieItemView: View {
                    calorieCount = String(item.calorieCount)
                }
            }
-        .alert(isPresented: $showErrorAlert) {
-            Alert(title: Text("Error"), message: Text("Failed to save or update item due to invalid data."), dismissButton: .default(Text("OK")))
+        .alert(item: $errorMessage) { error in
+            Alert(title: Text("Error"), message: Text(error.message), dismissButton: .default(Text("OK")))
         }
-        
     }
 }
 
