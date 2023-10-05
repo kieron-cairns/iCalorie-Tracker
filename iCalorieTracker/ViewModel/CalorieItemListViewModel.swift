@@ -101,10 +101,28 @@ class CalorieItemListViewModel: ObservableObject {
     
     func updateCalorieItem(withId id: UUID, title: String?, calorieCount: Int32?, viewContext: NSManagedObjectContext) -> (success: Bool, message: String) {
         
-        guard let title = title, !title.isEmpty, let calorieCount = calorieCount, calorieCount > 0 else {
-            return (false, "Invalid input. Make sure the title and calorie count are correct.")
+        // Initialize an array to store error messages
+        var errorMessages: [String] = []
+        
+        // Check title validity
+        if let title = title, title.isEmpty {
+            errorMessages.append("The title cannot be empty.")
+        } else if title == nil {
+            errorMessages.append("The title cannot be nil.")
         }
-
+        
+        // Check calorieCount validity
+        if let calorieCount = calorieCount, calorieCount <= 0 {
+            errorMessages.append("Calorie count must be greater than zero.")
+        } else if calorieCount == nil {
+            errorMessages.append("Calorie count cannot be nil.")
+        }
+        
+        // If there are error messages, return them combined
+        if !errorMessages.isEmpty {
+            return (false, errorMessages.joined(separator: " "))
+        }
+        
         let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
         
@@ -112,7 +130,7 @@ class CalorieItemListViewModel: ObservableObject {
             let items = try viewContext.fetch(fetchRequest)
             if let itemToUpdate = items.first {
                 itemToUpdate.title = title
-                itemToUpdate.calorieCount = calorieCount
+                itemToUpdate.calorieCount = calorieCount!
                 try viewContext.save()
                 
                 logTableEntries(type: "Updated", viewContext: viewContext)
@@ -126,6 +144,7 @@ class CalorieItemListViewModel: ObservableObject {
             return (false, "Error updating the item.")
         }
     }
+
     
     func logTableEntries(type: String, viewContext: NSManagedObjectContext) {
         
