@@ -16,6 +16,7 @@ struct AddCalorieItemView: View {
     @State private var showErrorAlert = false
     @State private var errorMessage: ErrorMessage? = nil
 
+
     @Binding var isPresented: Bool
     @Binding var isTappedCell: Bool
     

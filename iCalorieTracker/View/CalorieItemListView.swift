@@ -19,6 +19,8 @@ struct CalorieItemListView: View {
     @State private var showDateCalendar = false
     @State private var selectedItem: CalorieItem?
     @State private var isTappedCell = false
+    @State private var dragOffset = CGSize.zero
+
     @Binding var selectedDate: Date
     @Binding var totCalCount: Int
         
@@ -192,8 +194,11 @@ struct CalorieItemListView: View {
                 
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        showAddCalorieItemView = true
-                        isTappedCell = false
+                        withAnimation {
+                            
+                            showAddCalorieItemView = true
+                            isTappedCell = false
+                        }
 
                     }) {
                         Label("Add Item", systemImage: "plus")
@@ -201,9 +206,39 @@ struct CalorieItemListView: View {
                     .accessibilityIdentifier("addCalorieItem")
 
                 }
-            }.sheet(isPresented: bindingShowAddCalorieItemView) {
-                AddCalorieItemView(isPresented: $showAddCalorieItemView, isTappedCell: $isTappedCell, item: selectedItem)
-            }
+            }.overlay(
+                Group {
+                    if showAddCalorieItemView {
+                        Color.black.opacity(0.4)
+                            .edgesIgnoringSafeArea(.all)
+                            .onTapGesture {
+                                withAnimation {
+                                    showAddCalorieItemView = false
+                                }
+                            }
+
+                        AddCalorieItemView(isPresented: $showAddCalorieItemView, isTappedCell: $isTappedCell, item: selectedItem)
+                            .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
+                            .offset(y: max(0, self.dragOffset.height))
+                            .gesture(
+                                DragGesture()
+                                    .onChanged { value in
+                                        self.dragOffset = value.translation
+                                    }
+                                    .onEnded { value in
+                                        if self.dragOffset.height > 100 { // adjust this value as needed
+                                            withAnimation {
+                                                showAddCalorieItemView = false
+                                            }
+                                        }
+                                        self.dragOffset = .zero
+                                    }
+                            )
+                    }
+                }
+            )
+
+
             .sheet(isPresented: $showDateCalendar) {
                 VStack {
                     DatePicker("Select a Date", selection: $selectedDate, in: calorieItemListViewModel.getCalendarDateRange(), displayedComponents: .date)
