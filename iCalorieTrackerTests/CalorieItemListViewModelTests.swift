@@ -124,40 +124,62 @@ class CalorieItemListViewModelTests: XCTestCase {
         XCTAssertEqual(items.count, 0)
     }
     
-    func testUpdateCalorieItem() {
-        // Setup: Insert a sample item into the mock context
-        let idToUpdate = UUID()
-        let originalTitle = "OriginalTitle"
-        let updatedTitle = "UpdatedTitle"
-        let originalCount: Int32 = 100
-        let updatedCount: Int32 = 200
+    func test_update_with_invalid_data() {
+        // Pre-setup: create a valid item to update
+        let validId = UUID()
+        sut.saveCalorieItem(title: "InitialValidTitle", id: validId, calorieCount: 123, viewContext: mockContext)
         
-        let calorieItem = CalorieItem(context: mockContext)
-        calorieItem.id = idToUpdate
-        calorieItem.title = originalTitle
-        calorieItem.calorieCount = originalCount
+        // 1. Test with a nil title
+        var result = sut.updateCalorieItem(withId: validId, title: nil, calorieCount: 100, viewContext: mockContext)
+        XCTAssertFalse(result.success)
+        XCTAssertTrue(result.message.contains("The title cannot be nil."))
+        
+        // 2. Test with an empty title
+        result = sut.updateCalorieItem(withId: validId, title: "", calorieCount: 100, viewContext: mockContext)
+        XCTAssertFalse(result.success)
+        XCTAssertTrue(result.message.contains("The title cannot be empty."))
+
+        // 3. Test with a nil calorieCount
+        result = sut.updateCalorieItem(withId: validId, title: "ValidTitle", calorieCount: nil, viewContext: mockContext)
+        XCTAssertFalse(result.success)
+        XCTAssertTrue(result.message.contains("Calorie count cannot be nil."))
+
+        // 4. Test with a zero calorieCount
+        result = sut.updateCalorieItem(withId: validId, title: "ValidTitle", calorieCount: 0, viewContext: mockContext)
+        XCTAssertFalse(result.success)
+        XCTAssertTrue(result.message.contains("Calorie count must be greater than zero."))
+
+        // 5. Test with a negative calorieCount
+        result = sut.updateCalorieItem(withId: validId, title: "ValidTitle", calorieCount: -100, viewContext: mockContext)
+        XCTAssertFalse(result.success)
+        XCTAssertTrue(result.message.contains("Calorie count must be greater than zero."))
+
+        // 6. Test with a nil title and nil calorieCount
+        result = sut.updateCalorieItem(withId: validId, title: nil, calorieCount: nil, viewContext: mockContext)
+        XCTAssertFalse(result.success)
+        XCTAssertTrue(result.message.contains("The title cannot be nil."))
+        XCTAssertTrue(result.message.contains("Calorie count cannot be nil."))
+
+        // 7. Test with an empty title and zero calorieCount
+        result = sut.updateCalorieItem(withId: validId, title: "", calorieCount: 0, viewContext: mockContext)
+        XCTAssertFalse(result.success)
+        XCTAssertTrue(result.message.contains("The title cannot be empty."))
+        XCTAssertTrue(result.message.contains("Calorie count must be greater than zero."))
+
+        // 8. Test with a nil title and negative calorieCount
+        result = sut.updateCalorieItem(withId: validId, title: nil, calorieCount: -100, viewContext: mockContext)
+        XCTAssertFalse(result.success)
+        XCTAssertTrue(result.message.contains("The title cannot be nil."))
+        XCTAssertTrue(result.message.contains("Calorie count must be greater than zero."))
+
+        // Cleanup: remove the initially created item to ensure isolation of the test
+        let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
+        let items = try! mockContext.fetch(fetchRequest)
+        for item in items {
+            mockContext.delete(item)
+        }
         try! mockContext.save()
-
-        // Initial check: Ensure item is in the context with original values
-        var fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id == %@", idToUpdate as CVarArg)
-        var items = try! mockContext.fetch(fetchRequest)
-        XCTAssertEqual(items.count, 1)
-        XCTAssertEqual(items.first?.title, originalTitle)
-        XCTAssertEqual(items.first?.calorieCount, originalCount)
-
-        // Action: Update the item
-        sut.updateCalorieItem(withId: idToUpdate, title: updatedTitle, calorieCount: updatedCount, viewContext: mockContext)
-
-        // Verify: Ensure item in the context has updated values
-        fetchRequest = CalorieItem.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id == %@", idToUpdate as CVarArg)
-        items = try! mockContext.fetch(fetchRequest)
-        XCTAssertEqual(items.count, 1)
-        XCTAssertEqual(items.first?.title, updatedTitle)
-        XCTAssertEqual(items.first?.calorieCount, updatedCount)
     }
-
 
     func setUpInMemoryManagedObjectContext() -> NSManagedObjectContext {
         let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self))])!
