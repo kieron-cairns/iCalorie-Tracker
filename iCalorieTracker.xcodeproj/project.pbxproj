@@ -31,7 +31,7 @@
 		FE7C4C762A055DC700C6BD0E /* AddCalorieItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7C4C752A055DC700C6BD0E /* AddCalorieItemView.swift */; };
 		FE8A4BA72A0915E200B1C2F5 /* DateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8A4BA62A0915E200B1C2F5 /* DateSelectionView.swift */; };
 		FEAB5FB329FEC58500CB09A4 /* iCalorieTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FB229FEC58500CB09A4 /* iCalorieTrackerApp.swift */; };
-		FEAB5FB529FEC58500CB09A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FB429FEC58500CB09A4 /* ContentView.swift */; };
+		FEAB5FB529FEC58500CB09A4 /* DailyStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FB429FEC58500CB09A4 /* DailyStatsView.swift */; };
 		FEAB5FB729FEC58800CB09A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEAB5FB629FEC58800CB09A4 /* Assets.xcassets */; };
 		FEAB5FBA29FEC58800CB09A4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEAB5FB929FEC58800CB09A4 /* Preview Assets.xcassets */; };
 		FEAB5FBC29FEC58800CB09A4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FBB29FEC58800CB09A4 /* Persistence.swift */; };
@@ -83,7 +83,7 @@
 		FE8A4BA62A0915E200B1C2F5 /* DateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionView.swift; sourceTree = "<group>"; };
 		FEAB5FAF29FEC58500CB09A4 /* iCalorieTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCalorieTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEAB5FB229FEC58500CB09A4 /* iCalorieTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCalorieTrackerApp.swift; sourceTree = "<group>"; };
-		FEAB5FB429FEC58500CB09A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FEAB5FB429FEC58500CB09A4 /* DailyStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStatsView.swift; sourceTree = "<group>"; };
 		FEAB5FB629FEC58800CB09A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEAB5FB929FEC58800CB09A4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FEAB5FBB29FEC58800CB09A4 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 		FE2336B32A02C6C7005E493B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FEAB5FB429FEC58500CB09A4 /* ContentView.swift */,
+				FEAB5FB429FEC58500CB09A4 /* DailyStatsView.swift */,
 				FE2336B62A02C7A2005E493B /* CalorieItemListView.swift */,
 				FE7C4C752A055DC700C6BD0E /* AddCalorieItemView.swift */,
 				FE8A4BA62A0915E200B1C2F5 /* DateSelectionView.swift */,
@@ -420,7 +420,7 @@
 				FE2336B22A02BD89005E493B /* Constant.swift in Sources */,
 				FE2336BF2A02CF55005E493B /* iCalorieTrackerAppModel.xcdatamodeld in Sources */,
 				FEB178FA2ACEC0C90077C577 /* ErrorMessage.swift in Sources */,
-				FEAB5FB529FEC58500CB09A4 /* ContentView.swift in Sources */,
+				FEAB5FB529FEC58500CB09A4 /* DailyStatsView.swift in Sources */,
 				84C084872A30ACB4002AFC1F /* Extension.swift in Sources */,
 				FE2336BC2A02C982005E493B /* CoreDataManager.swift in Sources */,
 				FE7C4C762A055DC700C6BD0E /* AddCalorieItemView.swift in Sources */,

@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct DailyStatsView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.colorScheme) var colorScheme
 
@@ -169,6 +169,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         //        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
         let persistedController = CoreDataManager.shared.persistentContainer
-        ContentView().environment(\.managedObjectContext, persistedController.viewContext)
+        DailyStatsView().environment(\.managedObjectContext, persistedController.viewContext)
     }
 }

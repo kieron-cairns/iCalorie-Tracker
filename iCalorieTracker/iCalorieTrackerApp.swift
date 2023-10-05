@@ -15,7 +15,7 @@ struct iCalorieTrackerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DailyStatsView()
                 .environment(\.managedObjectContext, persistenceContainer.viewContext)
         }
     }
