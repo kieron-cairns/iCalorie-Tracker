@@ -21,14 +21,7 @@ struct CalorieItemListView: View {
     @State private var isTappedCell = false
     @Binding var selectedDate: Date
     @Binding var totCalCount: Int
-    
-    let calendarDateRange: ClosedRange<Date> = Date(timeIntervalSinceReferenceDate: -123456789.0)...Date()
-    
-//    var isToday: Bool {
-//        let calendar = Calendar.current
-//        return calendar.isDateInToday(selectedDate)
-//    }
-    
+        
     @FetchRequest var allCalorieItems: FetchedResults<CalorieItem>
 
     init(filter: Date, selectedDate: Binding<Date>, totCalCount: Binding<Int>) {
@@ -48,7 +41,6 @@ struct CalorieItemListView: View {
     var calorieItemListViewModel = CalorieItemListViewModel()
     let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
     
-
     var body: some View {
         
         //Binding of bool in order for sheetIsPresented logic to work on iOS 12.0+
@@ -214,7 +206,7 @@ struct CalorieItemListView: View {
             }
             .sheet(isPresented: $showDateCalendar) {
                 VStack {
-                    DatePicker("Select a Date", selection: $selectedDate, in: calendarDateRange, displayedComponents: .date)
+                    DatePicker("Select a Date", selection: $selectedDate, in: calorieItemListViewModel.getCalendarDateRange(), displayedComponents: .date)
                         .datePickerStyle(GraphicalDatePickerStyle())
                         .padding()
                         .onChange(of: selectedDate) { _ in

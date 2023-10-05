@@ -42,6 +42,10 @@ class CalorieItemListViewModel: ObservableObject {
         return calendar.isDateInToday(selectedDate)
     }
     
+    func getCalendarDateRange() -> ClosedRange<Date> {
+        return Date(timeIntervalSinceReferenceDate: -123456789.0)...Date()
+    }
+    
     func saveCalorieItem(title: String?, id: UUID, calorieCount: Int32?, viewContext: NSManagedObjectContext) -> (success: Bool, message: String) {
         
         // Initialize an array to store error messages
