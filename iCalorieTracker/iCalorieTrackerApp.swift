@@ -12,12 +12,15 @@ struct iCalorieTrackerApp: App {
 //    let persistenceController = PersistenceController.shared
 
     let persistenceContainer = CoreDataManager.shared.persistentContainer
+    @StateObject var userSettings = UserSettings()
+
 
     var body: some Scene {
         WindowGroup {
             DailyStatsView()
                 .environment(\.managedObjectContext, persistenceContainer.viewContext)
-                .environment(\.colorScheme, UserDefaults.standard.bool(forKey: "isDarkMode") ? .dark : .light)
+                .environment(\.colorScheme, userSettings.isDarkMode ? .dark : .light)
+                 .environmentObject(userSettings)
         }
     }
 }
