@@ -9,9 +9,8 @@ import Foundation
 
 class DailyStatsViewModel: ObservableObject {
     
-    
     func statsTitleText(selectedDate: Date) -> String {
-        
+       
         let today = Date()
         let calendar = Calendar.current
 
@@ -29,7 +28,5 @@ class DailyStatsViewModel: ObservableObject {
             formatter.timeStyle = .none
             return formatter.string(from: selectedDate)
         }
-        
     }
-    
 }
