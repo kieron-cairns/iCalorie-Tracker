@@ -26,7 +26,7 @@ class CalorieItemListViewModelTests: XCTestCase {
         super.tearDown()
     }
 
-    func testSaveWithValidData() {
+    func test_save_with_valid_data() {
         let id = UUID()
         sut.saveCalorieItem(title: "TestTitle", id: id, calorieCount: 100, viewContext: mockContext)
 
@@ -39,15 +39,65 @@ class CalorieItemListViewModelTests: XCTestCase {
         XCTAssertEqual(items.first?.calorieCount, 100)
     }
 
-    func testSaveWithEmptyTitle() {
-        let id = UUID()
-        sut.saveCalorieItem(title: "", id: id, calorieCount: 100, viewContext: mockContext)
-
+    func test_save_with_invalid_data() {
+        
         let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
         let items = try! mockContext.fetch(fetchRequest)
+        
+        // Test with a nil or  "" title
+        let resultNilTitle = sut.saveCalorieItem(title: nil, id: UUID(), calorieCount: 100, viewContext: mockContext)
+        XCTAssertFalse(resultNilTitle.success)
+        XCTAssertTrue(resultNilTitle.message.contains("The title cannot be nil."))
 
+        let resultEmptyTitle = sut.saveCalorieItem(title: "", id: UUID(), calorieCount: 100, viewContext: mockContext)
+        XCTAssertFalse(resultEmptyTitle.success)
+        XCTAssertTrue(resultEmptyTitle.message.contains("The title cannot be empty."))
+
+        //Ensure no item has been saved to the database in both title cases
+        XCTAssertEqual(items.count, 0)
+        
+        //Test with a nil calorieCount
+        let resultNilCalorieCount = sut.saveCalorieItem(title: "ValidTitle", id: UUID(), calorieCount: nil, viewContext: mockContext)
+        XCTAssertFalse(resultNilCalorieCount.success)
+        XCTAssertTrue(resultNilCalorieCount.message.contains("Calorie count cannot be nil."))
+
+        //Test with a zero calorieCount
+        let resultZeroCalorieCount = sut.saveCalorieItem(title: "ValidTitle", id: UUID(), calorieCount: 0, viewContext: mockContext)
+        XCTAssertFalse(resultZeroCalorieCount.success)
+        XCTAssertTrue(resultZeroCalorieCount.message.contains("Calorie count must be greater than zero."))
+
+        //Test with a negative calorieCount
+        let resultNegativeCalorieCount = sut.saveCalorieItem(title: "ValidTitle", id: UUID(), calorieCount: -100, viewContext: mockContext)
+        XCTAssertFalse(resultNegativeCalorieCount.success)
+        XCTAssertTrue(resultNegativeCalorieCount.message.contains("Calorie count must be greater than zero."))
+
+        // Ensure no item has been saved to the database in calorie count cases
+        XCTAssertEqual(items.count, 0)
+        
+        //Test with a nil title and nil calorieCount
+        let resultNilTitleAndNilCalorieCount = sut.saveCalorieItem(title: nil, id: UUID(), calorieCount: nil, viewContext: mockContext)
+        XCTAssertFalse(resultNilTitleAndNilCalorieCount.success)
+        XCTAssertTrue(resultNilTitleAndNilCalorieCount.message.contains("The title cannot be nil."))
+        XCTAssertTrue(resultNilTitleAndNilCalorieCount.message.contains("Calorie count cannot be nil."))
+
+        //Test with an empty title and zero calorieCount
+        let resultEmptyTitleAndZeroCalorieCount = sut.saveCalorieItem(title: "", id: UUID(), calorieCount: 0, viewContext: mockContext)
+        XCTAssertFalse(resultEmptyTitleAndZeroCalorieCount.success)
+        XCTAssertTrue(resultEmptyTitleAndZeroCalorieCount.message.contains("The title cannot be empty."))
+        XCTAssertTrue(resultEmptyTitleAndZeroCalorieCount.message.contains("Calorie count must be greater than zero."))
+
+        //Test with a nil title and negative calorieCount
+        let resultNilTitleAndNegativeCalorieCount = sut.saveCalorieItem(title: nil, id: UUID(), calorieCount: -100, viewContext: mockContext)
+        XCTAssertFalse(resultNilTitleAndNegativeCalorieCount.success)
+        XCTAssertTrue(resultNilTitleAndNegativeCalorieCount.message.contains("The title cannot be nil."))
+        XCTAssertTrue(resultNilTitleAndNegativeCalorieCount.message.contains("Calorie count must be greater than zero."))
+
+        //Ensure no item has been saved to the database in all cases
         XCTAssertEqual(items.count, 0)
     }
+
+    
+    
 
     func testDeleteCalorieItem() {
         // Setup: Insert a sample item into the mock context
