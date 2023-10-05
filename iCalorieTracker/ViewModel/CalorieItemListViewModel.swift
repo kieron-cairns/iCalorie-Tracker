@@ -37,6 +37,11 @@ class CalorieItemListViewModel: ObservableObject {
         }
     }
     
+    func isToday(selectedDate: Date) -> Bool {
+        let calendar = Calendar.current
+        return calendar.isDateInToday(selectedDate)
+    }
+    
     func saveCalorieItem(title: String?, id: UUID, calorieCount: Int32?, viewContext: NSManagedObjectContext) -> (success: Bool, message: String) {
         
         // Initialize an array to store error messages

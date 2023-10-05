@@ -24,10 +24,10 @@ struct CalorieItemListView: View {
     
     let calendarDateRange: ClosedRange<Date> = Date(timeIntervalSinceReferenceDate: -123456789.0)...Date()
     
-    var isToday: Bool {
-        let calendar = Calendar.current
-        return calendar.isDateInToday(selectedDate)
-    }
+//    var isToday: Bool {
+//        let calendar = Calendar.current
+//        return calendar.isDateInToday(selectedDate)
+//    }
     
     @FetchRequest var allCalorieItems: FetchedResults<CalorieItem>
 
@@ -184,9 +184,9 @@ struct CalorieItemListView: View {
                         selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate) ?? selectedDate
                     }) {
                         Image(systemName: "arrow.right")
-                            .foregroundColor(isToday ? .gray : .blue)
+                            .foregroundColor(calorieItemListViewModel.isToday(selectedDate: selectedDate) ? .gray : .blue)
                     }
-                    .disabled(isToday)
+                    .disabled(calorieItemListViewModel.isToday(selectedDate: selectedDate))
                     .onChange(of: selectedDate) { _ in
                         showDateCalendar = false
                         print("*** Date Changed to \(selectedDate) ***")
