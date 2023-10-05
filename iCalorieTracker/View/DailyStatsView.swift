@@ -110,7 +110,8 @@ struct DailyStatsView: View {
                             }
                             .padding(10)
                         }
-                        .background(colorScheme == .dark ? .black : .white)
+                        //Stats view background colour
+                        .background(colorScheme == .dark ? Color(hex: "1C1B1D") : .white)
                         .cornerRadius(20)
                         .overlay(
                                 RoundedRectangle(cornerRadius: 16)
@@ -128,7 +129,7 @@ struct DailyStatsView: View {
                 }.tabItem {
                     Text("Day Overview")
                 }
-                .background(colorScheme == .dark ? .black : backgroundLightModeColor)
+//                .background(colorScheme == .dark ? .black : backgroundLightModeColor)
 
                 //Below implementation is for adding a second screen and tab item
                 SettingsView()
