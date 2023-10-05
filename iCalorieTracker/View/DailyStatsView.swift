@@ -131,10 +131,10 @@ struct DailyStatsView: View {
                 .background(colorScheme == .dark ? .black : backgroundLightModeColor)
 
                 //Below implementation is for adding a second screen and tab item
-                Text("Test Tab 2")
-                    .tabItem {
-                        Text("Track Item")
-                    }
+                SettingsView()
+                        .tabItem {
+                            Text("Settings")
+                        }
             }
         }
     }

@@ -39,6 +39,7 @@
 		FEAB5FC929FEC58800CB09A4 /* iCalorieTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAB5FC829FEC58800CB09A4 /* iCalorieTrackerTests.swift */; };
 		FEB178FA2ACEC0C90077C577 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB178F92ACEC0C90077C577 /* ErrorMessage.swift */; };
 		FEB178FC2ACECED00077C577 /* DailyStatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB178FB2ACECED00077C577 /* DailyStatsViewModel.swift */; };
+		FEB178FE2ACED08F0077C577 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB178FD2ACED08F0077C577 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		FEAB5FCE29FEC58800CB09A4 /* iCalorieTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iCalorieTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEB178F92ACEC0C90077C577 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		FEB178FB2ACECED00077C577 /* DailyStatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStatsViewModel.swift; sourceTree = "<group>"; };
+		FEB178FD2ACED08F0077C577 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				FE2336B62A02C7A2005E493B /* CalorieItemListView.swift */,
 				FE7C4C752A055DC700C6BD0E /* AddCalorieItemView.swift */,
 				FE8A4BA62A0915E200B1C2F5 /* DateSelectionView.swift */,
+				FEB178FD2ACED08F0077C577 /* SettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				FE2336B22A02BD89005E493B /* Constant.swift in Sources */,
 				FE2336BF2A02CF55005E493B /* iCalorieTrackerAppModel.xcdatamodeld in Sources */,
 				FEB178FA2ACEC0C90077C577 /* ErrorMessage.swift in Sources */,
+				FEB178FE2ACED08F0077C577 /* SettingsView.swift in Sources */,
 				FEAB5FB529FEC58500CB09A4 /* DailyStatsView.swift in Sources */,
 				84C084872A30ACB4002AFC1F /* Extension.swift in Sources */,
 				FE2336BC2A02C982005E493B /* CoreDataManager.swift in Sources */,

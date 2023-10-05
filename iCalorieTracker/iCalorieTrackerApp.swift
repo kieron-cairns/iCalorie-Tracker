@@ -17,6 +17,7 @@ struct iCalorieTrackerApp: App {
         WindowGroup {
             DailyStatsView()
                 .environment(\.managedObjectContext, persistenceContainer.viewContext)
+                .environment(\.colorScheme, UserDefaults.standard.bool(forKey: "isDarkMode") ? .dark : .light)
         }
     }
 }
