@@ -87,7 +87,7 @@ struct CalorieItemListView: View {
                     .listRowBackground(colorScheme == .dark ? .black : backgroundLightModeColor)
                     .listRowSeparator(.hidden)
                     .padding(10)
-                    .background(colorScheme == .dark ? .black : .white)
+                    .background(colorScheme == .dark ? Color(hex: "1C1B1D") : .white)
                     .cornerRadius(20)
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
