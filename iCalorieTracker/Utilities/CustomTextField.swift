@@ -21,6 +21,7 @@ struct CustomTextField: UIViewRepresentable {
     func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.text = text
         uiView.placeholder = placeholder
+        uiView.textColor = .black
         uiView.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]) //Change the placeholder color here.
     }
     
