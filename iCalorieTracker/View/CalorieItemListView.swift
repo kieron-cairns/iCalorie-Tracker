@@ -56,6 +56,8 @@ struct CalorieItemListView: View {
                     totCalCount = allCalorieItems.reduce(0, {
                         $0 + Int($1.calorieCount)
                     })
+                    print("bindingShowAddCalorieItemView set closure called, totCalCount updated to \(totCalCount)")
+
                 }
             }
         )
@@ -217,7 +219,7 @@ struct CalorieItemListView: View {
                                 }
                             }
 
-                        AddCalorieItemView(isPresented: $showAddCalorieItemView, isTappedCell: $isTappedCell, item: selectedItem)
+                        AddCalorieItemView(isPresented: bindingShowAddCalorieItemView, isTappedCell: $isTappedCell, item: selectedItem)
                             .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
                             .offset(y: max(0, self.dragOffset.height))
                             .gesture(
