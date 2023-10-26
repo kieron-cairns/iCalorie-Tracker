@@ -64,7 +64,7 @@ struct CalorieItemListView: View {
             List {
                 ForEach(allCalorieItems, id: \.self) { item in
                     HStack {
-                        Image(systemName: "mappin.circle.fill")
+                        Image(systemName: "fork.knife")
                             .foregroundColor(.init(orangePinHexColor))
                             .font(.system(size: 50))
                         
@@ -75,10 +75,10 @@ struct CalorieItemListView: View {
                                 .frame(alignment: .leading)
                                 .accessibilityIdentifier("calorieItemTitle")
 
-                            Text("Description...")
-                                .foregroundColor(colorScheme == .dark ? cellLightGrayHexColor : cellLightGrayHexColor)
-                                .font(.custom("Inter-Regular", size: 15))
-                                .frame(alignment: .leading)
+//                            Text("Description...")
+//                                .foregroundColor(colorScheme == .dark ? cellLightGrayHexColor : cellLightGrayHexColor)
+//                                .font(.custom("Inter-Regular", size: 15))
+//                                .frame(alignment: .leading)
                         }
                         Spacer()
                         Text(String(item.calorieCount) ?? "Error loading")
