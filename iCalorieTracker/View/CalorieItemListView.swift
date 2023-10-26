@@ -101,7 +101,9 @@ struct CalorieItemListView: View {
                     .onTapGesture {
                         selectedItem = item
                         isTappedCell = true
-                        showAddCalorieItemView = true
+                        withAnimation {
+                            showAddCalorieItemView = true
+                        }
                     }
                 }
 
