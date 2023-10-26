@@ -223,7 +223,7 @@ struct CalorieItemListView: View {
 
                         AddCalorieItemView(isPresented: bindingShowAddCalorieItemView, isTappedCell: $isTappedCell, item: selectedItem)
                             .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
-                            .offset(y: max(0, self.dragOffset.height))
+                            .offset(y: max(10, self.dragOffset.height))
                             .gesture(
                                 DragGesture()
                                     .onChanged { value in
