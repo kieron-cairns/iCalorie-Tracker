@@ -22,6 +22,7 @@ struct DailyStatsView: View {
     private var allCalorieItems: FetchedResults<CalorieItem>
     
     var dailyStatsViewModel = DailyStatsViewModel()
+    var commonViewModel = CommonViewModel()
     
     var body: some View {
         GeometryReader { geometry in
@@ -128,6 +129,9 @@ struct DailyStatsView: View {
                         .frame(height: geometry.size.height * 0.66).padding(.top, 5)
                 }.tabItem {
                     Text("Day Overview")
+                }
+                .onTapGesture {
+                    commonViewModel.hideKeyboard()
                 }
 //                .background(colorScheme == .dark ? .black : backgroundLightModeColor)
 

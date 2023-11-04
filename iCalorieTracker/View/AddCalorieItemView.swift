@@ -15,10 +15,11 @@ struct AddCalorieItemView: View {
     @State private var calorieCount: String = ""
     @State private var showErrorAlert = false
     @State private var errorMessage: ErrorMessage? = nil
-
-
+    
+    var commonViewModel = CommonViewModel()
     @Binding var isPresented: Bool
     @Binding var isTappedCell: Bool
+    
     
     var item: CalorieItem?
     var calorieItemListViewModel = CalorieItemListViewModel()
@@ -123,6 +124,9 @@ struct AddCalorieItemView: View {
             .cornerRadius(20)
             .background(colorScheme == .dark ? .white : .white)
         }
+        .onTapGesture {
+            commonViewModel.hideKeyboard()
+        }
 
         .background(colorScheme == .dark ? .white : .white)
         .onAppear {
@@ -136,6 +140,8 @@ struct AddCalorieItemView: View {
         }
     }
 }
+
+
 
 struct AddCalorieItemView_Previews: PreviewProvider {
     @State static var dummyIsPresented = true
