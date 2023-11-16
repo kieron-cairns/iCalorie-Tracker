@@ -105,6 +105,8 @@ struct CalorieItemListView: View {
                 .onDelete { indexSet in
                     indexSet.forEach { index in
                         let task = allCalorieItems[index]
+                        print("*** Deleting Item: \(task.title ?? "") ***")
+
                         viewContext.delete(task)
                         do {
                             try viewContext.save()
@@ -124,7 +126,7 @@ struct CalorieItemListView: View {
                                 print("Error fetching data: \(error)")
                             }
                         } catch {
-                            print(error)
+                            print("Error saving context: \(error)")
                         }
                     }
                 }
