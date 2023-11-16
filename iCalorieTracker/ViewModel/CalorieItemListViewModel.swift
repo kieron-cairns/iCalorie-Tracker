@@ -46,7 +46,8 @@ class CalorieItemListViewModel: ObservableObject {
         return Date(timeIntervalSinceReferenceDate: -123456789.0)...Date()
     }
     
-    func saveCalorieItem(title: String?, id: UUID, calorieCount: Int32?, viewContext: NSManagedObjectContext) -> (success: Bool, message: String) {
+    func saveCalorieItem(title: String?, id: UUID, calorieCount: Int32?, date: Date? ,viewContext: NSManagedObjectContext) -> (success: Bool, message: String) {
+        
         
         // Initialize an array to store error messages
         var errorMessages: [String] = []
@@ -75,12 +76,12 @@ class CalorieItemListViewModel: ObservableObject {
         calorieItem.id = id
         calorieItem.title = title
         calorieItem.calorieCount = calorieCount!
-        calorieItem.dateCreated = Date()
+        calorieItem.dateCreated = date
         
         do {
             try viewContext.save()
             logTableEntries(type: calorieItem.title!, viewContext: viewContext)
-            return (true, "Item saved successfully!")
+            return (true, "Item saved successfully with date of: \(date)")
         } catch {
             print("Error saving item: \(error)")
             return (false, "Error saving item.")

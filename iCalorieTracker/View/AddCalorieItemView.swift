@@ -19,9 +19,10 @@ struct AddCalorieItemView: View {
     var commonViewModel = CommonViewModel()
     @Binding var isPresented: Bool
     @Binding var isTappedCell: Bool
-    
+//    @Binding var date: Date?
     
     var item: CalorieItem?
+    var date: Date?
     var calorieItemListViewModel = CalorieItemListViewModel()
     
     var body: some View {
@@ -83,7 +84,7 @@ struct AddCalorieItemView: View {
                             // Assuming updateCalorieItem now returns (Bool, String) for consistency
                             result = calorieItemListViewModel.updateCalorieItem(withId: itemId, title: calorieTitle, calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
                         } else {
-                            result = calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
+                            result = calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Int32(calorieCount) ?? 0, date: date, viewContext: viewContext)
                         }
                         
                         if result.success {
@@ -146,6 +147,7 @@ struct AddCalorieItemView: View {
 struct AddCalorieItemView_Previews: PreviewProvider {
     @State static var dummyIsPresented = true
     @State static var dummyIsTappedCell = false
+    
     let persistedController = CoreDataManager.shared.persistentContainer
 
 

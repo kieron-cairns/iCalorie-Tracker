@@ -76,11 +76,6 @@ struct CalorieItemListView: View {
                                 .font(.custom("Inter-Semibold", size: 17))
                                 .frame(alignment: .leading)
                                 .accessibilityIdentifier("calorieItemTitle")
-
-//                            Text("Description...")
-//                                .foregroundColor(colorScheme == .dark ? cellLightGrayHexColor : cellLightGrayHexColor)
-//                                .font(.custom("Inter-Regular", size: 15))
-//                                .frame(alignment: .leading)
                         }
                         Spacer()
                         Text(String(item.calorieCount) ?? "Error loading")
@@ -221,7 +216,7 @@ struct CalorieItemListView: View {
                                 }
                             }
 
-                        AddCalorieItemView(isPresented: bindingShowAddCalorieItemView, isTappedCell: $isTappedCell, item: selectedItem)
+                        AddCalorieItemView(isPresented: bindingShowAddCalorieItemView, isTappedCell: $isTappedCell, item: selectedItem, date: selectedDate)
                             .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
                             .offset(y: max(10, self.dragOffset.height))
                             .gesture(
