@@ -13,6 +13,7 @@ struct AddCalorieItemView: View {
 
     @State private var calorieTitle: String = ""
     @State private var calorieCount: String = ""
+    @State private var caloireQuantity: String = ""
     @State private var showErrorAlert = false
     @State private var errorMessage: ErrorMessage? = nil
     
@@ -48,18 +49,34 @@ struct AddCalorieItemView: View {
                     .cornerRadius(20)
                     .accessibilityIdentifier("calorieTitleTextField")
 
-
-                TextField("", text: $calorieCount)
-                    .placeholder(when: calorieCount.isEmpty) {
-                            Text("Enter Item Name:").foregroundColor(.gray)
-                    }
-                    .textFieldStyle(.plain)
-                    .foregroundColor(.black)
-                    .frame(height: 50)
-                    .padding(10)
-                    .background(lightGrayHexColor)
-                    .cornerRadius(20)
-                    .accessibilityIdentifier("calorieCountTextField")
+                HStack {
+                    
+                    TextField("", text: $calorieCount)
+                        .placeholder(when: calorieCount.isEmpty) {
+                            Text("Caloires:").foregroundColor(.gray)
+                        }
+                        .textFieldStyle(.plain)
+                        .foregroundColor(.black)
+                        .frame(height: 50)
+                        .padding(10)
+                        .background(lightGrayHexColor)
+                        .cornerRadius(20)
+                        .keyboardType(UIKeyboardType.decimalPad)
+                        .accessibilityIdentifier("calorieCountTextField")
+                    
+                    TextField("", text: $caloireQuantity)
+                        .placeholder(when: caloireQuantity.isEmpty) {
+                                Text("Qunatity:").foregroundColor(.gray)
+                        }
+                        .textFieldStyle(.plain)
+                        .foregroundColor(.black)
+                        .frame(height: 50)
+                        .padding(10)
+                        .background(lightGrayHexColor)
+                        .cornerRadius(20)
+                        .keyboardType(UIKeyboardType.decimalPad)
+                        .accessibilityIdentifier("calorieQuantityTextField")
+                }
 
                 HStack {
                     if isTappedCell
