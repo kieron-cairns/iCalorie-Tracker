@@ -103,7 +103,6 @@ class when_user_adds_new_calorie_item: BaseUITestCases {
     
 }
 
-
 class when_user_taps_on_cell_item: BaseUITestCases {
     
     func test_add_calorie_item_view_is_populated() {
@@ -262,5 +261,30 @@ class when_user_selects_a_new_date: XCTestCase {
         XCTAssertEqual(statsTitle.label, "Today's Stats")
     }
 }
+
+class when_user_swipes_left_on_calorie_item_table_cell: BaseUITestCases {
+    
+    func testSwipeToDelete() {
+        let result = addNewCalorieItem()
+        let calorieTable = result.calorieTable
+
+        let cellFirstItem = calorieTable.cells.children(matching: .other).element(boundBy: 1)
+        XCTAssertTrue(cellFirstItem.exists)
+
+        cellFirstItem.swipeLeft()
+        let deleteButton = app.buttons["Delete"]
+        XCTAssertTrue(deleteButton.exists)
+        
+        deleteButton.tap()
+
+    }
+    
+    override func tearDown() {
+        Springboard.deleteApp()
+    }
+    
+}
+
+
 
 
