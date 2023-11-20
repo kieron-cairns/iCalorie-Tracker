@@ -141,7 +141,6 @@ struct CalorieItemListView: View {
                     })
                 }
             .listStyle(PlainListStyle())
-//            .scrollContentBackground(.hidden)
             .background(colorScheme == .dark ? .black : backgroundLightModeColor)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
