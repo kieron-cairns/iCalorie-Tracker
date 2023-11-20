@@ -60,7 +60,7 @@ struct DailyStatsView: View {
 
                                 Spacer()
                                 VStack(alignment: .trailing) {
-                                    Text("2305")
+                                    Text("305")
                                         .font(.custom("HelveticaNeue-Bold", size: 64))
                                         .foregroundColor(.init(orangeHexColor))
                                         .frame(alignment: .trailing)
@@ -78,8 +78,7 @@ struct DailyStatsView: View {
                             //lower
                             HStack {
                                 VStack(alignment: .leading) {
-//                                    Text(String(totCalCount))
-                                    Text("+305")
+                                    Text("+2095")
                                         .font(.custom("HelveticaNeue-Bold", size: 48))
                                         .foregroundColor(.init(purpleHexColor))
                                         .frame(alignment: .leading)
@@ -96,7 +95,7 @@ struct DailyStatsView: View {
                                 Spacer()
 
                                 VStack(alignment: .trailing) {
-                                    Text("+200")
+                                    Text("+350")
                                         .font(.custom("HelveticaNeue-Bold", size: 48))
                                         .foregroundColor(.init(redHexColor))
                                         .frame(alignment: .trailing)
@@ -137,8 +136,6 @@ struct DailyStatsView: View {
                     Text("Day Overview")
                 }
            
-//                .background(colorScheme == .dark ? .black : backgroundLightModeColor)
-
                 //Below implementation is for adding a second screen and tab item
                 SettingsView()
                         .tabItem {

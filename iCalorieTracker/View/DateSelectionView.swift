@@ -41,11 +41,3 @@ struct DateSelectionView: View {
        }
 }
 
-//struct DateSelectionView_Previews: PreviewProvider {
-//
-//    @State static var mockIsPresented = true
-//
-//    static var previews: some View {
-//        DateSelectionView(isPresented: $mockIsPresented)
-//    }
-//}
