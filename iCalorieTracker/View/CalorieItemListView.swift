@@ -145,7 +145,9 @@ struct CalorieItemListView: View {
             .background(colorScheme == .dark ? .black : backgroundLightModeColor)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+                    if !showAddCalorieItemView {
+                        EditButton()
+                    }
                 }
                 
                 // Backward arrow button
