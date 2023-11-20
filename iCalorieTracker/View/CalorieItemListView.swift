@@ -25,6 +25,10 @@ struct CalorieItemListView: View {
     @Binding var totCalCount: Int
         
     @FetchRequest var allCalorieItems: FetchedResults<CalorieItem>
+    
+    func showBinding(boolValue: Binding<Bool>) {
+        print(boolValue)
+    }
 
     init(filter: Date, selectedDate: Binding<Date>, totCalCount: Binding<Int>) {
         
@@ -191,22 +195,33 @@ struct CalorieItemListView: View {
                         })
                     }.accessibilityIdentifier("forwardDateButton")
                 }
-
                 
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         withAnimation {
-                            
-                            showAddCalorieItemView = true
+                            showAddCalorieItemView.toggle()
                             isTappedCell = false
+                            showBinding(boolValue: bindingShowAddCalorieItemView)
                         }
-
                     }) {
-                        Label("Add Item", systemImage: "plus")
+                        if !showAddCalorieItemView {
+                            Label("Add Item", systemImage: "plus")
+                        } else {
+                            ZStack {
+                                Circle()
+                                    .foregroundColor(.red)
+                                    .frame(width: 30, height: 30)
+                                
+                                Image(systemName: "xmark")
+                                    .resizable()
+                                    .frame(width: 15, height: 15)
+                                    .foregroundColor(.white)
+                            }
+                        }
                     }
                     .accessibilityIdentifier("addCalorieItem")
-
                 }
+
             }.overlay(
                 Group {
                     if showAddCalorieItemView {
