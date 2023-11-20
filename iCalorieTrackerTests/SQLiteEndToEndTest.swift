@@ -47,8 +47,12 @@ class BasePersistenceTestCases : XCTestCase {
         addCalorieItemButton.tap()
         
         let titleTextField = app.textFields["calorieTitleTextField"]
+        let exists = NSPredicate(format: "exists == true")
+        expectation(for: exists, evaluatedWith: titleTextField, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
         titleTextField.tap()
         titleTextField.typeText("Test Item")
+
         
         let calorieCountTextField = app.textFields["calorieCountTextField"]
         calorieCountTextField.tap()
@@ -90,6 +94,9 @@ class when_user_deletes_a_calorie_item: BasePersistenceTestCases {
         cell.swipeLeft()
         app.collectionViews["calorieList"].buttons["Delete"].tap()
         XCTAssertFalse(cell.exists)
+        
+        XCTAssertEqual(0, calorieTable.cells.count)
+
     }
     
     override func tearDown() {

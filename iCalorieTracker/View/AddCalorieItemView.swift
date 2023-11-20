@@ -35,22 +35,30 @@ struct AddCalorieItemView: View {
                 Text("Add New Item")
                     .foregroundColor(colorScheme == .dark ? .white : .black)
                     .font(.custom("HelveticaNeue-Bold", size: 24))
-
-                CustomTextField(text: $calorieTitle, placeholder: "Enter Item Name:")
+                
+                TextField("", text: $calorieTitle)
+                    .placeholder(when: calorieTitle.isEmpty) {
+                            Text("Enter Item Name:").foregroundColor(.gray)
+                    }
+                    .textFieldStyle(.plain)
+                    .foregroundColor(.black)
                     .frame(height: 50)
                     .padding(10)
                     .background(lightGrayHexColor)
                     .cornerRadius(20)
-                    .multilineTextAlignment(.center)
                     .accessibilityIdentifier("calorieTitleTextField")
 
-                CustomTextField(text: $calorieCount, placeholder: "Enter Calorie Count:")
+
+                TextField("", text: $calorieCount)
+                    .placeholder(when: calorieCount.isEmpty) {
+                            Text("Enter Item Name:").foregroundColor(.gray)
+                    }
                     .textFieldStyle(.plain)
+                    .foregroundColor(.black)
                     .frame(height: 50)
                     .padding(10)
                     .background(lightGrayHexColor)
                     .cornerRadius(20)
-                    .multilineTextAlignment(.center)
                     .accessibilityIdentifier("calorieCountTextField")
 
                 HStack {
@@ -153,6 +161,19 @@ struct AddCalorieItemView_Previews: PreviewProvider {
 
     static var previews: some View {
         AddCalorieItemView(isPresented: $dummyIsPresented, isTappedCell: $dummyIsTappedCell)
+    }
+}
+
+extension View {
+    func placeholder<Content: View>(
+        when shouldShow: Bool,
+        alignment: Alignment = .leading,
+        @ViewBuilder placeholder: () -> Content) -> some View {
+
+        ZStack(alignment: alignment) {
+            placeholder().opacity(shouldShow ? 1 : 0)
+            self
+        }
     }
 }
 
