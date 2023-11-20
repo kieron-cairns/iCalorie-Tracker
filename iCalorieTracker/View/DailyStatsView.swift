@@ -111,6 +111,7 @@ struct DailyStatsView: View {
                             }
                             .padding(10)
                         }
+                        
                         //Stats view background colour
                         .background(colorScheme == .dark ? Color(hex: "1C1B1D") : .white)
                         .cornerRadius(20)
@@ -123,16 +124,19 @@ struct DailyStatsView: View {
                         .frame(width: geometry.size.width, height: geometry.size.height * 0.33)
 
                     }
+                    .onTapGesture {
+                        commonViewModel.hideKeyboard()
+                    }
                     .padding(.horizontal, 20)
                     
                     CalorieItemListView(filter: selectedDate, selectedDate: $selectedDate, totCalCount: $totCalCount)
                         .frame(height: geometry.size.height * 0.66).padding(.top, 5)
-                }.tabItem {
+                }
+                
+                .tabItem {
                     Text("Day Overview")
                 }
-                .onTapGesture {
-                    commonViewModel.hideKeyboard()
-                }
+           
 //                .background(colorScheme == .dark ? .black : backgroundLightModeColor)
 
                 //Below implementation is for adding a second screen and tab item
