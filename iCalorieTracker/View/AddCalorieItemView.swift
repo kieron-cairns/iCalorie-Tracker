@@ -105,11 +105,22 @@ struct AddCalorieItemView: View {
                     }
                     Button(action: {
                         let result: (success: Bool, message: String)
+                        
+                        //If user has added set quantity to a double value, this will is going to be rounded up to the nearest integer to comply with the SQLite field type
+                        
+                        var multipliedCount = (Double(calorieCount) ?? 0) * (Double(caloireQuantity) ?? 0)
+                        
+                        var roundedCount = Int32(round(multipliedCount))
+                        
+                        print("*** Multiplied count is : \(multipliedCount) ***")
+                        print("*** Rounded count is : \(roundedCount) ***")
+
+                        
                         if isTappedCell, let itemId = item?.id {
-                            // Assuming updateCalorieItem now returns (Bool, String) for consistency
-                            result = calorieItemListViewModel.updateCalorieItem(withId: itemId, title: calorieTitle, calorieCount: Int32(calorieCount) ?? 0, viewContext: viewContext)
+                            
+                            result = calorieItemListViewModel.updateCalorieItem(withId: itemId, title: calorieTitle, calorieCount: roundedCount, viewContext: viewContext)
                         } else {
-                            result = calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: Int32(calorieCount) ?? 0, date: date, viewContext: viewContext)
+                            result = calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: roundedCount, date: date, viewContext: viewContext)
                         }
                         
                         if result.success {
