@@ -14,6 +14,18 @@ class UserSettings: ObservableObject {
         }
     }
 
+    @Published var dailyCalorieIntakeGoal: Double = UserDefaults.standard.double(forKey: "dailyCalorieIntakeGoal") {
+        didSet {
+            UserDefaults.standard.set(dailyCalorieIntakeGoal, forKey: "dailyCalorieIntakeGoal")
+        }
+    }
+
+    @Published var dailyCalorieBurnGoal: Double = UserDefaults.standard.double(forKey: "dailyCalorieBurnGoal") {
+        didSet {
+            UserDefaults.standard.set(dailyCalorieBurnGoal, forKey: "dailyCalorieBurnGoal")
+        }
+    }
+
     init() {
         if let _ = UserDefaults.standard.value(forKey: "isDarkMode") as? Bool {
             // If the value exists in UserDefaults, fetch it

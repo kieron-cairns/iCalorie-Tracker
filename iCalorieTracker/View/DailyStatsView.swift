@@ -138,10 +138,10 @@ struct DailyStatsView: View {
            
                 //Below implementation is for adding a second screen and tab item
                 TargetsView()
-                SettingsView()
                 .tabItem {
                     Text("Targets")
                 }
+                SettingsView()
                 .tabItem{
                     Text("Settings")
                 }
