@@ -127,6 +127,8 @@ struct CalorieItemListView: View {
                                 $0 + Int($1.calorieCount)
                             })
                             
+                            totCalsRemainingCalc = userSettings.dailyCalorieIntakeGoal - calorieItemListViewModel.sumAllCaloreItems(forDate: selectedDate, viewContext: viewContext)
+                            
                             do {
                                 let items = try viewContext.fetch(fetchRequest)
                                 for item in items {

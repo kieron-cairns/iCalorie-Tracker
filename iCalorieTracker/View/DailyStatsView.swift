@@ -25,7 +25,7 @@ struct DailyStatsView: View {
     
     var dailyStatsViewModel = DailyStatsViewModel()
     var commonViewModel = CommonViewModel()
-    var caloireItemViewModel = CalorieItemListViewModel()
+    var calorieItemListViewModel = CalorieItemListViewModel()
     
     var body: some View {
         GeometryReader { geometry in
@@ -46,6 +46,7 @@ struct DailyStatsView: View {
                         VStack {
 
                             //upper
+                            
                             HStack {
                                 VStack(alignment: .leading) {
                                     Text(String(totCalCount))
@@ -96,7 +97,7 @@ struct DailyStatsView: View {
 //                                                totCalsRemainingCalc = totCalCount - userSettings.dailyCalorieIntakeGoal
 //                                            }
                                             
-                                            totCalsRemainingCalc = userSettings.dailyCalorieIntakeGoal - caloireItemViewModel.sumAllCaloreItems(forDate: selectedDate, viewContext: viewContext)
+                                            totCalsRemainingCalc = userSettings.dailyCalorieIntakeGoal - calorieItemListViewModel.sumAllCaloreItems(forDate: selectedDate, viewContext: viewContext)
                                         }
 
                                     VStack(alignment: .leading) {
