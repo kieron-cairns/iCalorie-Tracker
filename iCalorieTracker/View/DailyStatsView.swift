@@ -83,22 +83,29 @@ struct DailyStatsView: View {
                             HStack {
                                 VStack(alignment: .leading) {
                                     //Tot cals remaining for day goes in below text view
-                                    Text("+" + String(totCalsRemainingCalc))
-                                        .font(.custom("HelveticaNeue-Bold", size: 48))
-                                        .foregroundColor(.init(purpleHexColor))
-                                        .frame(alignment: .leading)
-                                        .onAppear {
-                                            
-//                                            if totCalCount == 0 {
-//                                                totCalsRemainingCalc = userSettings.dailyCalorieIntakeGoal
-//                                            }
-//                                            else
-//                                            {
-//                                                totCalsRemainingCalc = totCalCount - userSettings.dailyCalorieIntakeGoal
-//                                            }
-                                            
-                                            totCalsRemainingCalc = userSettings.dailyCalorieIntakeGoal - calorieItemListViewModel.sumAllCaloreItems(forDate: selectedDate, viewContext: viewContext)
-                                        }
+                                    
+                                    if totCalsRemainingCalc >= 0 {
+                                        
+                                        Text("+" + String(totCalsRemainingCalc))
+                                            .font(.custom("HelveticaNeue-Bold", size: 48))
+                                            .foregroundColor(.init(purpleHexColor))
+                                            .frame(alignment: .leading)
+                                            .onAppear {
+                                                
+                                                totCalsRemainingCalc = userSettings.dailyCalorieIntakeGoal - calorieItemListViewModel.sumAllCaloreItems(forDate: selectedDate, viewContext: viewContext)
+                                            }
+                                    }
+                                    else
+                                    {
+                                        Text(String(totCalsRemainingCalc))
+                                            .font(.custom("HelveticaNeue-Bold", size: 48))
+                                            .foregroundColor(.init(redHexColor))
+                                            .frame(alignment: .leading)
+                                            .onAppear {
+                                                
+                                                totCalsRemainingCalc = userSettings.dailyCalorieIntakeGoal - calorieItemListViewModel.sumAllCaloreItems(forDate: selectedDate, viewContext: viewContext)
+                                            }
+                                    }
 
                                     VStack(alignment: .leading) {
                                         Text("Calories remaining for")
