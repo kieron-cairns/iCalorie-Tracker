@@ -8,12 +8,12 @@
 import Foundation
 import CoreData
 
-class CoreDataManager {
+public class CoreDataManager {
     
     let persistentContainer: NSPersistentContainer
     static let shared: CoreDataManager = CoreDataManager()
     
-    private init() {
+    init() {
         persistentContainer = NSPersistentContainer(name: "iCalorieTrackerAppModel")
         persistentContainer.loadPersistentStores { description, error in
             if let error = error {

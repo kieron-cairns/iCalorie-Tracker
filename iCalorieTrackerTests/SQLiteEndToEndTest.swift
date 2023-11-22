@@ -6,103 +6,117 @@
 //
 
 import XCTest
+import CoreData
+@testable import iCalorieTracker
 
-class when_app_is_launched: XCTestCase {
- 
-    var app: XCUIApplication!
-       
-       override func setUpWithError() throws {
-           // This method is called before the invocation of each test method in the class.
-           continueAfterFailure = false
-           app = XCUIApplication()
-           app.launch()
-       }
+class BasePersistenceTestCases: XCTestCase {
 
-       func testCalorieItemTableHasNoCellsAtLaunch() {
-           // Assuming you have set the accessibility identifier for the table as "CalorieItem"
-           let calorieTable = app.tables["CalorieItem"]
-           
-           // Assert that the table has no cells
-           XCTAssertEqual(calorieTable.cells.count, 0, "CalorieItem table should have no cells at app launch")
-       }
-    
+    var calorieItemListViewModel: CalorieItemListViewModel!
+    var mockPersistentContainer: NSPersistentContainer!
+    var mockViewContext: NSManagedObjectContext!
+
+    override func setUp() {
+        super.setUp()
+
+        // Setup the mock persistent container
+        mockPersistentContainer = createMockPersistentContainer()
+        mockViewContext = mockPersistentContainer.viewContext
+
+        // Initialize your ViewModel
+        calorieItemListViewModel = CalorieItemListViewModel()
+    }
+
+    func createMockPersistentContainer() -> NSPersistentContainer {
+        let container = NSPersistentContainer(name: "iCalorieTrackerAppModel")
+        let description = NSPersistentStoreDescription()
+        description.type = NSInMemoryStoreType
+        container.persistentStoreDescriptions = [description]
+        container.loadPersistentStores { (description, error) in
+            if let error = error {
+                fatalError("Failed to load in-memory database: \(error)")
+            }
+        }
+        return container
+    }
+
+    func addNewCalorieItemToInMemDb(title: String, id: UUID, caloireCount: Int32, date: Date) -> CalorieItem  {
+        
+        // Use the mockViewContext
+       let firstItem = calorieItemListViewModel.saveCalorieItem(title: title, id: id, calorieCount: caloireCount, date: date, viewContext: mockViewContext)
+
+        let calorieItem = calorieItemListViewModel.fetchCaloireItem(withId: id, viewContext: mockViewContext)!
+        
+        return calorieItem
+    }
+
     override func tearDown() {
-        Springboard.deleteApp()
+        super.tearDown()
+
+        // Clean up
+        mockViewContext = nil
+        mockPersistentContainer = nil
     }
 }
 
-class BasePersistenceTestCases : XCTestCase {
-    
-    let app = XCUIApplication()
-        
-    override func setUpWithError() throws {
-        continueAfterFailure = false
-        app.launch()
-    }
-    
-    func addNewCalorieItem() -> (app: XCUIApplication, calorieTable: XCUIElement) {
-        
-        let addCalorieItemButton = app.buttons["addCalorieItem"]
-        //        XCTAssertTrue(addCalorieItemButton.exists, "Add Item button should exist.")
-        addCalorieItemButton.tap()
-        
-        let titleTextField = app.textFields["calorieTitleTextField"]
-        let exists = NSPredicate(format: "exists == true")
-        expectation(for: exists, evaluatedWith: titleTextField, handler: nil)
-        waitForExpectations(timeout: 5, handler: nil)
-        titleTextField.tap()
-        titleTextField.typeText("Test Item")
-
-        
-        let calorieCountTextField = app.textFields["calorieCountTextField"]
-        calorieCountTextField.tap()
-        calorieCountTextField.typeText("100")
-        
-        let calorieTable = app.collectionViews["calorieList"]
-        
-        let saveCalorieItemButton = app.buttons["saveCalorieItemButton"]
-        saveCalorieItemButton.tap()
-        
-        return (app, calorieTable)
-    }
-}
 
 class when_user_saves_a_new_calorie_item: BasePersistenceTestCases {
+
+    let caloireTitle = "Unit Test Caloire Item Title"
+    let itemId = UUID(uuidString: "123e4567-e89b-12d3-a456-426614174000")
+    let caloireCount = 100
+    let dateAdded = "2023-11-22"
+    
+    let newCaloireTitle = "New Unit Test Caloire Item Title"
+    let newItemId = UUID(uuidString: "2a81e997-0028-4935-9f4b-b4d088907200")
+    let newCaloireCount = 200
+    let newDateAdded = "2023-11-21"
     
     func test_should_save_new_calorie_item_successfully() {
         
-        let result = addNewCalorieItem()
-        let calorieTable = result.calorieTable
-        
-        XCTAssert(calorieTable.exists)
-        XCTAssertEqual(1, calorieTable.cells.count)
+        let result = addNewCalorieItemToInMemDb(title: caloireTitle, id: itemId!, caloireCount: Int32(caloireCount), date: dateStringToDate(dateString: dateAdded)!)
+        let calorieItem = result
+
+        XCTAssertEqual("Unit Test Caloire Item Title" , calorieItem.title)
+        XCTAssertEqual(UUID(uuidString: "123e4567-e89b-12d3-a456-426614174000"), calorieItem.id)
+        XCTAssertEqual(100 , calorieItem.calorieCount)
+        XCTAssertEqual(dateStringToDate(dateString: "2023-11-22")!, calorieItem.dateCreated)
     }
     
-    override func tearDown() {
-        Springboard.deleteApp()
-    }
-}
-
-class when_user_deletes_a_calorie_item: BasePersistenceTestCases {
-  
-    func test_should_delete_calorie_item() {
-       
-        let result = addNewCalorieItem()
-        let calorieTable = result.calorieTable
+    func test_update_caloire_item() {
+    
+        let result = addNewCalorieItemToInMemDb(title: caloireTitle, id: itemId!, caloireCount: Int32(caloireCount), date: dateStringToDate(dateString: dateAdded)!)
+        let calorieItem = result
         
-        let cell = calorieTable.cells.children(matching: .other).element(boundBy: 1)
-        cell.swipeLeft()
-        app.collectionViews["calorieList"].buttons["Delete"].tap()
-        XCTAssertFalse(cell.exists)
+        calorieItem.title = newCaloireTitle
+        calorieItem.id = newItemId
+        calorieItem.calorieCount = Int32(newCaloireCount)
+        calorieItem.dateCreated = dateStringToDate(dateString: newDateAdded)!
         
-        XCTAssertEqual(0, calorieTable.cells.count)
-
+        XCTAssertEqual("New Unit Test Caloire Item Title" , calorieItem.title)
+        XCTAssertEqual(UUID(uuidString: "2a81e997-0028-4935-9f4b-b4d088907200"), calorieItem.id)
+        XCTAssertEqual(200 , calorieItem.calorieCount)
+        XCTAssertEqual(dateStringToDate(dateString: "2023-11-21")!, calorieItem.dateCreated)
     }
     
-    override func tearDown() {
-        Springboard.deleteApp()
+    func test_delete_caloire_item() {
+        
+        let firstItem = addNewCalorieItemToInMemDb(title: caloireTitle, id: itemId!, caloireCount: Int32(caloireCount), date: dateStringToDate(dateString: dateAdded)!)
+        
+        let secondItem = addNewCalorieItemToInMemDb(title: newCaloireTitle, id: newItemId!, caloireCount: Int32(newCaloireCount), date: dateStringToDate(dateString: newDateAdded)!)
+        
+        calorieItemListViewModel.deleteCalorieItem(withId: UUID(uuidString: "123e4567-e89b-12d3-a456-426614174000")!, from: mockViewContext)
+
+        let caloireItems = calorieItemListViewModel.fetchAllCalorieItems(viewContext: mockViewContext)!
+        
+        XCTAssertEqual(caloireItems.count, 1)
+        XCTAssertTrue(caloireItems.contains(secondItem))
     }
-  
+    
+    func dateStringToDate(dateString: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: dateString)
+    }
 }
 
 
