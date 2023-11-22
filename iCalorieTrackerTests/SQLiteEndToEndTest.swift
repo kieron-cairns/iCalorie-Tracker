@@ -42,10 +42,9 @@ class BasePersistenceTestCases: XCTestCase {
     func addNewCalorieItemToInMemDb(title: String, id: UUID, caloireCount: Int32, date: Date) -> CalorieItem  {
         
         // Use the mockViewContext
-        calorieItemListViewModel.saveCalorieItem(title: title, id: id, calorieCount: caloireCount, date: date, viewContext: mockViewContext)
+       let firstItem = calorieItemListViewModel.saveCalorieItem(title: title, id: id, calorieCount: caloireCount, date: date, viewContext: mockViewContext)
 
         let calorieItem = calorieItemListViewModel.fetchCaloireItem(withId: id, viewContext: mockViewContext)!
-        
         
         return calorieItem
     }
@@ -60,13 +59,17 @@ class BasePersistenceTestCases: XCTestCase {
 }
 
 
-
 class when_user_saves_a_new_calorie_item: BasePersistenceTestCases {
 
     let caloireTitle = "Unit Test Caloire Item Title"
     let itemId = UUID(uuidString: "123e4567-e89b-12d3-a456-426614174000")
     let caloireCount = 100
     let dateAdded = "2023-11-22"
+    
+    let newCaloireTitle = "New Unit Test Caloire Item Title"
+    let newItemId = UUID(uuidString: "2a81e997-0028-4935-9f4b-b4d088907200")
+    let newCaloireCount = 200
+    let newDateAdded = "2023-11-21"
     
     func test_should_save_new_calorie_item_successfully() {
         
@@ -77,6 +80,36 @@ class when_user_saves_a_new_calorie_item: BasePersistenceTestCases {
         XCTAssertEqual(UUID(uuidString: "123e4567-e89b-12d3-a456-426614174000"), calorieItem.id)
         XCTAssertEqual(100 , calorieItem.calorieCount)
         XCTAssertEqual(dateStringToDate(dateString: "2023-11-22")!, calorieItem.dateCreated)
+    }
+    
+    func test_update_caloire_item() {
+    
+        let result = addNewCalorieItemToInMemDb(title: caloireTitle, id: itemId!, caloireCount: Int32(caloireCount), date: dateStringToDate(dateString: dateAdded)!)
+        let calorieItem = result
+        
+        calorieItem.title = newCaloireTitle
+        calorieItem.id = newItemId
+        calorieItem.calorieCount = Int32(newCaloireCount)
+        calorieItem.dateCreated = dateStringToDate(dateString: newDateAdded)!
+        
+        XCTAssertEqual("New Unit Test Caloire Item Title" , calorieItem.title)
+        XCTAssertEqual(UUID(uuidString: "2a81e997-0028-4935-9f4b-b4d088907200"), calorieItem.id)
+        XCTAssertEqual(200 , calorieItem.calorieCount)
+        XCTAssertEqual(dateStringToDate(dateString: "2023-11-21")!, calorieItem.dateCreated)
+    }
+    
+    func test_delete_caloire_item() {
+        
+        let firstItem = addNewCalorieItemToInMemDb(title: caloireTitle, id: itemId!, caloireCount: Int32(caloireCount), date: dateStringToDate(dateString: dateAdded)!)
+        
+        let secondItem = addNewCalorieItemToInMemDb(title: newCaloireTitle, id: newItemId!, caloireCount: Int32(newCaloireCount), date: dateStringToDate(dateString: newDateAdded)!)
+        
+        calorieItemListViewModel.deleteCalorieItem(withId: UUID(uuidString: "123e4567-e89b-12d3-a456-426614174000")!, from: mockViewContext)
+
+        let caloireItems = calorieItemListViewModel.fetchAllCalorieItems(viewContext: mockViewContext)!
+        
+        XCTAssertEqual(caloireItems.count, 1)
+        XCTAssertTrue(caloireItems.contains(secondItem))
     }
     
     func dateStringToDate(dateString: String) -> Date? {
