@@ -14,13 +14,13 @@ class UserSettings: ObservableObject {
         }
     }
 
-    @Published var dailyCalorieIntakeGoal: Double = UserDefaults.standard.double(forKey: "dailyCalorieIntakeGoal") {
+    @Published var dailyCalorieIntakeGoal: Int = UserDefaults.standard.integer(forKey: "dailyCalorieIntakeGoal") {
         didSet {
             UserDefaults.standard.set(dailyCalorieIntakeGoal, forKey: "dailyCalorieIntakeGoal")
         }
     }
 
-    @Published var dailyCalorieBurnGoal: Double = UserDefaults.standard.double(forKey: "dailyCalorieBurnGoal") {
+    @Published var dailyCalorieBurnGoal: Int = UserDefaults.standard.integer(forKey: "dailyCalorieBurnGoal") {
         didSet {
             UserDefaults.standard.set(dailyCalorieBurnGoal, forKey: "dailyCalorieBurnGoal")
         }

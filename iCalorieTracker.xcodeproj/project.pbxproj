@@ -30,6 +30,7 @@
 		FE3C5AB72AC48EA30000D5E3 /* iCalorieTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C5AB62AC48EA30000D5E3 /* iCalorieTrackerUITests.swift */; };
 		FE3C5AC32AC5DE860000D5E3 /* CalorieItemListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C5AC22AC5DE860000D5E3 /* CalorieItemListViewModelTests.swift */; };
 		FE3C5AC82AC5E0840000D5E3 /* iCalorieTrackerAppModel.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = FE2336BD2A02CF55005E493B /* iCalorieTrackerAppModel.xcdatamodeld */; };
+		FE3E4F622B0E374D00143B4A /* TargetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3E4F612B0E374D00143B4A /* TargetsViewModel.swift */; };
 		FE4CAEC32AF6A89000163FC9 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4CAEC22AF6A89000163FC9 /* CommonViewModel.swift */; };
 		FE7105092B0E2D40000BFCD0 /* TargetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7105082B0E2D40000BFCD0 /* TargetsView.swift */; };
 		FE7C4C762A055DC700C6BD0E /* AddCalorieItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7C4C752A055DC700C6BD0E /* AddCalorieItemView.swift */; };
@@ -89,6 +90,7 @@
 		FE3C5AB42AC45F310000D5E3 /* Springboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Springboard.swift; sourceTree = "<group>"; };
 		FE3C5AB62AC48EA30000D5E3 /* iCalorieTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCalorieTrackerUITests.swift; sourceTree = "<group>"; };
 		FE3C5AC22AC5DE860000D5E3 /* CalorieItemListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieItemListViewModelTests.swift; sourceTree = "<group>"; };
+		FE3E4F612B0E374D00143B4A /* TargetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetsViewModel.swift; sourceTree = "<group>"; };
 		FE4CAEC22AF6A89000163FC9 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
 		FE7105082B0E2D40000BFCD0 /* TargetsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetsView.swift; sourceTree = "<group>"; };
 		FE7C4C752A055DC700C6BD0E /* AddCalorieItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCalorieItemView.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				FE2336B82A02C7B3005E493B /* CalorieItemListViewModel.swift */,
 				FEB178FB2ACECED00077C577 /* DailyStatsViewModel.swift */,
 				FE4CAEC22AF6A89000163FC9 /* CommonViewModel.swift */,
+				FE3E4F612B0E374D00143B4A /* TargetsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				FEAB5FB529FEC58500CB09A4 /* DailyStatsView.swift in Sources */,
 				84C084872A30ACB4002AFC1F /* Extension.swift in Sources */,
 				FE2336BC2A02C982005E493B /* CoreDataManager.swift in Sources */,
+				FE3E4F622B0E374D00143B4A /* TargetsViewModel.swift in Sources */,
 				FE7C4C762A055DC700C6BD0E /* AddCalorieItemView.swift in Sources */,
 				FEB178FC2ACECED00077C577 /* DailyStatsViewModel.swift in Sources */,
 				FEAB5FB329FEC58500CB09A4 /* iCalorieTrackerApp.swift in Sources */,

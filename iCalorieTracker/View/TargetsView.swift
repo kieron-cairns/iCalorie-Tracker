@@ -18,6 +18,8 @@ struct TargetsView: View {
     @State private var showErrorAlert = false
     @State private var errorMessage: ErrorMessage? = nil
     
+    var targetsViewModel = TargetsViewModel()
+    
     var body: some View {
         ZStack {
             Color.clear
@@ -31,24 +33,26 @@ struct TargetsView: View {
                 
                 Text("Daily Calorie Intake Goal:")
                 TextField("", value: $userSettings.dailyCalorieIntakeGoal, formatter: NumberFormatter())
-//                    .placeholder(when: $userSettings.dailyCalorieIntakeGoal.isZero) {
-//                        Text("Daily Calorie Intake Goal:")
-//                            .foregroundColor(.gray)
-//                    }
+                
+                    .onChange(of: userSettings.dailyCalorieIntakeGoal) { newValue in
+                        
+                        userSettings.dailyCalorieIntakeGoal = targetsViewModel.roundToInt(Double(newValue))
+                    }
                     .textFieldStyle(.plain)
                     .foregroundColor(.white)
                     .frame(height: 50)
                     .padding(10)
                     .background(lightGrayHexColor)
                     .cornerRadius(20)
-//                    .keyboardType(UIKeyboardType.decimalPad)
                     .accessibilityIdentifier("targetCalorieIntakeTextField")
                 
                 Text("Daily Caloire Burn Goal:")
                 TextField("", value: $userSettings.dailyCalorieBurnGoal, formatter: NumberFormatter())
-//                    .placeholder(when: calorieCount.isEmpty) {
-//                        Text("Daily Caloire Burn Goal:").foregroundColor(.gray)
-//                    }
+                
+                    .onChange(of: userSettings.dailyCalorieBurnGoal) { newValue in
+                        
+                        userSettings.dailyCalorieBurnGoal = targetsViewModel.roundToInt(Double(newValue))
+                    }
                     .textFieldStyle(.plain)
                     .foregroundColor(.white)
                     .frame(height: 50)
