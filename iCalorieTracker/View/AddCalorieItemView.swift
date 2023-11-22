@@ -20,7 +20,6 @@ struct AddCalorieItemView: View {
     var commonViewModel = CommonViewModel()
     @Binding var isPresented: Bool
     @Binding var isTappedCell: Bool
-//    @Binding var date: Date?
     
     var item: CalorieItem?
     var date: Date?
@@ -118,9 +117,9 @@ struct AddCalorieItemView: View {
                         
                         if isTappedCell, let itemId = item?.id {
                             
-                            result = calorieItemListViewModel.updateCalorieItem(withId: itemId, title: calorieTitle, calorieCount: roundedCount, viewContext: viewContext)
+                            result = calorieItemListViewModel.updateCalorieItem(withId: itemId, title: calorieTitle, calorieCount: roundedCount, calorieQuantity: Int32(caloireQuantity), viewContext: viewContext)
                         } else {
-                            result = calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: roundedCount, date: date, viewContext: viewContext)
+                            result = calorieItemListViewModel.saveCalorieItem(title: calorieTitle, id: UUID(), calorieCount: roundedCount, caloireQuantity: Int32(caloireQuantity), date: date, viewContext: viewContext)
                         }
                         
                         if result.success {

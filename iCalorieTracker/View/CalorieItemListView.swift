@@ -82,11 +82,22 @@ struct CalorieItemListView: View {
                             .font(.system(size: 50))
                         
                         VStack(alignment: .leading){
-                            Text(item.title ?? "Error loading")
-                                .foregroundColor(colorScheme == .dark ? .white : .black)
-                                .font(.custom("Inter-Semibold", size: 17))
-                                .frame(alignment: .leading)
-                                .accessibilityIdentifier("calorieItemTitle")
+                            
+                            if item.caloireQuantity > 1 {
+                                Text("\(item.caloireQuantity)x " + "\(item.title! ?? "Error loading")")
+                                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                                    .font(.custom("Inter-Semibold", size: 17))
+                                    .frame(alignment: .leading)
+                                    .accessibilityIdentifier("calorieItemTitle")
+                            }
+                            else
+                            {
+                                Text(item.title ?? "Error loading")
+                                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                                    .font(.custom("Inter-Semibold", size: 17))
+                                    .frame(alignment: .leading)
+                                    .accessibilityIdentifier("calorieItemTitle")
+                            }
                         }
                         Spacer()
                         Text(String(item.calorieCount) ?? "Error loading")

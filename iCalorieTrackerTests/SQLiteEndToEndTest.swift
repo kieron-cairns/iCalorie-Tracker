@@ -39,10 +39,10 @@ class BasePersistenceTestCases: XCTestCase {
         return container
     }
 
-    func addNewCalorieItemToInMemDb(title: String, id: UUID, caloireCount: Int32, date: Date) -> CalorieItem  {
+    func addNewCalorieItemToInMemDb(title: String, id: UUID, caloireCount: Int32, caloireQuantity: Int32, date: Date) -> CalorieItem  {
         
         // Use the mockViewContext
-       let firstItem = calorieItemListViewModel.saveCalorieItem(title: title, id: id, calorieCount: caloireCount, date: date, viewContext: mockViewContext)
+       let firstItem = calorieItemListViewModel.saveCalorieItem(title: title, id: id, calorieCount: caloireCount, caloireQuantity: Int32(caloireQuantity), date: date, viewContext: mockViewContext)
 
         let calorieItem = calorieItemListViewModel.fetchCaloireItem(withId: id, viewContext: mockViewContext)!
         
@@ -64,16 +64,18 @@ class when_user_saves_a_new_calorie_item: BasePersistenceTestCases {
     let caloireTitle = "Unit Test Caloire Item Title"
     let itemId = UUID(uuidString: "123e4567-e89b-12d3-a456-426614174000")
     let caloireCount = 100
+    let caloireQuantity = 1
     let dateAdded = "2023-11-22"
     
     let newCaloireTitle = "New Unit Test Caloire Item Title"
     let newItemId = UUID(uuidString: "2a81e997-0028-4935-9f4b-b4d088907200")
     let newCaloireCount = 200
+    let newCaloireQuantity = 2
     let newDateAdded = "2023-11-21"
     
     func test_should_save_new_calorie_item_successfully() {
         
-        let result = addNewCalorieItemToInMemDb(title: caloireTitle, id: itemId!, caloireCount: Int32(caloireCount), date: dateStringToDate(dateString: dateAdded)!)
+        let result = addNewCalorieItemToInMemDb(title: caloireTitle, id: itemId!, caloireCount: Int32(caloireCount), caloireQuantity: Int32(caloireQuantity), date: dateStringToDate(dateString: dateAdded)!)
         let calorieItem = result
 
         XCTAssertEqual("Unit Test Caloire Item Title" , calorieItem.title)
@@ -84,7 +86,7 @@ class when_user_saves_a_new_calorie_item: BasePersistenceTestCases {
     
     func test_update_caloire_item() {
     
-        let result = addNewCalorieItemToInMemDb(title: caloireTitle, id: itemId!, caloireCount: Int32(caloireCount), date: dateStringToDate(dateString: dateAdded)!)
+        let result = addNewCalorieItemToInMemDb(title: caloireTitle, id: itemId!, caloireCount: Int32(caloireCount), caloireQuantity: Int32(caloireQuantity), date: dateStringToDate(dateString: dateAdded)!)
         let calorieItem = result
         
         calorieItem.title = newCaloireTitle
@@ -100,9 +102,9 @@ class when_user_saves_a_new_calorie_item: BasePersistenceTestCases {
     
     func test_delete_caloire_item() {
         
-        let firstItem = addNewCalorieItemToInMemDb(title: caloireTitle, id: itemId!, caloireCount: Int32(caloireCount), date: dateStringToDate(dateString: dateAdded)!)
+        let firstItem = addNewCalorieItemToInMemDb(title: caloireTitle, id: itemId!, caloireCount: Int32(caloireCount), caloireQuantity: Int32(caloireQuantity), date: dateStringToDate(dateString: dateAdded)!)
         
-        let secondItem = addNewCalorieItemToInMemDb(title: newCaloireTitle, id: newItemId!, caloireCount: Int32(newCaloireCount), date: dateStringToDate(dateString: newDateAdded)!)
+        let secondItem = addNewCalorieItemToInMemDb(title: newCaloireTitle, id: newItemId!, caloireCount: Int32(newCaloireCount), caloireQuantity: Int32(caloireQuantity), date: dateStringToDate(dateString: newDateAdded)!)
         
         calorieItemListViewModel.deleteCalorieItem(withId: UUID(uuidString: "123e4567-e89b-12d3-a456-426614174000")!, from: mockViewContext)
 
