@@ -16,6 +16,8 @@ class CalorieItemListViewModel: ObservableObject {
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var userSettings: UserSettings
+
     
     func dateButtonText(selectedDate: Date) -> String {
         let today = Date()
@@ -192,9 +194,18 @@ class CalorieItemListViewModel: ObservableObject {
         return nil
     }
 
-    func sumAllCaloreItems(viewContext: NSManagedObjectContext) -> Int {
+    func sumAllCaloreItems(forDate date: Date, viewContext: NSManagedObjectContext) -> Int {
         
         let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
+        
+        // Get the start and end of the given date
+        let calendar = Calendar.current
+        let dateStart = calendar.startOfDay(for: date)
+        let dateEnd = calendar.date(byAdding: .day, value: 1, to: dateStart)?.addingTimeInterval(-1)
+
+        // Create a predicate to fetch items from the given date
+        let predicate = NSPredicate(format: "dateCreated >= %@ AND dateCreated <= %@", dateStart as NSDate, dateEnd! as NSDate)
+        fetchRequest.predicate = predicate
         
         var caloireCount = 0
 
