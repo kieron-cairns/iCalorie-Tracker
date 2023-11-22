@@ -154,6 +154,24 @@ class CalorieItemListViewModel: ObservableObject {
             return (false, "Error updating the item.")
         }
     }
+    
+    func fetchCaloireItem(withId id: UUID, viewContext: NSManagedObjectContext) -> CalorieItem?  {
+        
+        let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        
+        do {
+            
+            let items = try viewContext.fetch(fetchRequest)
+            print(items)
+            return items.first
+            
+        } catch let error {
+            print("Failed to fetch calorie item: \(error)")
+        }
+        
+        return nil
+    }
 
     
     func logTableEntries(type: String, viewContext: NSManagedObjectContext) {

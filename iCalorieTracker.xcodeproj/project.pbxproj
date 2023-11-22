@@ -23,7 +23,9 @@
 		FE2336BC2A02C982005E493B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2336BB2A02C982005E493B /* CoreDataManager.swift */; };
 		FE2336BF2A02CF55005E493B /* iCalorieTrackerAppModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE2336BD2A02CF55005E493B /* iCalorieTrackerAppModel.xcdatamodeld */; };
 		FE2336C22A02D42F005E493B /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2336C12A02D42F005E493B /* CoreDataHelpers.swift */; };
-		FE3C5AB22AC44D0F0000D5E3 /* SQLiteEndToEndTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C5AB12AC44D0F0000D5E3 /* SQLiteEndToEndTest.swift */; };
+		FE36407D2B0D29E70065785F /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3640792B0D29C80065785F /* Test.swift */; };
+		FE36407E2B0D2B900065785F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2336BB2A02C982005E493B /* CoreDataManager.swift */; };
+		FE36407F2B0D2C070065785F /* SQLiteEndToEndTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C5AB12AC44D0F0000D5E3 /* SQLiteEndToEndTest.swift */; };
 		FE3C5AB52AC45F310000D5E3 /* Springboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C5AB42AC45F310000D5E3 /* Springboard.swift */; };
 		FE3C5AB72AC48EA30000D5E3 /* iCalorieTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C5AB62AC48EA30000D5E3 /* iCalorieTrackerUITests.swift */; };
 		FE3C5AC32AC5DE860000D5E3 /* CalorieItemListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C5AC22AC5DE860000D5E3 /* CalorieItemListViewModelTests.swift */; };
@@ -81,6 +83,7 @@
 		FE2336BB2A02C982005E493B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		FE2336BE2A02CF55005E493B /* iCalorieTrackerAppModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iCalorieTrackerAppModel.xcdatamodel; sourceTree = "<group>"; };
 		FE2336C12A02D42F005E493B /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
+		FE3640792B0D29C80065785F /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		FE3C5AB12AC44D0F0000D5E3 /* SQLiteEndToEndTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteEndToEndTest.swift; sourceTree = "<group>"; };
 		FE3C5AB42AC45F310000D5E3 /* Springboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Springboard.swift; sourceTree = "<group>"; };
 		FE3C5AB62AC48EA30000D5E3 /* iCalorieTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCalorieTrackerUITests.swift; sourceTree = "<group>"; };
@@ -269,6 +272,7 @@
 				FEAB5FC829FEC58800CB09A4 /* iCalorieTrackerTests.swift */,
 				FE3C5AB12AC44D0F0000D5E3 /* SQLiteEndToEndTest.swift */,
 				FE3C5AC22AC5DE860000D5E3 /* CalorieItemListViewModelTests.swift */,
+				FE3640792B0D29C80065785F /* Test.swift */,
 			);
 			path = iCalorieTrackerTests;
 			sourceTree = "<group>";
@@ -456,8 +460,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE36407F2B0D2C070065785F /* SQLiteEndToEndTest.swift in Sources */,
 				FEAB5FC929FEC58800CB09A4 /* iCalorieTrackerTests.swift in Sources */,
 				FE3C5AC32AC5DE860000D5E3 /* CalorieItemListViewModelTests.swift in Sources */,
+				FE36407E2B0D2B900065785F /* CoreDataManager.swift in Sources */,
+				FE36407D2B0D29E70065785F /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,7 +472,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE3C5AB22AC44D0F0000D5E3 /* SQLiteEndToEndTest.swift in Sources */,
 				FE3C5AB52AC45F310000D5E3 /* Springboard.swift in Sources */,
 				FE3C5AB72AC48EA30000D5E3 /* iCalorieTrackerUITests.swift in Sources */,
 			);
