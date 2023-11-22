@@ -11,7 +11,6 @@ struct TargetsView: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var userSettings: UserSettings
 
-        
     @State private var calorieTitle: String = ""
     @State private var calorieCount: String = ""
     @State private var caloireQuantity: String = ""

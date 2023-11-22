@@ -11,13 +11,15 @@ import CoreData
 struct DailyStatsView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var userSettings: UserSettings
 
     @State private var title: String = ""
     @State private var message: String = ""
     @State private var showAddCalorieItemView = false
     @State private var selectedDate = Date()
     @State private var totCalCount: Int = 0
-    
+    @State private var totCalsRemainingCalc: Int = 0
+
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
     
@@ -78,10 +80,21 @@ struct DailyStatsView: View {
                             //lower
                             HStack {
                                 VStack(alignment: .leading) {
-                                    Text("+2095")
+                                    //Tot cals remaining for day goes in below text view
+                                    Text("+" + String(totCalsRemainingCalc))
                                         .font(.custom("HelveticaNeue-Bold", size: 48))
                                         .foregroundColor(.init(purpleHexColor))
                                         .frame(alignment: .leading)
+                                        .onAppear {
+                                            
+                                            if totCalCount == 0 {
+                                                totCalsRemainingCalc = userSettings.dailyCalorieIntakeGoal
+                                            }
+                                            else
+                                            {
+                                                totCalsRemainingCalc = totCalCount - userSettings.dailyCalorieIntakeGoal
+                                            }
+                                        }
 
                                     VStack(alignment: .leading) {
                                         Text("Calories remaining for")
@@ -128,7 +141,7 @@ struct DailyStatsView: View {
                     }
                     .padding(.horizontal, 20)
                     
-                    CalorieItemListView(filter: selectedDate, selectedDate: $selectedDate, totCalCount: $totCalCount)
+                    CalorieItemListView(filter: selectedDate, selectedDate: $selectedDate, totCalCount: $totCalCount, totCalsRemainingCalc: $totCalsRemainingCalc)
                         .frame(height: geometry.size.height * 0.66).padding(.top, 5)
                 }
                 

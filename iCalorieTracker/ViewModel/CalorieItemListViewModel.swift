@@ -81,6 +81,9 @@ class CalorieItemListViewModel: ObservableObject {
         do {
             try viewContext.save()
             logTableEntries(type: calorieItem.title!, viewContext: viewContext)
+            
+//            sumAllCaloreItems(viewContext: viewContext)
+            
             return (true, "Item saved successfully with date of: \(date)")
         } catch {
             print("Error saving item: \(error)")
@@ -179,9 +182,9 @@ class CalorieItemListViewModel: ObservableObject {
         // No predicate is set, so it fetches all items
 
         do {
-            let items = try viewContext.fetch(fetchRequest)
-            print(items)
-            return items
+            let caloireItems = try viewContext.fetch(fetchRequest)
+            print(caloireItems)
+            return caloireItems
         } catch let error {
             print("Failed to fetch calorie items: \(error)")
         }
@@ -189,7 +192,29 @@ class CalorieItemListViewModel: ObservableObject {
         return nil
     }
 
+    func sumAllCaloreItems(viewContext: NSManagedObjectContext) -> Int {
+        
+        let fetchRequest: NSFetchRequest<CalorieItem> = CalorieItem.fetchRequest()
+        
+        var caloireCount = 0
 
+        do {
+            let caloireItems = try viewContext.fetch(fetchRequest)
+            
+            for item in caloireItems {
+                caloireCount += Int(item.calorieCount)
+            }
+            
+            print("Caloire count is: \(caloireCount)")
+            
+        } catch let error {
+            print("Failed to fetch calorie items: \(error)")
+
+        }
+        
+        return caloireCount
+        
+    }
     
     func logTableEntries(type: String, viewContext: NSManagedObjectContext) {
         

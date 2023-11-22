@@ -12,6 +12,8 @@ import CoreData
 struct CalorieItemListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var userSettings: UserSettings
+
 
     @State private var title: String = "Passed from view to view model 2"
     @State private var message: String = ""
@@ -23,6 +25,7 @@ struct CalorieItemListView: View {
 
     @Binding var selectedDate: Date
     @Binding var totCalCount: Int
+    @Binding var totCalsRemainingCalc: Int
         
     @FetchRequest var allCalorieItems: FetchedResults<CalorieItem>
     
@@ -30,10 +33,11 @@ struct CalorieItemListView: View {
         print(boolValue)
     }
 
-    init(filter: Date, selectedDate: Binding<Date>, totCalCount: Binding<Int>) {
+    init(filter: Date, selectedDate: Binding<Date>, totCalCount: Binding<Int>, totCalsRemainingCalc: Binding<Int>) {
         
         self._selectedDate = selectedDate
         self._totCalCount = totCalCount
+        self._totCalsRemainingCalc = totCalsRemainingCalc
         
         let calendar = Calendar.current
         let startOfDay = calendar.startOfDay(for: filter)
@@ -60,6 +64,9 @@ struct CalorieItemListView: View {
                     totCalCount = allCalorieItems.reduce(0, {
                         $0 + Int($1.calorieCount)
                     })
+                    
+                    totCalsRemainingCalc = userSettings.dailyCalorieIntakeGoal - totCalCount
+                    
                     print("bindingShowAddCalorieItemView set closure called, totCalCount updated to \(totCalCount)")
 
                 }
@@ -255,7 +262,6 @@ struct CalorieItemListView: View {
                 }
             )
 
-
             .sheet(isPresented: $showDateCalendar) {
                 VStack {
                     DatePicker("Select a Date", selection: $selectedDate, in: calorieItemListViewModel.getCalendarDateRange(), displayedComponents: .date)
@@ -279,11 +285,12 @@ struct CalorieItemListView: View {
 struct CalorieItemListView_Previews: PreviewProvider {
     @State static var mockDate = Date()
     @State static var mockTotalCalories = 0
+    @State static var mockTotCalsRemainingCalc = 0
 
     static var previews: some View {
         let persistedController = CoreDataManager.shared.persistentContainer
 
-        CalorieItemListView(filter: mockDate, selectedDate: $mockDate, totCalCount: $mockTotalCalories)
+        CalorieItemListView(filter: mockDate, selectedDate: $mockDate, totCalCount: $mockTotalCalories, totCalsRemainingCalc: $mockTotCalsRemainingCalc)
             .environment(\.managedObjectContext, persistedController.viewContext)
     }
 }
