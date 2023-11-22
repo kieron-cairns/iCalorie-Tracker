@@ -19,6 +19,7 @@ struct DailyStatsView: View {
     @State private var selectedDate = Date()
     @State private var totCalCount: Int = 0
     @State private var totCalsRemainingCalc: Int = 0
+    
 
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
@@ -155,16 +156,19 @@ struct DailyStatsView: View {
                 }
                 
                 .tabItem {
-                    Text("Day Overview")
+                    Image(systemName: "sun.haze.fill")
+                    Text("Daily Overview")
                 }
            
                 //Below implementation is for adding a second screen and tab item
                 TargetsView()
                 .tabItem {
+                    Image(systemName: "target")
                     Text("Targets")
                 }
                 SettingsView()
                 .tabItem{
+                    Image(systemName: "gear")
                     Text("Settings")
                 }
             }
