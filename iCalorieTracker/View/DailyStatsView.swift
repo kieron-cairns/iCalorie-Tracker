@@ -44,8 +44,6 @@ struct DailyStatsView: View {
                         Spacer(minLength: 10)
 
                         VStack {
-
-                            //upper
                             
                             HStack {
                                 VStack(alignment: .leading) {
