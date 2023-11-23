@@ -42,6 +42,7 @@ class DemonstrationsBaseUITestCases : XCTestCase {
     
     func addFirstCaloireItem() -> (app: XCUIApplication, calorieTable: XCUIElement) {
         
+        sleep(3)
         let addCalorieItemButton = app.buttons["addCalorieItem"]
         //        XCTAssertTrue(addCalorieItemButton.exists, "Add Item button should exist.")
         addCalorieItemButton.tap()
@@ -78,19 +79,31 @@ class DemonstrationsBaseUITestCases : XCTestCase {
         
         let titleTextField = app.textFields["calorieTitleTextField"]
         let exists = NSPredicate(format: "exists == true")
+        sleep(1)
         expectation(for: exists, evaluatedWith: titleTextField, handler: nil)
         waitForExpectations(timeout: 5, handler: nil)
         titleTextField.tap()
-        titleTextField.typeText("Blueberries")
 
+        for char in "Blueberries" {
+            titleTextField.typeText(String(char))
+            usleep(1) // Sleep for 0.5 seconds (adjust the delay as needed)
+        }
         
         let calorieCountTextField = app.textFields["calorieCountTextField"]
         calorieCountTextField.tap()
-        calorieCountTextField.typeText("85")
+        sleep(1)
+        for char in "85" {
+            calorieCountTextField.typeText(String(char))
+            usleep(1) // Sleep for 0.5 seconds (adjust the delay as needed)
+        }
         
         let calorieQuantityTextField = app.textFields["calorieQuantityTextField"]
         calorieQuantityTextField.tap()
-        calorieQuantityTextField.typeText("1")
+        sleep(1)
+        for char in "1" {
+            calorieQuantityTextField.typeText(String(char))
+            usleep(1) // Sleep for 0.5 seconds (adjust the delay as needed)
+        }
 
         let calorieTable = app.collectionViews["calorieList"]
         
@@ -148,6 +161,7 @@ class demonstration_initial_items: DemonstrationsBaseUITestCases {
         let firstItem = addFirstCaloireItem()
         let secondIem = addSecondCaloireItem()
         let thirditem = addThirdCaloireItem()
+        sleep(5)
     }
     
 }

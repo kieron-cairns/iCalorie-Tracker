@@ -28,6 +28,10 @@ struct DailyStatsView: View {
     var commonViewModel = CommonViewModel()
     var calorieItemListViewModel = CalorieItemListViewModel()
     
+    //Below values are static for time being until HealthKit framework is implemented
+    @State private var totCalsBurned: Int = 305
+    @State private var totRemainingCalsToBurn: Int = 350
+   
     var body: some View {
         GeometryReader { geometry in
 
@@ -54,7 +58,6 @@ struct DailyStatsView: View {
                                         .frame(alignment: .leading)
                                         .accessibilityIdentifier("totalCaloireCount")
                                         .scaleEffect(scale)
-
                                         .onChange(of: totCalCount) { _ in
                                             withAnimation(.easeInOut(duration: 0.5)) {
                                                 self.scale = 1.5 // Scales up
@@ -63,8 +66,6 @@ struct DailyStatsView: View {
                                                 }
                                             }
                                         }
-
-
                                     Text("Calories Consumed")
                                         .foregroundColor(colorScheme == .dark ? .white : .black)
                                         .font(.custom("HelveticaNeue-Bold", size: 15))
@@ -73,11 +74,19 @@ struct DailyStatsView: View {
 
                                 Spacer()
                                 VStack(alignment: .trailing) {
-                                    Text("305")
+                                    Text(String(totCalsBurned))
                                         .font(.custom("HelveticaNeue-Bold", size: 64))
                                         .foregroundColor(.init(orangeHexColor))
                                         .frame(alignment: .trailing)
-
+                                        .scaleEffect(scale)
+                                        .onChange(of: totCalsBurned) { _ in
+                                            withAnimation(.easeInOut(duration: 0.5)) {
+                                                self.scale = 1.5 // Scales up
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                                    self.scale = 1.0 // Scales down to normal
+                                                }
+                                            }
+                                        }
                                     Text("Calories Burned")
                                         .foregroundColor(colorScheme == .dark ? .white : .black)
                                         .font(.custom("HelveticaNeue-Bold", size: 15))
@@ -114,7 +123,7 @@ struct DailyStatsView: View {
                                     }
                                     else
                                     {
-                                        Text(String(totCalsRemainingCalc))
+                                        Text("+" + String(totCalsRemainingCalc))
                                             .font(.custom("HelveticaNeue-Bold", size: 48))
                                             .foregroundColor(.init(redHexColor))
                                             .frame(alignment: .leading)
@@ -144,10 +153,19 @@ struct DailyStatsView: View {
                                 Spacer()
 
                                 VStack(alignment: .trailing) {
-                                    Text("+350")
+                                    Text("+" + String(totRemainingCalsToBurn))
                                         .font(.custom("HelveticaNeue-Bold", size: 48))
                                         .foregroundColor(.init(redHexColor))
                                         .frame(alignment: .trailing)
+                                        .scaleEffect(scale)
+                                        .onChange(of: totRemainingCalsToBurn) { _ in
+                                            withAnimation(.easeInOut(duration: 0.5)) {
+                                                self.scale = 1.1 // Scales up
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                                    self.scale = 1.0 // Scales down to normal
+                                                }
+                                            }
+                                        }
                                     VStack(alignment: .trailing) {
                                         Text("Calories left to burn")
                                         Text("today")
