@@ -26,9 +26,9 @@ class Demonstrations: XCTestCase {
            XCTAssertEqual(calorieTable.cells.count, 0, "CalorieItem table should have no cells at app launch")
        }
     
-//    override func tearDown() {
-//        Springboard.deleteApp()
-//    }
+    override func tearDown() {
+        Springboard.deleteApp()
+    }
 }
 
 class DemonstrationsBaseUITestCases : XCTestCase {
