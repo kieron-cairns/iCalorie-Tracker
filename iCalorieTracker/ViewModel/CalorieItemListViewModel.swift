@@ -48,7 +48,7 @@ class CalorieItemListViewModel: ObservableObject {
         return Date(timeIntervalSinceReferenceDate: -123456789.0)...Date()
     }
     
-    func saveCalorieItem(title: String?, id: UUID, calorieCount: Int32?, date: Date? ,viewContext: NSManagedObjectContext) -> (success: Bool, message: String) {
+    func saveCalorieItem(title: String?, id: UUID, calorieCount: Int32?, caloireQuantity: Int32?, date: Date? ,viewContext: NSManagedObjectContext) -> (success: Bool, message: String) {
         
         
         // Initialize an array to store error messages
@@ -78,6 +78,7 @@ class CalorieItemListViewModel: ObservableObject {
         calorieItem.id = id
         calorieItem.title = title
         calorieItem.calorieCount = calorieCount!
+        calorieItem.caloireQuantity = caloireQuantity!
         calorieItem.dateCreated = date
         
         do {
@@ -114,7 +115,7 @@ class CalorieItemListViewModel: ObservableObject {
             }
         }
     
-    func updateCalorieItem(withId id: UUID, title: String?, calorieCount: Int32?, viewContext: NSManagedObjectContext) -> (success: Bool, message: String) {
+    func updateCalorieItem(withId id: UUID, title: String?, calorieCount: Int32?, calorieQuantity: Int32?, viewContext: NSManagedObjectContext) -> (success: Bool, message: String) {
         
         // Initialize an array to store error messages
         var errorMessages: [String] = []
