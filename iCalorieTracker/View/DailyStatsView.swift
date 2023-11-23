@@ -19,6 +19,7 @@ struct DailyStatsView: View {
     @State private var selectedDate = Date()
     @State private var totCalCount: Int = 0
     @State private var totCalsRemainingCalc: Int = 0
+    @State private var scale: CGFloat = 1.0
 
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
@@ -52,6 +53,16 @@ struct DailyStatsView: View {
                                         .foregroundColor(.init(orangeHexColor))
                                         .frame(alignment: .leading)
                                         .accessibilityIdentifier("totalCaloireCount")
+                                        .scaleEffect(scale)
+
+                                        .onChange(of: totCalCount) { _ in
+                                            withAnimation(.easeInOut(duration: 0.5)) {
+                                                self.scale = 1.5 // Scales up
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                                    self.scale = 1.0 // Scales down to normal
+                                                }
+                                            }
+                                        }
 
 
                                     Text("Calories Consumed")
@@ -88,9 +99,17 @@ struct DailyStatsView: View {
                                             .font(.custom("HelveticaNeue-Bold", size: 48))
                                             .foregroundColor(.init(purpleHexColor))
                                             .frame(alignment: .leading)
+                                            .scaleEffect(scale)
                                             .onAppear {
-                                                
                                                 totCalsRemainingCalc = userSettings.dailyCalorieIntakeGoal - calorieItemListViewModel.sumAllCaloreItems(forDate: selectedDate, viewContext: viewContext)
+                                            }
+                                            .onChange(of: totCalsRemainingCalc) { _ in
+                                                withAnimation(.easeInOut(duration: 0.5)) {
+                                                    self.scale = 1.5 // Scales up
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                                        self.scale = 1.0 // Scales down to normal
+                                                    }
+                                                }
                                             }
                                     }
                                     else
@@ -99,9 +118,17 @@ struct DailyStatsView: View {
                                             .font(.custom("HelveticaNeue-Bold", size: 48))
                                             .foregroundColor(.init(redHexColor))
                                             .frame(alignment: .leading)
+                                            .scaleEffect(scale)
                                             .onAppear {
-                                                
                                                 totCalsRemainingCalc = userSettings.dailyCalorieIntakeGoal - calorieItemListViewModel.sumAllCaloreItems(forDate: selectedDate, viewContext: viewContext)
+                                            }
+                                            .onChange(of: totCalsRemainingCalc) { _ in
+                                                withAnimation(.easeInOut(duration: 0.5)) {
+                                                    self.scale = 1.1 // Scales up
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                                        self.scale = 1.0 // Scales down to normal
+                                                    }
+                                                }
                                             }
                                     }
 
@@ -155,16 +182,19 @@ struct DailyStatsView: View {
                 }
                 
                 .tabItem {
-                    Text("Day Overview")
+                    Image(systemName: "sun.haze.fill")
+                    Text("Daily Overview")
                 }
            
                 //Below implementation is for adding a second screen and tab item
                 TargetsView()
                 .tabItem {
+                    Image(systemName: "target")
                     Text("Targets")
                 }
                 SettingsView()
                 .tabItem{
+                    Image(systemName: "gear")
                     Text("Settings")
                 }
             }
