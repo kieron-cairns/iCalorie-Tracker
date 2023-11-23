@@ -5,7 +5,9 @@ Calorific Tracker is an open-source iOS application designed to help users monit
 With a clean and intuitive user interface, it simplifies the process of tracking and managing calorie consumption.
 
 
-<img src="https://kmc-technologies.ltd/videos/iCalorieTracker.gif" width="200" height="400" />
+<img src="https://kmc-technologies.ltd/icalorietracker/images/MainScreen.png" width="200" height="400" />
+
+<img src="https://kmc-technologies.ltd/iCalorieTracker/images/AddScreen.png" width="200" height="400" />
 
 
 
