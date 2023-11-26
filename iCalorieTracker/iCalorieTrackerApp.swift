@@ -17,10 +17,12 @@ struct iCalorieTrackerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            DailyStatsView()
-                .environment(\.managedObjectContext, persistenceContainer.viewContext)
-                .environment(\.colorScheme, userSettings.isDarkMode ? .dark : .light)
-                 .environmentObject(userSettings)
+            
+            FirstLoadView()
+//            DailyStatsView()
+//                .environment(\.managedObjectContext, persistenceContainer.viewContext)
+//                .environment(\.colorScheme, userSettings.isDarkMode ? .dark : .light)
+//                 .environmentObject(userSettings)
         }
     }
 }

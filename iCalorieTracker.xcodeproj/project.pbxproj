@@ -17,8 +17,9 @@
 		84C084822A30A4FF002AFC1F /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C084792A30A4FF002AFC1F /* Inter-ExtraBold.ttf */; };
 		84C084832A30A4FF002AFC1F /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C0847A2A30A4FF002AFC1F /* Inter-SemiBold.ttf */; };
 		84C084872A30ACB4002AFC1F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C084862A30ACB4002AFC1F /* Extension.swift */; };
-		FE180FBB2B132B35007F9FD1 /* HealthKitAuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE180FBA2B132B35007F9FD1 /* HealthKitAuthorizationView.swift */; };
+		FE180FBB2B132B35007F9FD1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE180FBA2B132B35007F9FD1 /* OnboardingView.swift */; };
 		FE180FBD2B132B8C007F9FD1 /* HealthKitAuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE180FBC2B132B8C007F9FD1 /* HealthKitAuthorizationViewModel.swift */; };
+		FE180FC12B1351A6007F9FD1 /* FirstLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE180FC02B1351A6007F9FD1 /* FirstLoadView.swift */; };
 		FE2336B22A02BD89005E493B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2336B12A02BD89005E493B /* Constant.swift */; };
 		FE2336B72A02C7A2005E493B /* CalorieItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2336B62A02C7A2005E493B /* CalorieItemListView.swift */; };
 		FE2336B92A02C7B3005E493B /* CalorieItemListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2336B82A02C7B3005E493B /* CalorieItemListViewModel.swift */; };
@@ -83,8 +84,9 @@
 		84C084842A30A583002AFC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		84C084862A30ACB4002AFC1F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		FE180FB92B1329AB007F9FD1 /* iCalorieTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iCalorieTracker.entitlements; sourceTree = "<group>"; };
-		FE180FBA2B132B35007F9FD1 /* HealthKitAuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAuthorizationView.swift; sourceTree = "<group>"; };
+		FE180FBA2B132B35007F9FD1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FE180FBC2B132B8C007F9FD1 /* HealthKitAuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAuthorizationViewModel.swift; sourceTree = "<group>"; };
+		FE180FC02B1351A6007F9FD1 /* FirstLoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLoadView.swift; sourceTree = "<group>"; };
 		FE2336B12A02BD89005E493B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		FE2336B62A02C7A2005E493B /* CalorieItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieItemListView.swift; sourceTree = "<group>"; };
 		FE2336B82A02C7B3005E493B /* CalorieItemListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieItemListViewModel.swift; sourceTree = "<group>"; };
@@ -186,7 +188,8 @@
 				FE8A4BA62A0915E200B1C2F5 /* DateSelectionView.swift */,
 				FEB178FD2ACED08F0077C577 /* SettingsView.swift */,
 				FE7105082B0E2D40000BFCD0 /* TargetsView.swift */,
-				FE180FBA2B132B35007F9FD1 /* HealthKitAuthorizationView.swift */,
+				FE180FBA2B132B35007F9FD1 /* OnboardingView.swift */,
+				FE180FC02B1351A6007F9FD1 /* FirstLoadView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -467,9 +470,10 @@
 				FEAB5FB529FEC58500CB09A4 /* DailyStatsView.swift in Sources */,
 				84C084872A30ACB4002AFC1F /* Extension.swift in Sources */,
 				FE2336BC2A02C982005E493B /* CoreDataManager.swift in Sources */,
-				FE180FBB2B132B35007F9FD1 /* HealthKitAuthorizationView.swift in Sources */,
+				FE180FBB2B132B35007F9FD1 /* OnboardingView.swift in Sources */,
 				FE3E4F622B0E374D00143B4A /* TargetsViewModel.swift in Sources */,
 				FE180FBD2B132B8C007F9FD1 /* HealthKitAuthorizationViewModel.swift in Sources */,
+				FE180FC12B1351A6007F9FD1 /* FirstLoadView.swift in Sources */,
 				FE7C4C762A055DC700C6BD0E /* AddCalorieItemView.swift in Sources */,
 				FEB178FC2ACECED00077C577 /* DailyStatsViewModel.swift in Sources */,
 				FEAB5FB329FEC58500CB09A4 /* iCalorieTrackerApp.swift in Sources */,

@@ -28,8 +28,10 @@ class UserSettings: ObservableObject {
     
     @Published var hasShownHealthKitAuthorization: Bool {
             didSet {
-                print("*** health kit authorsation has been grsanted: \(hasShownHealthKitAuthorization)")
+               
                 UserDefaults.standard.set(hasShownHealthKitAuthorization, forKey: "hasShownHealthKitAuthorization")
+                
+                print("*** health kit authorsation has been granted: \(hasShownHealthKitAuthorization)")
             }
         }
 

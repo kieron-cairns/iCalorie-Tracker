@@ -37,12 +37,7 @@ struct DailyStatsView: View {
     @State private var totRemainingCalsToBurn: Int = 350
     
     var body: some View {
-        if !userSettings.hasShownHealthKitAuthorization {
-                   HealthKitAuthorizationView()
-                       .onDisappear {
-                           userSettings.hasShownHealthKitAuthorization = true
-                       }
-               } else {
+        
             GeometryReader { geometry in
                 
                 TabView {
@@ -229,7 +224,6 @@ struct DailyStatsView: View {
             }
         }
     }
-}
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
