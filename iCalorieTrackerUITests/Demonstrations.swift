@@ -158,7 +158,7 @@ class DemonstrationsBaseUITestCases : XCTestCase {
 class demonstration_initial_items: DemonstrationsBaseUITestCases {
 
     func testAddFirstItems() {
-        let firstItem = addFirstCaloireItem()
+//        let firstItem = addFirstCaloireItem()
         let secondIem = addSecondCaloireItem()
         let thirditem = addThirdCaloireItem()
         sleep(5)
