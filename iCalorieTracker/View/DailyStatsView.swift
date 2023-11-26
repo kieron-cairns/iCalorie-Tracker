@@ -27,24 +27,14 @@ struct DailyStatsView: View {
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
     
-    var dailyStatsViewModel = DailyStatsViewModel()
+    @StateObject var dailyStatsViewModel = DailyStatsViewModel()
     var commonViewModel = CommonViewModel()
     var calorieItemListViewModel = CalorieItemListViewModel()
     let healthStore = HKHealthStore()
 
-    
     //Below values are static for time being until HealthKit framework is implemented
     @State private var totCalsBurned: String = "Loading... "
     @State private var totRemainingCalsToBurn: Int = 350
-    
-    private func getCaloriesForToday() {
-            let today = Date() // Get today's date
-        dailyStatsViewModel.getCaloriesForDate(date: today) { result in
-                DispatchQueue.main.async {
-                    calorieInfo = result
-                }
-            }
-        }
     
     var body: some View {
         
@@ -89,15 +79,15 @@ struct DailyStatsView: View {
                                     
                                     Spacer()
                                     VStack(alignment: .trailing) {
-                                        Text(String(totCalsBurned))
+                                        Text(dailyStatsViewModel.calorieInfo)
                                             .font(.custom("HelveticaNeue-Bold", size: 64))
                                             .foregroundColor(.init(orangeHexColor))
                                             .frame(alignment: .trailing)
                                             .scaleEffect(scale)
                                             .onAppear{
                                                 
-                                               getCaloriesForToday()
-                                                
+                                                dailyStatsViewModel.getCaloriesForDate(date: selectedDate)
+
                                             }
                                             .onChange(of: totCalsBurned) { _ in
                                                 withAnimation(.easeInOut(duration: 0.5)) {

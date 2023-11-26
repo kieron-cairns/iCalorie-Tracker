@@ -13,45 +13,48 @@ import SwiftUI
 class DailyStatsViewModel: ObservableObject {
     
     let healthStore = HKHealthStore()
-
-    func getCaloriesForDate(date: Date, completion: @escaping (String) -> Void) {
+    
+    @Published var calorieInfo: String = "Loading..."
+    
+    func getCaloriesForDate(date: Date) {
         let healthStore = HKHealthStore()
-        
-        let calendar = Calendar.current
-//        let now = Date()
-        var todayStart = calendar.startOfDay(for: date)
-        
+
         guard HKHealthStore.isHealthDataAvailable() else {
-            completion("Health data not available")
+            self.calorieInfo = "Health data not available"
             return
         }
-        
+
         let readTypes = Set([HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
                              HKQuantityType.quantityType(forIdentifier: .basalEnergyBurned)!])
-        
+
         healthStore.requestAuthorization(toShare: nil, read: readTypes) { (success, error) in
-                if let error = error {
-                    print("Authorization error: \(error.localizedDescription)")
-                    completion("Authorization failed")
-                    return
+            if let error = error {
+                print("Authorization error: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self.calorieInfo = "Authorization failed"
                 }
+                return
+            }
 
-                if !success {
-                    print("Authorization was not successful")
-                    completion("Authorization failed")
-                    return
+            if !success {
+                print("Authorization was not successful")
+                DispatchQueue.main.async {
+                    self.calorieInfo = "Authorization failed"
                 }
+                return
+            }
 
-            let startDate = Calendar.current.startOfDay(for: todayStart)
+            let startDate = Calendar.current.startOfDay(for: date)
             let endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate)
-            
             let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
-            
+
             let query = HKStatisticsQuery(quantityType: HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
                                           quantitySamplePredicate: predicate,
                                           options: .cumulativeSum) { _, statistics, _ in
                 guard let activeCalories = statistics?.sumQuantity()?.doubleValue(for: HKUnit.kilocalorie()) else {
-                    completion("Active calories data not available")
+                    DispatchQueue.main.async {
+                        self.calorieInfo = "Active calories data not available"
+                    }
                     return
                 }
 
@@ -59,13 +62,18 @@ class DailyStatsViewModel: ObservableObject {
                                                      quantitySamplePredicate: predicate,
                                                      options: .cumulativeSum) { _, restingStatistics, _ in
                     guard let restingCalories = restingStatistics?.sumQuantity()?.doubleValue(for: HKUnit.kilocalorie()) else {
-                        completion("Resting calories data not available")
+                        DispatchQueue.main.async {
+                            self.calorieInfo = "Resting calories data not available"
+                        }
                         return
                     }
 
                     let totalCalories = activeCalories + restingCalories
-                    completion("Total calories for \(date): \(totalCalories) kcal")
-                    print("Total calories for \(date): \(totalCalories) kcal")
+                    let roundedCalories = Int(totalCalories.rounded())
+                    DispatchQueue.main.async {
+                        print("Total calories for \(date): \(totalCalories) kcal")
+                        self.calorieInfo = String(roundedCalories)
+                    }
                 }
 
                 healthStore.execute(restingQuery)
@@ -74,6 +82,7 @@ class DailyStatsViewModel: ObservableObject {
             healthStore.execute(query)
         }
     }
+
     
     func statsTitleText(selectedDate: Date) -> String {
        
