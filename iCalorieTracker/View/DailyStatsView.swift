@@ -22,6 +22,7 @@ struct DailyStatsView: View {
     @State private var totCalCount: Int = 0
     @State private var totCalsRemainingCalc: Int = 0
     @State private var scale: CGFloat = 1.0
+    @State private var calorieInfo: String = "Loading..."
     
     @FetchRequest(fetchRequest: CalorieItem.allCalorieItemsFetchRequest())
     private var allCalorieItems: FetchedResults<CalorieItem>
@@ -35,6 +36,15 @@ struct DailyStatsView: View {
     //Below values are static for time being until HealthKit framework is implemented
     @State private var totCalsBurned: String = "Loading... "
     @State private var totRemainingCalsToBurn: Int = 350
+    
+    private func getCaloriesForToday() {
+            let today = Date() // Get today's date
+        dailyStatsViewModel.getCaloriesForDate(date: today) { result in
+                DispatchQueue.main.async {
+                    calorieInfo = result
+                }
+            }
+        }
     
     var body: some View {
         
@@ -86,7 +96,7 @@ struct DailyStatsView: View {
                                             .scaleEffect(scale)
                                             .onAppear{
                                                 
-                                                dailyStatsViewModel.getCaloriesForToday()
+                                               getCaloriesForToday()
                                                 
                                             }
                                             .onChange(of: totCalsBurned) { _ in

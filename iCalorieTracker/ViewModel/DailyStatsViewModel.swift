@@ -13,19 +13,7 @@ import SwiftUI
 class DailyStatsViewModel: ObservableObject {
     
     let healthStore = HKHealthStore()
-    
-    var calorieInfo: String = "Loading..."
-    
-    
-    func getCaloriesForToday() {
-           let today = Date() // Get today's date
-           getCaloriesForDate(date: today) { result in
-               DispatchQueue.main.async {
-                   self.calorieInfo = result
-               }
-           }
-       }
-    
+
     func getCaloriesForDate(date: Date, completion: @escaping (String) -> Void) {
         let healthStore = HKHealthStore()
         
@@ -42,10 +30,17 @@ class DailyStatsViewModel: ObservableObject {
                              HKQuantityType.quantityType(forIdentifier: .basalEnergyBurned)!])
         
         healthStore.requestAuthorization(toShare: nil, read: readTypes) { (success, error) in
-            if !success {
-                completion("Authorization failed")
-                return
-            }
+                if let error = error {
+                    print("Authorization error: \(error.localizedDescription)")
+                    completion("Authorization failed")
+                    return
+                }
+
+                if !success {
+                    print("Authorization was not successful")
+                    completion("Authorization failed")
+                    return
+                }
 
             let startDate = Calendar.current.startOfDay(for: todayStart)
             let endDate = Calendar.current.date(byAdding: .day, value: 1, to: startDate)
@@ -70,6 +65,7 @@ class DailyStatsViewModel: ObservableObject {
 
                     let totalCalories = activeCalories + restingCalories
                     completion("Total calories for \(date): \(totalCalories) kcal")
+                    print("Total calories for \(date): \(totalCalories) kcal")
                 }
 
                 healthStore.execute(restingQuery)
