@@ -25,6 +25,7 @@ class UserSettings: ObservableObject {
             UserDefaults.standard.set(dailyCalorieBurnGoal, forKey: "dailyCalorieBurnGoal")
         }
     }
+    
 
     init() {
         if let _ = UserDefaults.standard.value(forKey: "isDarkMode") as? Bool {
