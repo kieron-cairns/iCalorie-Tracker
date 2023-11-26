@@ -80,6 +80,7 @@
 		84C0847A2A30A4FF002AFC1F /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		84C084842A30A583002AFC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		84C084862A30ACB4002AFC1F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		FE180FB92B1329AB007F9FD1 /* iCalorieTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iCalorieTracker.entitlements; sourceTree = "<group>"; };
 		FE2336B12A02BD89005E493B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		FE2336B62A02C7A2005E493B /* CalorieItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieItemListView.swift; sourceTree = "<group>"; };
 		FE2336B82A02C7B3005E493B /* CalorieItemListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieItemListViewModel.swift; sourceTree = "<group>"; };
@@ -246,6 +247,7 @@
 		FEAB5FB129FEC58500CB09A4 /* iCalorieTracker */ = {
 			isa = PBXGroup;
 			children = (
+				FE180FB92B1329AB007F9FD1 /* iCalorieTracker.entitlements */,
 				FEB178F82ACEC0BE0077C577 /*  Model */,
 				84C084842A30A583002AFC1F /* Info.plist */,
 				84C084852A30ACA1002AFC1F /* Extension */,
@@ -624,13 +626,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iCalorieTracker/iCalorieTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iCalorieTracker/Preview Content\"";
-				DEVELOPMENT_TEAM = 89H685KMM4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iCalorieTracker/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need access to your Health data to track the calories you burn daily. This helps us align your fitness goals, whether it's weight loss or gain, with accurate and personalized recommendations for a healthier lifestyle.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We request write access to your Health data so that you can log and update your daily activities, including exercise and calorie intake, to better track your progress towards your weight loss or gain goals. This allows us to provide you with personalized recommendations and insights for a healthier lifestyle.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -654,13 +659,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iCalorieTracker/iCalorieTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iCalorieTracker/Preview Content\"";
-				DEVELOPMENT_TEAM = 89H685KMM4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iCalorieTracker/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need access to your Health data to track the calories you burn daily. This helps us align your fitness goals, whether it's weight loss or gain, with accurate and personalized recommendations for a healthier lifestyle.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We request write access to your Health data so that you can log and update your daily activities, including exercise and calorie intake, to better track your progress towards your weight loss or gain goals. This allows us to provide you with personalized recommendations and insights for a healthier lifestyle.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
