@@ -6,8 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
 
 class UserSettings: ObservableObject {
+    
+    @AppStorage("oboarding") var onboarding = true
+
+    
     @Published var isDarkMode: Bool {
         didSet {
             UserDefaults.standard.set(isDarkMode, forKey: "isDarkMode")
@@ -30,6 +35,9 @@ class UserSettings: ObservableObject {
             didSet {
                
                 UserDefaults.standard.set(hasShownHealthKitAuthorization, forKey: "hasShownHealthKitAuthorization")
+                
+                onboarding = false
+
                 
                 print("*** health kit authorsation has been granted: \(hasShownHealthKitAuthorization)")
             }

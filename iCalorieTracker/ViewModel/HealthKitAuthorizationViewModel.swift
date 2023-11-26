@@ -9,23 +9,21 @@ import Foundation
 import HealthKit
 
 
-class HealthKitAuthorizationViewModel {
+struct HealthKitAuthorizationViewModel {
     
-    var userSettings: UserSettings
+//    var userSettings: UserSettings
     
-    init(userSettings: UserSettings) {
-        self.userSettings = userSettings
-    }
+  
     
     // Function to request HealthKit authorization
-    func requestHealthKitAuthorization(healthStore: HKHealthStore) {
+    func requestHealthKitAuthorization(healthStore: HKHealthStore, userSettings: UserSettings) {
         let readTypes: Set<HKObjectType> = [HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!, HKObjectType.quantityType(forIdentifier: .stepCount)!]
         
         healthStore.requestAuthorization(toShare: nil, read: readTypes) { (success, error) in
            
             DispatchQueue.main.async {
                 if success {
-                    self.userSettings.hasShownHealthKitAuthorization = true
+                    userSettings.hasShownHealthKitAuthorization = true
                 } else {
                     // Handle error
                 }
