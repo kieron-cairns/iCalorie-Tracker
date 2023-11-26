@@ -33,7 +33,7 @@ struct DailyStatsView: View {
 
     
     //Below values are static for time being until HealthKit framework is implemented
-    @State private var totCalsBurned: Int = 305
+    @State private var totCalsBurned: String = "Loading... "
     @State private var totRemainingCalsToBurn: Int = 350
     
     var body: some View {
@@ -84,6 +84,11 @@ struct DailyStatsView: View {
                                             .foregroundColor(.init(orangeHexColor))
                                             .frame(alignment: .trailing)
                                             .scaleEffect(scale)
+                                            .onAppear{
+                                                
+                                                dailyStatsViewModel.getCaloriesForToday()
+                                                
+                                            }
                                             .onChange(of: totCalsBurned) { _ in
                                                 withAnimation(.easeInOut(duration: 0.5)) {
                                                     self.scale = 1.5 // Scales up
