@@ -26,6 +26,12 @@ class UserSettings: ObservableObject {
         }
     }
     
+    @Published var hasShownHealthKitAuthorization: Bool {
+            didSet {
+                print("*** health kit authorsation has been grsanted: \(hasShownHealthKitAuthorization)")
+                UserDefaults.standard.set(hasShownHealthKitAuthorization, forKey: "hasShownHealthKitAuthorization")
+            }
+        }
 
     init() {
         if let _ = UserDefaults.standard.value(forKey: "isDarkMode") as? Bool {
@@ -35,5 +41,12 @@ class UserSettings: ObservableObject {
             // If the value doesn't exist, set a default value
             self.isDarkMode = true
         }
+        
+        if let _ = UserDefaults.standard.value(forKey: "hasShownHealthKitAuthorization") as? Bool {
+                    self.hasShownHealthKitAuthorization = UserDefaults.standard.bool(forKey: "hasShownHealthKitAuthorization")
+            } else {
+                // Set a default value or initial state for HealthKit authorization
+                self.hasShownHealthKitAuthorization = false
+            }
     }
 }

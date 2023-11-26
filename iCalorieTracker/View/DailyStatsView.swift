@@ -7,12 +7,9 @@
 
 import SwiftUI
 import CoreData
-
-
+import HealthKit
 
 struct DailyStatsView: View {
-    @AppStorage("hasShownHealthKitAuthorization", store: UserDefaults.standard) var hasShownHealthKitAuthorization = false
-    
     
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.colorScheme) var colorScheme
@@ -32,18 +29,20 @@ struct DailyStatsView: View {
     var dailyStatsViewModel = DailyStatsViewModel()
     var commonViewModel = CommonViewModel()
     var calorieItemListViewModel = CalorieItemListViewModel()
+    let healthStore = HKHealthStore()
+
     
     //Below values are static for time being until HealthKit framework is implemented
     @State private var totCalsBurned: Int = 305
     @State private var totRemainingCalsToBurn: Int = 350
     
     var body: some View {
-        if !hasShownHealthKitAuthorization {
-            HealthKitAuthorizationView()
-                .onDisappear {
-                    hasShownHealthKitAuthorization = true
-                }
-        } else {
+        if !userSettings.hasShownHealthKitAuthorization {
+                   HealthKitAuthorizationView()
+                       .onDisappear {
+                           userSettings.hasShownHealthKitAuthorization = true
+                       }
+               } else {
             GeometryReader { geometry in
                 
                 TabView {

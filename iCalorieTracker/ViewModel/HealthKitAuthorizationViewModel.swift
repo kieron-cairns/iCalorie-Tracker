@@ -8,7 +8,10 @@
 import Foundation
 import HealthKit
 
+
 class HealthKitAuthorizationViewModel {
+    
+    var userSettings = UserSettings()
     
     // Function to request HealthKit authorization
     func requestHealthKitAuthorization(healthStore: HKHealthStore) {
@@ -17,6 +20,8 @@ class HealthKitAuthorizationViewModel {
         healthStore.requestAuthorization(toShare: nil, read: readTypes) { (success, error) in
             if success {
                 // Authorization granted, you can now read HealthKit data
+                self.userSettings.hasShownHealthKitAuthorization = true
+                
             } else {
                 // Handle the error or inform the user about the need for authorization
             }
