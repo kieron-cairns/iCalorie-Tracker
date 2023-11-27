@@ -9,8 +9,8 @@ import SwiftUI
 
 let onboardingData: [OnboardingModel] = [
 
-    OnboardingModel(title: "", headline: "", image: ""),
-    OnboardingModel(title: "", headline: "", image: ""),
-    OnboardingModel(title: "", headline: "", image: "")
+    OnboardingModel(title: "Welcome", headline: "Welcome to iCaloireTracker", image: "", gradientColors: [Color("ColorPlumLight"), Color("ColorPlumDark")]),
+    OnboardingModel(title: "", headline: "", image: "", gradientColors: [Color("ColorPlumLight"), Color("ColorPlumDark")]),
+    OnboardingModel(title: "", headline: "", image: "", gradientColors: [Color("ColorBlueberryLight"), Color("ColorBlueberryDark")])
     
 ]

@@ -16,34 +16,42 @@ struct OnboardingView: View {
     let healthStore = HKHealthStore()
     let userSettings = UserSettings()
     
+    var onboardingCards: [OnboardingModel] = onboardingData
+    
     let healthKitAuthViewModel = HealthKitAuthorizationViewModel()
     
     var body: some View {
-        ZStack {
-            Color(.black)
-                .ignoresSafeArea()
+//        ZStack {
+//            Color(.black)
+//                .ignoresSafeArea()
 
-            VStack {
-                Spacer()
-                
-                Button(action: {
-                    
-                    onboarding = false
-                    print("Onboading is: \(onboarding)")
-                    
-                })
-                {
-                    Text("Continue From Onboarding")
-                    
-                }.background(.black)
-                
+//            VStack {
+//                Spacer()
+//                Button(action: {
+//
+//                    onboarding = false
+//                    print("Onboading is: \(onboarding)")
+//                })
+//                {
+//                    Text("Continue From Onboarding")
+//
+//                }.background(.black)
+//            }
+            
+            TabView {
+                ForEach(onboardingCards[0...1]) { item in
+                    OnboardingCardView(onboardingModel: item)
+                }
             }
+            .tabViewStyle(PageTabViewStyle())
+            .padding(.vertical, 20)
+            
         }
     }
-}
-
-//struct HealthKitAuthorizationView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HealthKitAuthorizationView()
-//    }
 //}
+
+struct HealthKitAuthorizationView_Previews: PreviewProvider {
+    static var previews: some View {
+        OnboardingView(onboardingCards: onboardingData)
+    }
+}

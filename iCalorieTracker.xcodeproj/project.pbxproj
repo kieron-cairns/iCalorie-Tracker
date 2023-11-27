@@ -55,6 +55,7 @@
 		FEEF87412B14DE9100B094AB /* OnboardingTargetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87402B14DE9100B094AB /* OnboardingTargetsView.swift */; };
 		FEEF87432B14F1FD00B094AB /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87422B14F1FD00B094AB /* OnboardingModel.swift */; };
 		FEEF87462B14F2C400B094AB /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87452B14F2C400B094AB /* OnboardingData.swift */; };
+		FEEF87482B14F35C00B094AB /* OnboardingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87472B14F35C00B094AB /* OnboardingCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		FEEF87402B14DE9100B094AB /* OnboardingTargetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTargetsView.swift; sourceTree = "<group>"; };
 		FEEF87422B14F1FD00B094AB /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		FEEF87452B14F2C400B094AB /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
+		FEEF87472B14F35C00B094AB /* OnboardingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +328,7 @@
 			children = (
 				FE180FBA2B132B35007F9FD1 /* OnboardingView.swift */,
 				FEEF87402B14DE9100B094AB /* OnboardingTargetsView.swift */,
+				FEEF87472B14F35C00B094AB /* OnboardingCardView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				FE3E4F622B0E374D00143B4A /* TargetsViewModel.swift in Sources */,
 				FE180FBD2B132B8C007F9FD1 /* HealthKitAuthorizationViewModel.swift in Sources */,
 				FE180FC12B1351A6007F9FD1 /* FirstLoadView.swift in Sources */,
+				FEEF87482B14F35C00B094AB /* OnboardingCardView.swift in Sources */,
 				FE7C4C762A055DC700C6BD0E /* AddCalorieItemView.swift in Sources */,
 				FEB178FC2ACECED00077C577 /* DailyStatsViewModel.swift in Sources */,
 				FEAB5FB329FEC58500CB09A4 /* iCalorieTrackerApp.swift in Sources */,
