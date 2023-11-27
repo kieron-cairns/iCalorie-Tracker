@@ -17,8 +17,8 @@ struct TargetsView: View {
     @State private var caloireQuantity: String = ""
     @State private var showErrorAlert = false
     @State private var errorMessage: ErrorMessage? = nil
-    @State private var calIntakeTextField = "0"
-    @State private var calBurnTextField = "0"
+    @State private var calIntakeTextField = ""
+    @State private var calBurnTextField = ""
     @FocusState private var calIntakeTextFieldFocused: Bool
 
     var targetsViewModel = TargetsViewModel()
@@ -37,10 +37,8 @@ struct TargetsView: View {
                 
                 if !acknowledgedOnboarding {
                     Text("Daily Calorie Intake Goal:")
-                    TextField("", text: $calIntakeTextField)
-                        .onTapGesture {
-                            calIntakeTextField = ""
-                        }
+                    TextField("0", text: $calIntakeTextField)
+
                         .onChange(of: calIntakeTextField) {  newValue in
                           
                             if let doubleValue = Double(calIntakeTextField) {
@@ -63,11 +61,8 @@ struct TargetsView: View {
                         .keyboardType(UIKeyboardType.decimalPad)
                     
                     Text("Daily Caloire Burn Goal:")
-                    TextField("", text: $calBurnTextField)
-                        
-                        .onTapGesture {
-                            calBurnTextField = ""
-                        }
+                    TextField("0", text: $calBurnTextField)
+
                         .onChange(of: calBurnTextField) {  newValue in
                           
                             if let doubleValue = Double(calBurnTextField) {
