@@ -17,7 +17,7 @@ struct HealthKitAuthorizationViewModel {
     
     // Function to request HealthKit authorization
     func requestHealthKitAuthorization(healthStore: HKHealthStore, userSettings: UserSettings) {
-        let readTypes: Set<HKObjectType> = [HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!, HKObjectType.quantityType(forIdentifier: .stepCount)!]
+        let readTypes: Set<HKObjectType> = [HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!, HKObjectType.quantityType(forIdentifier: .basalEnergyBurned)!]
         
         healthStore.requestAuthorization(toShare: nil, read: readTypes) { (success, error) in
            
