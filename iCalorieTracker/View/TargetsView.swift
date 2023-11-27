@@ -17,8 +17,9 @@ struct TargetsView: View {
     @State private var caloireQuantity: String = ""
     @State private var showErrorAlert = false
     @State private var errorMessage: ErrorMessage? = nil
-    @State private var caloireIntakeTextField = "0"
-    @State private var caloireBurnTextField = "0"
+    @State private var calIntakeTextField = "0"
+    @State private var calBurnTextField = "0"
+    @FocusState private var calIntakeTextFieldFocused: Bool
 
     var targetsViewModel = TargetsViewModel()
     
@@ -36,13 +37,13 @@ struct TargetsView: View {
                 
                 if !acknowledgedOnboarding {
                     Text("Daily Calorie Intake Goal:")
-                    TextField("", text: $caloireIntakeTextField)
+                    TextField("", text: $calIntakeTextField)
                         .onTapGesture {
-                            caloireIntakeTextField = ""
+                            calIntakeTextField = ""
                         }
-                        .onChange(of: caloireIntakeTextField) {  newValue in
+                        .onChange(of: calIntakeTextField) {  newValue in
                           
-                            if let doubleValue = Double(caloireIntakeTextField) {
+                            if let doubleValue = Double(calIntakeTextField) {
                                 let roundedValue = Int(doubleValue.rounded())
                                 
                                 userSettings.dailyCalorieIntakeGoal = roundedValue
@@ -62,13 +63,14 @@ struct TargetsView: View {
                         .keyboardType(UIKeyboardType.decimalPad)
                     
                     Text("Daily Caloire Burn Goal:")
-                    TextField("", text: $caloireBurnTextField)
+                    TextField("", text: $calBurnTextField)
+                        
                         .onTapGesture {
-                            caloireBurnTextField = ""
+                            calBurnTextField = ""
                         }
-                        .onChange(of: caloireBurnTextField) {  newValue in
+                        .onChange(of: calBurnTextField) {  newValue in
                           
-                            if let doubleValue = Double(caloireBurnTextField) {
+                            if let doubleValue = Double(calBurnTextField) {
                                 let roundedValue = Int(doubleValue.rounded())
                                 
                                 userSettings.dailyCalorieBurnGoal = roundedValue
