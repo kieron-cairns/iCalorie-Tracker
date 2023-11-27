@@ -56,7 +56,8 @@
 		FEEF87432B14F1FD00B094AB /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87422B14F1FD00B094AB /* OnboardingModel.swift */; };
 		FEEF87462B14F2C400B094AB /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87452B14F2C400B094AB /* OnboardingData.swift */; };
 		FEEF87482B14F35C00B094AB /* OnboardingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87472B14F35C00B094AB /* OnboardingCardView.swift */; };
-		FEEF874A2B150A6000B094AB /* StartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87492B150A6000B094AB /* StartButtonView.swift */; };
+		FEEF874A2B150A6000B094AB /* GoToTargetsButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87492B150A6000B094AB /* GoToTargetsButtonView.swift */; };
+		FEEF874C2B150C1200B094AB /* SaveTargetsButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF874B2B150C1200B094AB /* SaveTargetsButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,7 +130,8 @@
 		FEEF87422B14F1FD00B094AB /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		FEEF87452B14F2C400B094AB /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
 		FEEF87472B14F35C00B094AB /* OnboardingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCardView.swift; sourceTree = "<group>"; };
-		FEEF87492B150A6000B094AB /* StartButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButtonView.swift; sourceTree = "<group>"; };
+		FEEF87492B150A6000B094AB /* GoToTargetsButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToTargetsButtonView.swift; sourceTree = "<group>"; };
+		FEEF874B2B150C1200B094AB /* SaveTargetsButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTargetsButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,10 +330,10 @@
 		FEEF873F2B14DE7E00B094AB /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				FEEF874D2B150C1600B094AB /* Buttons */,
 				FE180FBA2B132B35007F9FD1 /* OnboardingView.swift */,
 				FEEF87402B14DE9100B094AB /* OnboardingTargetsView.swift */,
 				FEEF87472B14F35C00B094AB /* OnboardingCardView.swift */,
-				FEEF87492B150A6000B094AB /* StartButtonView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -342,6 +344,15 @@
 				FEEF87452B14F2C400B094AB /* OnboardingData.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		FEEF874D2B150C1600B094AB /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				FEEF87492B150A6000B094AB /* GoToTargetsButtonView.swift */,
+				FEEF874B2B150C1200B094AB /* SaveTargetsButtonView.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -485,9 +496,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEEF87412B14DE9100B094AB /* OnboardingTargetsView.swift in Sources */,
+				FEEF874C2B150C1200B094AB /* SaveTargetsButtonView.swift in Sources */,
 				FE2336C22A02D42F005E493B /* CoreDataHelpers.swift in Sources */,
 				FE8A4BA72A0915E200B1C2F5 /* DateSelectionView.swift in Sources */,
-				FEEF874A2B150A6000B094AB /* StartButtonView.swift in Sources */,
+				FEEF874A2B150A6000B094AB /* GoToTargetsButtonView.swift in Sources */,
 				FE9FFEB22ACF1DE100CB9E54 /* CustomColor.swift in Sources */,
 				FE7105092B0E2D40000BFCD0 /* TargetsView.swift in Sources */,
 				FEEF87432B14F1FD00B094AB /* OnboardingModel.swift in Sources */,

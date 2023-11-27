@@ -40,7 +40,7 @@ struct OnboardingCardView: View {
             .frame(maxWidth: 480)
           
           // BUTTON: START
-          StartButtonView()
+          GoToTargetsButtonView()
         } //: VSTACK
       } //: ZSTACK
       .onAppear {

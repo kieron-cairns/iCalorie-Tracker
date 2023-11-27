@@ -20,19 +20,17 @@ struct OnboardingTargetsView: View {
     
     
     var body: some View {
-        VStack {
-            TargetsView()
-                .background(.black)
-            
-            Button(action: {
+        ZStack {
+            Color(.black)
+                .ignoresSafeArea()
+            VStack {
+                TargetsView()
                 
-                healthKitAuthViewModel.requestHealthKitAuthorization(healthStore: healthStore, userSettings: userSettings)
+                SaveTargetsButtonView()
+                    .padding(.bottom, 150)
                 
-            })
-            {
-                Text("Continue")
             }
-        }.background(.black)
+        }
     }
 }
 

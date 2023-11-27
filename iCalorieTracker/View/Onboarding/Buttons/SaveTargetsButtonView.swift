@@ -1,22 +1,23 @@
 //
-//  StartButtonView.swift
+//  SaveTargetsButtonView.swift
 //  iCalorieTracker
 //
 //  Created by Kieron Cairns on 27/11/2023.
 //
 
 import SwiftUI
+import HealthKit
 
-struct StartButtonView: View {
+struct SaveTargetsButtonView: View {
     
-    @AppStorage("oboarding") var onboarding = true
+    let healthStore = HKHealthStore()
+    let userSettings = UserSettings()
+    let healthKitAuthViewModel = HealthKitAuthorizationViewModel()
     
     var body: some View {
         
-        
         Button(action: {
-            onboarding = false
-            print("Onboading is: \(onboarding)")
+            healthKitAuthViewModel.requestHealthKitAuthorization(healthStore: healthStore, userSettings: userSettings)
         }) {
             HStack(spacing: 8) {
               Text("Start")
@@ -24,19 +25,18 @@ struct StartButtonView: View {
               Image(systemName: "arrow.right.circle")
                 .imageScale(.large)
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
+            .padding(.horizontal, 32)
+            .padding(.vertical, 20)
             .background(
               Capsule().strokeBorder(Color.white, lineWidth: 1.25)
             )
           } //: BUTTON
           .accentColor(Color.white)
         }
-        
-}
+    }
 
-struct StartButtonView_Previews: PreviewProvider {
+struct SaveTargetsButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        StartButtonView()
+        SaveTargetsButtonView()
     }
 }
