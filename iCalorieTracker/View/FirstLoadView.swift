@@ -10,16 +10,21 @@ import SwiftUI
 struct FirstLoadView: View {
     
     @AppStorage("oboarding") var onboarding = true
-    
+    @AppStorage("acknowledgedOnboarding") var acknowledgedOnboarding = false
+
     @ObservedObject var userSettings = UserSettings()
     let persistenceContainer = CoreDataManager.shared.persistentContainer
 
     var body: some View {
         
-        if onboarding {
+        if onboarding && !acknowledgedOnboarding {
             OnboardingView()
         }
-        else
+        if !onboarding && !acknowledgedOnboarding
+        {
+            OnboardingTargetsView()
+        }
+        if !onboarding && acknowledgedOnboarding
         {
             DailyStatsView()
                 .environment(\.managedObjectContext, persistenceContainer.viewContext)

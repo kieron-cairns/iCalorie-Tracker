@@ -11,6 +11,7 @@ import SwiftUI
 class UserSettings: ObservableObject {
     
     @AppStorage("oboarding") var onboarding = true
+    @AppStorage("acknowledgedOnboarding") var acknowledgedOnboarding = false
 
     
     @Published var isDarkMode: Bool {
@@ -37,6 +38,7 @@ class UserSettings: ObservableObject {
                 UserDefaults.standard.set(hasShownHealthKitAuthorization, forKey: "hasShownHealthKitAuthorization")
                 
                 onboarding = false
+                acknowledgedOnboarding = true
 
                 
                 print("*** health kit authorsation has been granted: \(hasShownHealthKitAuthorization)")
