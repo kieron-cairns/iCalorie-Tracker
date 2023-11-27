@@ -19,19 +19,26 @@ struct OnboardingView: View {
     let healthKitAuthViewModel = HealthKitAuthorizationViewModel()
     
     var body: some View {
-        
-        Button(action: {
-            
-//            healthKitAuthViewModel.requestHealthKitAuthorization(healthStore: healthStore, userSettings: userSettings)
-            
-            onboarding = false
-            print("Onboading is: \(onboarding)")
-            
-        })
-        {
-            Text("Continue From Onboarding")
+        ZStack {
+            Color(.black)
+                .ignoresSafeArea()
+
+            VStack {
+                Spacer()
+                
+                Button(action: {
+                    
+                    onboarding = false
+                    print("Onboading is: \(onboarding)")
+                    
+                })
+                {
+                    Text("Continue From Onboarding")
+                    
+                }.background(.black)
+                
+            }
         }
-        
     }
 }
 

@@ -21,7 +21,8 @@ struct OnboardingTargetsView: View {
     
     var body: some View {
         VStack {
-//            TargetsView()
+            TargetsView()
+                .background(.black)
             
             Button(action: {
                 
@@ -29,9 +30,9 @@ struct OnboardingTargetsView: View {
                 
             })
             {
-                Text("Continue From Targets")
+                Text("Continue")
             }
-        }
+        }.background(.black)
     }
 }
 

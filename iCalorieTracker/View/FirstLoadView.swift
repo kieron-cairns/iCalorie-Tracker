@@ -12,7 +12,9 @@ struct FirstLoadView: View {
     @AppStorage("oboarding") var onboarding = true
     @AppStorage("acknowledgedOnboarding") var acknowledgedOnboarding = false
 
-    @ObservedObject var userSettings = UserSettings()
+//    @ObservedObject var userSettings = UserSettings()
+    @StateObject var userSettings = UserSettings()
+
     let persistenceContainer = CoreDataManager.shared.persistentContainer
 
     var body: some View {
@@ -23,6 +25,9 @@ struct FirstLoadView: View {
         if !onboarding && !acknowledgedOnboarding
         {
             OnboardingTargetsView()
+                .environmentObject(userSettings)
+                .environment(\.colorScheme, userSettings.isDarkMode ? .dark : .light)
+
         }
         if !onboarding && acknowledgedOnboarding
         {
