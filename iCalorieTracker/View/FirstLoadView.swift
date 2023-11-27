@@ -15,6 +15,8 @@ struct FirstLoadView: View {
 //    @ObservedObject var userSettings = UserSettings()
     @StateObject var userSettings = UserSettings()
 
+    var onboardingCards: [OnboardingModel] = onboardingData
+
     let persistenceContainer = CoreDataManager.shared.persistentContainer
 
     var body: some View {

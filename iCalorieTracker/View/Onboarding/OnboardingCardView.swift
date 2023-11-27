@@ -33,12 +33,14 @@ struct OnboardingCardView: View {
           // FRUIT: HEADLINE
           Text(onboardingModel.headline)
             .foregroundColor(Color.white)
+            .font(.system(size: 20))
+            .fontWeight(.bold)
             .multilineTextAlignment(.center)
             .padding(.horizontal, 16)
             .frame(maxWidth: 480)
           
           // BUTTON: START
-//          StartButtonView()
+          StartButtonView()
         } //: VSTACK
       } //: ZSTACK
       .onAppear {
@@ -47,7 +49,7 @@ struct OnboardingCardView: View {
         }
       }
       .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-      .background(LinearGradient(gradient: Gradient(colors: onboardingModel.gradientColors), startPoint: .topLeading, endPoint: .bottomLeading))
+      .background(LinearGradient(gradient: Gradient(colors: onboardingModel.gradientColors), startPoint: .top, endPoint: .bottom))
       .cornerRadius(20)
       .padding(.horizontal, 20)
     }

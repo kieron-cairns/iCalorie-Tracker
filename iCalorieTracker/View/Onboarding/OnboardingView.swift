@@ -18,12 +18,14 @@ struct OnboardingView: View {
     
     var onboardingCards: [OnboardingModel] = onboardingData
     
+    let cardColor = onboardingData[1]
+    
     let healthKitAuthViewModel = HealthKitAuthorizationViewModel()
     
     var body: some View {
-//        ZStack {
-//            Color(.black)
-//                .ignoresSafeArea()
+        ZStack {
+            Color(.black)
+                .ignoresSafeArea()
 
 //            VStack {
 //                Spacer()
@@ -39,19 +41,23 @@ struct OnboardingView: View {
 //            }
             
             TabView {
-                ForEach(onboardingCards[0...1]) { item in
+                ForEach(onboardingCards[0...2]) { item in
                     OnboardingCardView(onboardingModel: item)
                 }
             }
             .tabViewStyle(PageTabViewStyle())
             .padding(.vertical, 20)
+        
             
         }
+//        .background(LinearGradient(gradient: Gradient(colors: cardColor.gradientColors), startPoint: .top, endPoint: .bottom))
     }
-//}
+}
 
 struct HealthKitAuthorizationView_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingView(onboardingCards: onboardingData)
+            .previewDevice("iPhone 13")
+
     }
 }

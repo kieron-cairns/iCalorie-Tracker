@@ -56,6 +56,7 @@
 		FEEF87432B14F1FD00B094AB /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87422B14F1FD00B094AB /* OnboardingModel.swift */; };
 		FEEF87462B14F2C400B094AB /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87452B14F2C400B094AB /* OnboardingData.swift */; };
 		FEEF87482B14F35C00B094AB /* OnboardingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87472B14F35C00B094AB /* OnboardingCardView.swift */; };
+		FEEF874A2B150A6000B094AB /* StartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87492B150A6000B094AB /* StartButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		FEEF87422B14F1FD00B094AB /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		FEEF87452B14F2C400B094AB /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
 		FEEF87472B14F35C00B094AB /* OnboardingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCardView.swift; sourceTree = "<group>"; };
+		FEEF87492B150A6000B094AB /* StartButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +331,7 @@
 				FE180FBA2B132B35007F9FD1 /* OnboardingView.swift */,
 				FEEF87402B14DE9100B094AB /* OnboardingTargetsView.swift */,
 				FEEF87472B14F35C00B094AB /* OnboardingCardView.swift */,
+				FEEF87492B150A6000B094AB /* StartButtonView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				FEEF87412B14DE9100B094AB /* OnboardingTargetsView.swift in Sources */,
 				FE2336C22A02D42F005E493B /* CoreDataHelpers.swift in Sources */,
 				FE8A4BA72A0915E200B1C2F5 /* DateSelectionView.swift in Sources */,
+				FEEF874A2B150A6000B094AB /* StartButtonView.swift in Sources */,
 				FE9FFEB22ACF1DE100CB9E54 /* CustomColor.swift in Sources */,
 				FE7105092B0E2D40000BFCD0 /* TargetsView.swift in Sources */,
 				FEEF87432B14F1FD00B094AB /* OnboardingModel.swift in Sources */,
