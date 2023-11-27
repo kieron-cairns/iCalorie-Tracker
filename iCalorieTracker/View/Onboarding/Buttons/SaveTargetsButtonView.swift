@@ -13,10 +13,12 @@ struct SaveTargetsButtonView: View {
     let healthStore = HKHealthStore()
     let userSettings = UserSettings()
     let healthKitAuthViewModel = HealthKitAuthorizationViewModel()
+    let commonViewModel = CommonViewModel()
     
     var body: some View {
         
         Button(action: {
+            commonViewModel.hideKeyboard()
             healthKitAuthViewModel.requestHealthKitAuthorization(healthStore: healthStore, userSettings: userSettings)
         }) {
             HStack(spacing: 8) {

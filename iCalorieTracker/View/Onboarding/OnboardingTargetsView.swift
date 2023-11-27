@@ -17,7 +17,7 @@ struct OnboardingTargetsView: View {
     let userSettings = UserSettings()
     
     let healthKitAuthViewModel = HealthKitAuthorizationViewModel()
-    
+    let commonViewModel = CommonViewModel()
     
     var body: some View {
         ZStack {
@@ -30,6 +30,8 @@ struct OnboardingTargetsView: View {
                     .padding(.bottom, 150)
                 
             }
+        }.onTapGesture {
+            commonViewModel.hideKeyboard()
         }
     }
 }
