@@ -53,6 +53,8 @@
 		FEB178FE2ACED08F0077C577 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB178FD2ACED08F0077C577 /* SettingsView.swift */; };
 		FEB179062ACEE2A10077C577 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB179052ACEE2A10077C577 /* UserSettings.swift */; };
 		FEEF87412B14DE9100B094AB /* OnboardingTargetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87402B14DE9100B094AB /* OnboardingTargetsView.swift */; };
+		FEEF87432B14F1FD00B094AB /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87422B14F1FD00B094AB /* OnboardingModel.swift */; };
+		FEEF87462B14F2C400B094AB /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF87452B14F2C400B094AB /* OnboardingData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +124,8 @@
 		FEB178FD2ACED08F0077C577 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		FEB179052ACEE2A10077C577 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		FEEF87402B14DE9100B094AB /* OnboardingTargetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTargetsView.swift; sourceTree = "<group>"; };
+		FEEF87422B14F1FD00B094AB /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		FEEF87452B14F2C400B094AB /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +262,7 @@
 		FEAB5FB129FEC58500CB09A4 /* iCalorieTracker */ = {
 			isa = PBXGroup;
 			children = (
+				FEEF87442B14F2AE00B094AB /* Data */,
 				FE180FB92B1329AB007F9FD1 /* iCalorieTracker.entitlements */,
 				FEB178F82ACEC0BE0077C577 /*  Model */,
 				84C084842A30A583002AFC1F /* Info.plist */,
@@ -311,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				FEB178F92ACEC0C90077C577 /* ErrorMessage.swift */,
+				FEEF87422B14F1FD00B094AB /* OnboardingModel.swift */,
 			);
 			path = " Model";
 			sourceTree = "<group>";
@@ -322,6 +328,14 @@
 				FEEF87402B14DE9100B094AB /* OnboardingTargetsView.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		FEEF87442B14F2AE00B094AB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FEEF87452B14F2C400B094AB /* OnboardingData.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,6 +483,7 @@
 				FE8A4BA72A0915E200B1C2F5 /* DateSelectionView.swift in Sources */,
 				FE9FFEB22ACF1DE100CB9E54 /* CustomColor.swift in Sources */,
 				FE7105092B0E2D40000BFCD0 /* TargetsView.swift in Sources */,
+				FEEF87432B14F1FD00B094AB /* OnboardingModel.swift in Sources */,
 				FE2336B72A02C7A2005E493B /* CalorieItemListView.swift in Sources */,
 				FEAB5FBF29FEC58800CB09A4 /* iCalorieTracker.xcdatamodeld in Sources */,
 				FE9FFEB72ACF388000CB9E54 /* CustomTextField.swift in Sources */,
@@ -483,6 +498,7 @@
 				84C084872A30ACB4002AFC1F /* Extension.swift in Sources */,
 				FE2336BC2A02C982005E493B /* CoreDataManager.swift in Sources */,
 				FE180FBB2B132B35007F9FD1 /* OnboardingView.swift in Sources */,
+				FEEF87462B14F2C400B094AB /* OnboardingData.swift in Sources */,
 				FE3E4F622B0E374D00143B4A /* TargetsViewModel.swift in Sources */,
 				FE180FBD2B132B8C007F9FD1 /* HealthKitAuthorizationViewModel.swift in Sources */,
 				FE180FC12B1351A6007F9FD1 /* FirstLoadView.swift in Sources */,
