@@ -17,6 +17,7 @@
 		84C084822A30A4FF002AFC1F /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C084792A30A4FF002AFC1F /* Inter-ExtraBold.ttf */; };
 		84C084832A30A4FF002AFC1F /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C0847A2A30A4FF002AFC1F /* Inter-SemiBold.ttf */; };
 		84C084872A30ACB4002AFC1F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C084862A30ACB4002AFC1F /* Extension.swift */; };
+		FE1088792B16635B001CA8DF /* MockHealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1088782B16635B001CA8DF /* MockHealthStore.swift */; };
 		FE180FBB2B132B35007F9FD1 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE180FBA2B132B35007F9FD1 /* OnboardingView.swift */; };
 		FE180FBD2B132B8C007F9FD1 /* HealthKitAuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE180FBC2B132B8C007F9FD1 /* HealthKitAuthorizationViewModel.swift */; };
 		FE180FC12B1351A6007F9FD1 /* FirstLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE180FC02B1351A6007F9FD1 /* FirstLoadView.swift */; };
@@ -88,6 +89,7 @@
 		84C0847A2A30A4FF002AFC1F /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		84C084842A30A583002AFC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		84C084862A30ACB4002AFC1F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		FE1088782B16635B001CA8DF /* MockHealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHealthStore.swift; sourceTree = "<group>"; };
 		FE180FB92B1329AB007F9FD1 /* iCalorieTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iCalorieTracker.entitlements; sourceTree = "<group>"; };
 		FE180FBA2B132B35007F9FD1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FE180FBC2B132B8C007F9FD1 /* HealthKitAuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAuthorizationViewModel.swift; sourceTree = "<group>"; };
@@ -179,6 +181,14 @@
 				84C084862A30ACB4002AFC1F /* Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		FE1088772B166342001CA8DF /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				FE1088782B16635B001CA8DF /* MockHealthStore.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		FE2336B02A02BD7D005E493B /* Constants */ = {
@@ -329,6 +339,7 @@
 		FEAB5FC729FEC58800CB09A4 /* iCalorieTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				FE1088772B166342001CA8DF /* Mocks */,
 				FE3C5AB32AC45F0A0000D5E3 /* Utilities */,
 				FEAB5FC829FEC58800CB09A4 /* iCalorieTrackerTests.swift */,
 				FE3C5AB12AC44D0F0000D5E3 /* SQLiteEndToEndTest.swift */,
@@ -562,6 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE36407F2B0D2C070065785F /* SQLiteEndToEndTest.swift in Sources */,
+				FE1088792B16635B001CA8DF /* MockHealthStore.swift in Sources */,
 				FEAB5FC929FEC58800CB09A4 /* iCalorieTrackerTests.swift in Sources */,
 				FE3C5AC32AC5DE860000D5E3 /* CommonViewModelTests.swift in Sources */,
 				FE36407E2B0D2B900065785F /* CoreDataManager.swift in Sources */,
