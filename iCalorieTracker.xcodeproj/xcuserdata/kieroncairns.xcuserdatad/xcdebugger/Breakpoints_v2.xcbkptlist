@@ -20,5 +20,179 @@
             landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D17B1CF6-8C62-4420-B56F-607D7178D444"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iCalorieTracker/ViewModel/DailyStatsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "getCaloriesForDate(date:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D17B1CF6-8C62-4420-B56F-607D7178D444 - 4bf0e939d5c8700"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iCalorieTracker.DailyStatsViewModel.getCaloriesForDate(date: Foundation.Date) -&gt; ()"
+                  moduleName = "iCalorieTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kieroncairns/Code/iOS%20Development/iCalorie-Tracker/iCalorieTracker/ViewModel/DailyStatsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "113">
+               </Location>
+               <Location
+                  uuid = "D17B1CF6-8C62-4420-B56F-607D7178D444 - 4bf0e939d5c8700"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iCalorieTracker.DailyStatsViewModel.getCaloriesForDate(date: Foundation.Date) -&gt; ()"
+                  moduleName = "iCalorieTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kieroncairns/Code/iOS%20Development/iCalorie-Tracker/iCalorieTracker/ViewModel/DailyStatsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "172">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "217B10D8-87CD-4A66-A3E9-B320294C898E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iCalorieTracker/ViewModel/DailyStatsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "getCaloriesForDate(date:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "217B10D8-87CD-4A66-A3E9-B320294C898E - d59e3567fe9bdba3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (__C.HKStatisticsQuery, Swift.Optional&lt;__C.HKStatistics&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in iCalorieTracker.DailyStatsViewModel.getCaloriesForDate(date: Foundation.Date) -&gt; ()"
+                  moduleName = "iCalorieTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kieroncairns/Code/iOS%20Development/iCalorie-Tracker/iCalorieTracker/ViewModel/DailyStatsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "968">
+               </Location>
+               <Location
+                  uuid = "217B10D8-87CD-4A66-A3E9-B320294C898E - d59e3567fe9bdba3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (__C.HKStatisticsQuery, Swift.Optional&lt;__C.HKStatistics&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in iCalorieTracker.DailyStatsViewModel.getCaloriesForDate(date: Foundation.Date) -&gt; ()"
+                  moduleName = "iCalorieTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kieroncairns/Code/iOS%20Development/iCalorie-Tracker/iCalorieTracker/ViewModel/DailyStatsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "889">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "00559857-EDAE-4D8F-9126-1531AA7E797E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iCalorieTracker/ViewModel/DailyStatsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "getCaloriesForDate(date:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "00559857-EDAE-4D8F-9126-1531AA7E797E - d59e3567fe9bdbc0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (__C.HKStatisticsQuery, Swift.Optional&lt;__C.HKStatistics&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in iCalorieTracker.DailyStatsViewModel.getCaloriesForDate(date: Foundation.Date) -&gt; ()"
+                  moduleName = "iCalorieTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kieroncairns/Code/iOS%20Development/iCalorie-Tracker/iCalorieTracker/ViewModel/DailyStatsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "796">
+               </Location>
+               <Location
+                  uuid = "00559857-EDAE-4D8F-9126-1531AA7E797E - d82e1d75ef64f748"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #3 (__C.HKStatisticsQuery, Swift.Optional&lt;__C.HKStatistics&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in iCalorieTracker.DailyStatsViewModel.getCaloriesForDate(date: Foundation.Date) -&gt; ()"
+                  moduleName = "iCalorieTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kieroncairns/Code/iOS%20Development/iCalorie-Tracker/iCalorieTracker/ViewModel/DailyStatsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "00559857-EDAE-4D8F-9126-1531AA7E797E - d59e3567fe9bdbc0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (__C.HKStatisticsQuery, Swift.Optional&lt;__C.HKStatistics&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in iCalorieTracker.DailyStatsViewModel.getCaloriesForDate(date: Foundation.Date) -&gt; ()"
+                  moduleName = "iCalorieTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kieroncairns/Code/iOS%20Development/iCalorie-Tracker/iCalorieTracker/ViewModel/DailyStatsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "687">
+               </Location>
+               <Location
+                  uuid = "00559857-EDAE-4D8F-9126-1531AA7E797E - d82e1d75ef64f748"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #3 (__C.HKStatisticsQuery, Swift.Optional&lt;__C.HKStatistics&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in iCalorieTracker.DailyStatsViewModel.getCaloriesForDate(date: Foundation.Date) -&gt; ()"
+                  moduleName = "iCalorieTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kieroncairns/Code/iOS%20Development/iCalorie-Tracker/iCalorieTracker/ViewModel/DailyStatsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

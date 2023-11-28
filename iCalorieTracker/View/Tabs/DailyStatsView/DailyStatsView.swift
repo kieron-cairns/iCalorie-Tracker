@@ -15,6 +15,7 @@ struct DailyStatsView: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var userSettings: UserSettings
     
+    
     @State private var title: String = ""
     @State private var message: String = ""
     @State private var showAddCalorieItemView = false
@@ -85,7 +86,7 @@ struct DailyStatsView: View {
                                             .scaleEffect(scale)
                                             .onAppear{
                                                 
-                                                dailyStatsViewModel.getCaloriesForDate(date: selectedDate)
+                                                dailyStatsViewModel.calculateTotalCalories(for: selectedDate)
 
                                             }
                                             .onChange(of: totCalsBurned) { _ in
