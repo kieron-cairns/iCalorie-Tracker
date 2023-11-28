@@ -8,7 +8,7 @@
 import XCTest
 @testable import iCalorieTracker
 
-final class Test: XCTestCase {
+final class DailyStatsViewModelTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

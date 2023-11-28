@@ -11,7 +11,7 @@ import CoreData
 
 class BasePersistenceTestCases: XCTestCase {
 
-    var calorieItemListViewModel: CalorieItemListViewModel!
+    var commonViewModel: CommonViewModel!
     var mockPersistentContainer: NSPersistentContainer!
     var mockViewContext: NSManagedObjectContext!
 
@@ -23,7 +23,7 @@ class BasePersistenceTestCases: XCTestCase {
         mockViewContext = mockPersistentContainer.viewContext
 
         // Initialize your ViewModel
-        calorieItemListViewModel = CalorieItemListViewModel()
+        commonViewModel = CommonViewModel()
     }
 
     func createMockPersistentContainer() -> NSPersistentContainer {
@@ -42,9 +42,9 @@ class BasePersistenceTestCases: XCTestCase {
     func addNewCalorieItemToInMemDb(title: String, id: UUID, caloireCount: Int32, date: Date) -> CalorieItem  {
         
         // Use the mockViewContext
-       let firstItem = calorieItemListViewModel.saveCalorieItem(title: title, id: id, calorieCount: caloireCount, date: date, viewContext: mockViewContext)
+       let firstItem = commonViewModel.saveCalorieItem(title: title, id: id, calorieCount: caloireCount, date: date, viewContext: mockViewContext)
 
-        let calorieItem = calorieItemListViewModel.fetchCaloireItem(withId: id, viewContext: mockViewContext)!
+        let calorieItem = commonViewModel.fetchCaloireItem(withId: id, viewContext: mockViewContext)!
         
         return calorieItem
     }
@@ -104,9 +104,9 @@ class when_user_saves_a_new_calorie_item: BasePersistenceTestCases {
         
         let secondItem = addNewCalorieItemToInMemDb(title: newCaloireTitle, id: newItemId!, caloireCount: Int32(newCaloireCount), date: dateStringToDate(dateString: newDateAdded)!)
         
-        calorieItemListViewModel.deleteCalorieItem(withId: UUID(uuidString: "123e4567-e89b-12d3-a456-426614174000")!, from: mockViewContext)
+        commonViewModel.deleteCalorieItem(withId: UUID(uuidString: "123e4567-e89b-12d3-a456-426614174000")!, from: mockViewContext)
 
-        let caloireItems = calorieItemListViewModel.fetchAllCalorieItems(viewContext: mockViewContext)!
+        let caloireItems = commonViewModel.fetchAllCalorieItems(viewContext: mockViewContext)!
         
         XCTAssertEqual(caloireItems.count, 1)
         XCTAssertTrue(caloireItems.contains(secondItem))
