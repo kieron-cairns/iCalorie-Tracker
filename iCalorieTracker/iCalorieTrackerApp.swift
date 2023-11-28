@@ -22,6 +22,9 @@ struct iCalorieTrackerApp: App {
            if CommandLine.arguments.contains("UITesting") {
                onboarding = false
                acknowledgedOnboarding = true
+
+               userSettings.dailyCalorieIntakeGoal = 1500
+               userSettings.dailyCalorieBurnGoal = 500
            }
        }
 
