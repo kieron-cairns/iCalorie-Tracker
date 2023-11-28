@@ -9,20 +9,42 @@ import SwiftUI
 
 @main
 struct iCalorieTrackerApp: App {
-//    let persistenceController = PersistenceController.shared
 
     let persistenceContainer = CoreDataManager.shared.persistentContainer
     @StateObject var userSettings = UserSettings()
 
+    @AppStorage("oboarding") var onboarding = true
+    @AppStorage("acknowledgedOnboarding") var acknowledgedOnboarding = false
+    
+    var onboardingCards: [OnboardingModel] = onboardingData
+    
+    init() {
+           if CommandLine.arguments.contains("UITesting") {
+               onboarding = false
+               acknowledgedOnboarding = true
+           }
+       }
 
     var body: some Scene {
         WindowGroup {
             
-            FirstLoadView()
-//            DailyStatsView()
-//                .environment(\.managedObjectContext, persistenceContainer.viewContext)
-//                .environment(\.colorScheme, userSettings.isDarkMode ? .dark : .light)
-//                 .environmentObject(userSettings)
+            if onboarding && !acknowledgedOnboarding {
+                OnboardingView()
+            }
+            if !onboarding && !acknowledgedOnboarding
+            {
+                OnboardingTargetsView()
+                    .environmentObject(userSettings)
+                    .environment(\.colorScheme, userSettings.isDarkMode ? .dark : .light)
+
+            }
+            if !onboarding && acknowledgedOnboarding
+            {
+                DailyStatsView()
+                    .environment(\.managedObjectContext, persistenceContainer.viewContext)
+                    .environment(\.colorScheme, userSettings.isDarkMode ? .dark : .light)
+                    .environmentObject(userSettings)
+            }
         }
     }
 }

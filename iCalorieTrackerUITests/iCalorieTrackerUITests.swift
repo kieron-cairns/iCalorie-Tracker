@@ -37,6 +37,7 @@ class BaseUITestCases : XCTestCase {
         
     override func setUpWithError() throws {
         continueAfterFailure = false
+        app.launchArguments.append("UITesting")
         app.launch()
     }
     
@@ -57,6 +58,10 @@ class BaseUITestCases : XCTestCase {
         let calorieCountTextField = app.textFields["calorieCountTextField"]
         calorieCountTextField.tap()
         calorieCountTextField.typeText("100")
+        
+        let calorieQuantityTextField = app.textFields["calorieQuantityTextField"]
+        calorieQuantityTextField.tap()
+        calorieQuantityTextField.typeText("1")
         
         let calorieTable = app.collectionViews["calorieList"]
         
