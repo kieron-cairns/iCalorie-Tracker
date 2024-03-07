@@ -7,7 +7,7 @@ With a clean and intuitive user interface, it simplifies the process of tracking
 
 <img src="https://kmc-technologies.ltd/icalorietracker/images/MainScreen.png" width="200" height="400" />
 
-<img src="https://kmc-technologies.ltd/iCalorieTracker/images/AddScreen.png" width="200" height="400" />
+<img src="https://kmc-technologies.ltd/icalorietracker/images/AddScreen.png" width="200" height="400" />
 
 
 
