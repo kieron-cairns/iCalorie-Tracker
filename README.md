@@ -4,14 +4,13 @@ iOS application dedicated to tracking a users calorie intake using an SQLite dat
 Calorific Tracker is an open-source iOS application designed to help users monitor their daily caloric intake. The app leverages the power of SQLite for efficient data storage and retrieval, ensuring a seamless user experience. 
 With a clean and intuitive user interface, it simplifies the process of tracking and managing calorie consumption.
 
+![1](https://github.com/user-attachments/assets/da311b37-828b-4d40-8c0f-bc083ddfd135)
 
-<img src="https://kmc-technologies.ltd/MainScreen.png" width="400" height="800" />
+![2](https://github.com/user-attachments/assets/a66fd88b-940c-455a-8c45-43ba26567982)
 
-<img src="https://kmc-technologies.ltd/AddScreen.png" width="400" height="800" />
+![3](https://github.com/user-attachments/assets/4c4065a4-dc1c-4ceb-b645-9b290fc63f9c)
 
-<img src="https://kmc-technologies.ltd/EditScreen.png" width="400" height="800" />
-
-<img src="https://kmc-technologies.ltd/TargetsScreen.png" width="400" height="800" />
+![4](https://github.com/user-attachments/assets/de9a8da3-eeb9-4842-b34f-e97767e456cf)
 
 
 <h2>
